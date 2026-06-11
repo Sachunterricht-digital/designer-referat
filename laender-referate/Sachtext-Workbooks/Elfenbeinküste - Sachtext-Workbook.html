@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elfenbeinküste – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Elfenbeinküste</h1>
+    <span class="flagge">🇨🇮</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/elfenbeinkueste_header.jpg" alt="Elfenbeinküste: Abidjan mit Lagune und Skyline">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Yamoussoukro ist die offizielle Hauptstadt. Die größte Stadt ist aber Abidjan, dort wohnen die meisten Menschen.</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Afrika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Französisch, dazu über 60 weitere Sprachen</td></tr>
+      <tr><td class="k">Währung</td><td class="v">CFA-Franc</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">über 30 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 320.000 km², ein bisschen kleiner als Deutschland</td></tr>
+      <tr><td class="k">Großes Gewässer</td><td class="v">der Atlantik im Süden, dazu der Fluss Bandama</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Guinea, Liberia, Mali, Burkina Faso und Ghana</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der Elfenbeinküste gibt es viele besondere Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/elfenbeinkueste_basilika.jpg" alt="Basilika Notre-Dame de la Paix in Yamoussoukro">
+    <div class="txt">
+      <p><span class="name">Basilika Notre-Dame de la Paix</span>In Yamoussoukro steht eine riesige Kirche. Sie ist eine der größten Kirchen der ganzen Welt. Das Gebäude ist höher als der Petersdom in Rom. Es hat eine große runde Kuppel und sieht von weitem prächtig aus.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">riesige Kirche</span><span class="chip">Yamoussoukro</span><span class="chip">eine der größten der Welt</span><span class="chip">große Kuppel</span><span class="chip">höher als der Petersdom</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Nationalpark Taï</span>Der Taï-Nationalpark ist einer der letzten großen Regenwälder in Westafrika. Hier ist es sehr feucht und grün. Im dichten Wald leben Schimpansen, viele Vögel und seltene Pflanzen. Der Park ist geschützt, damit alles so bleibt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Regenwald</span><span class="chip">Westafrika</span><span class="chip">feucht und grün</span><span class="chip">Schimpansen</span><span class="chip">geschützt</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_tai_nationalpark.jpg" alt="Dichter Regenwald im Taï-Nationalpark">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/elfenbeinkueste_grand_bassam.jpg" alt="Alte bunte Häuser am Strand von Grand-Bassam">
+    <div class="txt">
+      <p><span class="name">Strand von Grand-Bassam</span>Grand-Bassam ist eine alte Stadt direkt am Meer. Früher war sie sogar die Hauptstadt. Dort stehen bunte, alte Häuser. Der lange Sandstrand am Atlantik macht den Ort besonders.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">am Meer</span><span class="chip">alte Stadt</span><span class="chip">bunte Häuser</span><span class="chip">langer Sandstrand</span><span class="chip">Atlantik</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Comoé-Nationalpark</span>Der Comoé-Nationalpark ist ein sehr großer Park im Norden des Landes. Hier gibt es weite Graslandschaften und kleine Wälder. Viele Tiere leben hier, zum Beispiel Elefanten und Affen. Ein Fluss zieht sich mitten durch den Park.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">im Norden</span><span class="chip">Grasland</span><span class="chip">Elefanten</span><span class="chip">Affen</span><span class="chip">Fluss</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_comoe.jpg" alt="Savanne und Elefanten im Comoé-Nationalpark">
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Im Regenwald und an den Flüssen der Elfenbeinküste leben Tiere, die du bei uns nicht in der Natur findest.</p>
+
+  <div class="eintrag">
+    <img src="bilder/elfenbeinkueste_waldelefant.jpg" alt="Waldelefant im Regenwald mit Stoßzähnen">
+    <div class="txt">
+      <p><span class="name">Waldelefant</span>Der Waldelefant ist etwas kleiner als andere Elefanten. Er lebt im dichten Regenwald. Das Land hat seinen Namen von diesen Tieren, denn ihre Stoßzähne sind aus Elfenbein. Heute gibt es nur noch wenige davon.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleiner Elefant</span><span class="chip">Regenwald</span><span class="chip">Stoßzähne</span><span class="chip">Elfenbein</span><span class="chip">selten</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Schimpanse</span>Der Schimpanse ist ein kluger Affe. Er lebt in den Regenwäldern der Elfenbeinküste. Schimpansen benutzen sogar Werkzeuge, zum Beispiel Stöcke und Steine. Sie leben zusammen in Gruppen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kluger Affe</span><span class="chip">Regenwald</span><span class="chip">Werkzeuge</span><span class="chip">Stöcke und Steine</span><span class="chip">Gruppen</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_schimpanse.jpg" alt="Schimpanse benutzt Stein als Werkzeug">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/elfenbeinkueste_flusspferd.jpg" alt="Flusspferd im Fluss mit Kopf über Wasser">
+    <div class="txt">
+      <p><span class="name">Flusspferd</span>Das Flusspferd ist ein großes, schweres Tier. Es lebt in Flüssen und Seen und liegt gern den ganzen Tag im Wasser. Erst am Abend kommt es heraus, um Gras zu fressen. Trotz seiner Größe kann es gut schwimmen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">groß und schwer</span><span class="chip">im Wasser</span><span class="chip">Flüsse und Seen</span><span class="chip">frisst Gras</span><span class="chip">schwimmt gut</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Attiéké</span>Attiéké ist ein Alltagsgericht aus der Knolle Maniok. Der Maniok wird gerieben und gedämpft. Am Ende sieht es aus wie Couscous, also wie kleine helle Körner. Man isst es gern zu Fisch oder Fleisch.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">aus Maniok</span><span class="chip">gerieben</span><span class="chip">gedämpft</span><span class="chip">wie Couscous</span><span class="chip">zu Fisch</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_attieke.jpg" alt="Attiéké mit Fisch auf einem Teller">
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Kedjenou</span>Kedjenou ist ein Huhn mit Gemüse. Es wird in einem geschlossenen Tontopf ganz langsam gegart. Dabei köchelt alles auf kleiner Flamme. So wird das Fleisch ganz weich und schmeckt kräftig.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Huhn</span><span class="chip">mit Gemüse</span><span class="chip">Tontopf</span><span class="chip">langsam gegart</span><span class="chip">weich</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_kedjenou.jpg" alt="Kedjenou im Tontopf">
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Foutou</span>Foutou ist ein zäher Teig aus gestampftem Maniok oder Kochbananen. Man formt daraus kleine Bällchen mit der Hand. Die Bällchen taucht man in eine würzige Suppe. Die Elfenbeinküste ist außerdem eines der größten Kakao-Länder der Welt, hier wächst sehr viel Kakao für Schokolade.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">zäher Teig</span><span class="chip">Maniok</span><span class="chip">Kochbananen</span><span class="chip">Bällchen</span><span class="chip">würzige Suppe</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_foutou.jpg" alt="Foutou-Bällchen neben einer Suppe">
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft der Elfenbeinküste heißt „Les Éléphants", auf Deutsch „die Elefanten". Sie spielt im orangefarbenen Trikot. 2024 hat das Land den Afrika-Cup gewonnen, und zwar im eigenen Land. Bei der WM 2026 ist die Elfenbeinküste dabei, das Team hat sich ohne eine Niederlage qualifiziert. Es spielt in der Gruppe E zusammen mit Deutschland.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">die Elefanten</span><span class="chip">orange Trikot</span><span class="chip">Afrika-Cup 2024</span><span class="chip">WM 2026</span><span class="chip">Gruppe E</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Didier Drogba war der bekannteste Fußballer aus der Elfenbeinküste. Er spielte beim FC Chelsea in England und erzielte viele Tore. Drogba war so bekannt und beliebt, dass sein Name sogar einen Waffenstillstand in einem Bürgerkrieg bewirkte. Alle Seiten legten die Waffen nieder, um ein WM-Qualifikationsspiel zu sehen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Didier Drogba</span><span class="chip">FC Chelsea</span><span class="chip">Nationalheld</span><span class="chip">Frieden durch Fußball</span><span class="chip">Stürmerlegende</span></p>
+    </div>
+    <img src="bilder/elfenbeinkueste_fussball.jpg" alt="Spieler im orangefarbenen Trikot der Elfenbeinküste">
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in der Elfenbeinküste</span>Die Kinder in der Elfenbeinküste lernen in der Schule auf Französisch. Viele sprechen zu Hause noch eine andere Sprache. In den Klassen sitzen oft sehr viele Kinder zusammen. Nicht alle Kinder können jeden Tag zur Schule gehen, weil sie zu Hause mithelfen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Französisch</span><span class="chip">große Klassen</span><span class="chip">zwei Sprachen</span><span class="chip">mithelfen</span><span class="chip">nicht alle gehen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Kakao-Ernte und Markt</span>Viele Familien arbeiten auf Feldern, wo Kakao wächst. Aus Kakao wird später Schokolade gemacht. Die Bohnen werden in der Sonne getrocknet. Auf dem Markt kaufen die Familien dann frisches Obst, Gemüse und Fisch ein.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Kakao</span><span class="chip">Schokolade</span><span class="chip">Bohnen trocknen</span><span class="chip">Markt</span><span class="chip">Obst und Fisch</span></p>
+      </div>
+    </div>
+    <img src="bilder/elfenbeinkueste_kinderalltag.jpg" alt="Kinder der Elfenbeinküste am Markt mit Kakao und Früchten">
+  </div>
+
+  <div class="fuss">Elfenbeinküste – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kap Verde – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Kap Verde</h1>
+    <span class="flagge">🇨🇻</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/kapverde_header.jpg" alt="Kap Verde: der Vulkan Pico do Fogo, weiße Strände und das Meer">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Praia</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Afrika (Inseln im Atlantik)</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Portugiesisch und Kreol</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Kap-Verde-Escudo</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 600.000 Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 4.000 km² (verteilt auf viele kleine Inseln)</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Pico do Fogo, rund 2.829 m</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">eine Inselgruppe im Atlantik, westlich von Afrika, nahe bei Senegal</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Kap Verde gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/kapverde_pico_do_fogo.jpg" alt="Der Vulkan Pico do Fogo">
+    <div class="txt">
+      <p><span class="name">Der Vulkan Pico do Fogo</span>Der Pico do Fogo ist ein großer Vulkan. Er ist der höchste Berg von Kap Verde. Der Vulkan ist noch nicht erloschen. Vor einigen Jahren ist er zuletzt ausgebrochen. Rund um den Berg ist der Boden schwarz von Lava.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Pico do Fogo</span><span class="chip">Vulkan</span><span class="chip">höchste Berg</span><span class="chip">ausgebrochen</span><span class="chip">Lava</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Strände von Sal</span>Die Insel Sal hat lange weiße Strände. Das Wasser ist türkisblau und ganz klar. Viele Urlauber kommen hierher zum Baden. Auf Sal gibt es auch ein Salzbecken. Im salzigen Wasser kann man ganz leicht treiben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Sal</span><span class="chip">weiße Strände</span><span class="chip">türkisblau</span><span class="chip">Baden</span><span class="chip">Salzbecken</span></p>
+    </div>
+    <img src="bilder/kapverde_sal.jpg" alt="Die Strände von Sal">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/kapverde_cidade_velha.jpg" alt="Die Altstadt Cidade Velha">
+    <div class="txt">
+      <p><span class="name">Die Altstadt Cidade Velha</span>Cidade Velha ist die älteste Stadt von Kap Verde. Hier bauten vor langer Zeit Menschen aus Portugal eine Siedlung. Man sieht noch eine alte Festung und eine Kirche. Cidade Velha gehört heute zum Welterbe. Viele Besucher schauen sich die Stadt an.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Cidade Velha</span><span class="chip">älteste Stadt</span><span class="chip">Portugal</span><span class="chip">Festung</span><span class="chip">Welterbe</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Musik Morna</span>Auf Kap Verde lieben die Menschen Musik. Eine besondere Musik heißt Morna. Sie ist langsam und ein bisschen traurig. Dazu spielt man oft Gitarre. Die Morna gehört zum Welterbe der Musik.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Musik</span><span class="chip">Morna</span><span class="chip">langsam</span><span class="chip">Gitarre</span><span class="chip">Welterbe</span></p>
+    </div>
+    <img src="bilder/kapverde_morna.jpg" alt="Die Musik Morna">
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Kap Verde und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/kapverde_meeresschildkroete.jpg" alt="Die Meeresschildkröte">
+    <div class="txt">
+      <p><span class="name">Die Meeresschildkröte</span>Im Meer rund um Kap Verde schwimmen Meeresschildkröten. Sie gleiten ruhig durch das klare Wasser. Mit ihren Flossen rudern sie vorwärts. An den Stränden legen sie ihre Eier in den Sand. Aus den Eiern schlüpfen kleine Schildkröten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Meeresschildkröten</span><span class="chip">klare Wasser</span><span class="chip">Flossen</span><span class="chip">Eier in den Sand</span><span class="chip">schlüpfen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Buckelwal</span>Im Meer bei Kap Verde leben große Buckelwale. Sie kommen jedes Jahr zum Kinderkriegen hierher. Ein Buckelwal kann riesig werden. Manchmal springt er aus dem Wasser. Von Booten aus kann man die Wale beobachten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Buckelwale</span><span class="chip">riesig</span><span class="chip">springt</span><span class="chip">aus dem Wasser</span><span class="chip">Booten</span></p>
+    </div>
+    <img src="bilder/kapverde_buckelwal.jpg" alt="Der Buckelwal">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/kapverde_gecko.jpg" alt="Der Gecko">
+    <div class="txt">
+      <p><span class="name">Der Gecko</span>Auf den Inseln leben kleine Geckos. Ein Gecko ist eine flinke Echse. Er klettert sogar an glatten Wänden hoch. Tagsüber sitzt er gern in der Sonne. Geckos fressen am liebsten kleine Insekten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Geckos</span><span class="chip">flinke Echse</span><span class="chip">klettert</span><span class="chip">in der Sonne</span><span class="chip">Insekten</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Cachupa</span>Cachupa ist das wichtigste Gericht von Kap Verde. Es ist ein Eintopf aus Mais und Bohnen. Dazu kommen Gemüse und manchmal Fleisch oder Fisch. Der Eintopf kocht sehr lange auf dem Herd. Viele essen Cachupa schon zum Frühstück.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Cachupa</span><span class="chip">Eintopf</span><span class="chip">Mais und Bohnen</span><span class="chip">Gemüse</span><span class="chip">zum Frühstück</span></p>
+    </div>
+    <img src="bilder/kapverde_essen_cachupa.jpg" alt="Cachupa">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Frischer Fisch</span>Rund um Kap Verde gibt es viel Fisch. Die Fischer fangen ihn früh am Morgen im Meer. Frisch wird er dann auf dem Markt verkauft. Oft isst man den Fisch mit Reis. Dazu schmeckt eine Scheibe Limette.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fisch</span><span class="chip">Fischer</span><span class="chip">auf dem Markt</span><span class="chip">Reis</span><span class="chip">Limette</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Pastel</span>Pastel sind kleine gefüllte Teigtaschen. Sie werden in heißem Fett goldbraun gebacken. Innen sind sie oft mit Thunfisch gefüllt. Manche schmecken auch nach Gemüse. Kinder essen Pastel gern als Snack.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Pastel</span><span class="chip">Teigtaschen</span><span class="chip">goldbraun</span><span class="chip">Thunfisch</span><span class="chip">Snack</span></p>
+    </div>
+    <img src="bilder/kapverde_essen_pastel.jpg" alt="Pastel">
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Nationalmannschaft von Kap Verde heißt die Blauhaie. Zum ersten Mal hat sich Kap Verde für die WM 2026 qualifiziert. Das kleine Inselland hat dafür sogar große Mannschaften besiegt. Ein bekannter Spieler ist Jamiro Monteiro. Das ganze Land hat groß gefeiert.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">die Blauhaie</span><span class="chip">WM 2026</span><span class="chip">kleine Inselland</span><span class="chip">Jamiro Monteiro</span><span class="chip">gefeiert</span></p>
+    </div>
+    <img src="bilder/kapverde_fussball.jpg" alt="Fußball Kap Verde">
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Sprachen und Schule</span>Die Kinder auf Kap Verde sprechen meist Kreol. Das ist die Sprache der Inseln. In der Schule lernen sie auch Portugiesisch. Beide Sprachen gehören zu ihrem Alltag. So sprechen viele Kinder zwei Sprachen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Kreol</span><span class="chip">Sprache der Inseln</span><span class="chip">Schule</span><span class="chip">Portugiesisch</span><span class="chip">zwei Sprachen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben am Meer</span>Das Meer gehört für die Kinder zum Alltag. Nach der Schule gehen viele zum Schwimmen. Manche helfen den Fischern am Strand. Andere spielen am Strand Fußball. Am Abend hört man oft Musik in den Straßen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Meer</span><span class="chip">Schwimmen</span><span class="chip">Fischern</span><span class="chip">am Strand Fußball</span><span class="chip">Musik</span></p>
+      </div>
+    </div>
+    <img src="bilder/kapverde_kinderalltag.jpg" alt="Kinderalltag Kap Verde">
+  </div>
+
+  <div class="fuss">Kap Verde – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

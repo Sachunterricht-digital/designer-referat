@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algerien – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Algerien</h1>
+    <span class="flagge">🇩🇿</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/algerien_header.jpg" alt="Algerien: die weiße Küstenstadt Algier, die Sahara und Couscous">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Algier</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Afrika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Arabisch und Berbersprachen</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Algerischer Dinar</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 46 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 2,4 Millionen km² (das größte Land Afrikas)</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Tahat im Hoggar-Gebirge, rund 2.900 m</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Marokko, Tunesien, Libyen, Niger, Mali und Mauretanien</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Algerien gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/algerien_sahara.jpg" alt="Die Sahara">
+    <div class="txt">
+      <p><span class="name">Die Sahara</span>Ein großer Teil von Algerien ist Wüste. Die Sahara ist die größte Trockenwüste der Welt. Hier gibt es riesige Sanddünen aus goldgelbem Sand. Tagsüber wird es sehr heiß, nachts oft kalt. Nur wenige Menschen leben mitten in der Wüste.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Sahara</span><span class="chip">größte Trockenwüste</span><span class="chip">Sanddünen</span><span class="chip">sehr heiß</span><span class="chip">Wüste</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Casbah von Algier</span>Die Casbah ist die Altstadt der Hauptstadt Algier. Hier stehen viele weiße Häuser dicht nebeneinander. Zwischen den Häusern gibt es enge, verwinkelte Gassen. Die Casbah ist sehr alt und gehört zum Welterbe. Touristen aus aller Welt schauen sie sich an.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Casbah</span><span class="chip">Altstadt</span><span class="chip">weiße Häuser</span><span class="chip">enge, verwinkelte Gassen</span><span class="chip">Welterbe</span></p>
+    </div>
+    <img src="bilder/algerien_casbah.jpg" alt="Die Casbah von Algier">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/algerien_timgad.jpg" alt="Die Ruinen von Timgad">
+    <div class="txt">
+      <p><span class="name">Die Ruinen von Timgad</span>In Timgad stehen die Ruinen einer alten Römerstadt. Vor fast 2000 Jahren lebten hier die Römer. Man sieht noch viele Säulen und einen großen Torbogen. Die Straßen waren damals schon gerade angelegt. Heute ist Timgad ein berühmtes Ausflugsziel.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Timgad</span><span class="chip">Ruinen</span><span class="chip">die Römer</span><span class="chip">Säulen</span><span class="chip">Torbogen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Das Tassili-Gebirge</span>Das Tassili liegt tief in der Sahara. Dort gibt es hohe Felsen aus Sandstein. Wind und Sand haben sie in vielen Jahren geformt. An den Felswänden findet man uralte Felsbilder. Früher haben Menschen dort Tiere an die Wände gemalt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Tassili</span><span class="chip">Felsen aus Sandstein</span><span class="chip">geformt</span><span class="chip">uralte Felsbilder</span><span class="chip">Tiere</span></p>
+    </div>
+    <img src="bilder/algerien_tassili.jpg" alt="Das Tassili-Gebirge">
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Algerien und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/algerien_fennek.jpg" alt="Der Fennek">
+    <div class="txt">
+      <p><span class="name">Der Fennek</span>Der Fennek ist ein kleiner Wüstenfuchs. Er hat sehr große Ohren. Mit den Ohren hört er Beute und kühlt sich ab. Tagsüber schläft er in seinem Bau im Sand. Erst nachts geht er auf die Jagd.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fennek</span><span class="chip">Wüstenfuchs</span><span class="chip">große Ohren</span><span class="chip">Bau im Sand</span><span class="chip">nachts</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Das Dromedar</span>Das Dromedar ist ein Kamel mit nur einem Höcker. Im Höcker speichert es Fett als Vorrat. So kann es lange ohne Wasser auskommen. Seine breiten Füße sinken im Sand nicht ein. Menschen reiten darauf und tragen damit Lasten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Dromedar</span><span class="chip">Kamel</span><span class="chip">einem Höcker</span><span class="chip">ohne Wasser</span><span class="chip">breiten Füße</span></p>
+    </div>
+    <img src="bilder/algerien_dromedar.jpg" alt="Das Dromedar">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/algerien_gazelle.jpg" alt="Die Gazelle">
+    <div class="txt">
+      <p><span class="name">Die Gazelle</span>In der Steppe von Algerien leben Gazellen. Eine Gazelle ist schlank und hat dünne Beine. Sie kann sehr schnell rennen und weit springen. So flieht sie schnell vor Feinden. Gazellen fressen Gräser und Blätter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Gazellen</span><span class="chip">schlank</span><span class="chip">schnell rennen</span><span class="chip">springen</span><span class="chip">vor Feinden</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Couscous</span>Couscous ist das wichtigste Gericht in Algerien. Es besteht aus vielen kleinen Kügelchen aus Hartweizen. Dazu gibt es Gemüse und manchmal Fleisch. Die ganze Familie isst oft aus einer großen Schüssel. Couscous schmeckt warm am besten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Couscous</span><span class="chip">kleinen Kügelchen</span><span class="chip">Hartweizen</span><span class="chip">Gemüse</span><span class="chip">großen Schüssel</span></p>
+    </div>
+    <img src="bilder/algerien_essen_couscous.jpg" alt="Couscous">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Makroud</span>Makroud ist ein süßes Gebäck. In der Mitte ist eine Füllung aus Datteln. Außen ist der Teig aus Grieß. Oft wird das Gebäck in Honig getaucht. Kinder essen Makroud besonders gern.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Makroud</span><span class="chip">süßes Gebäck</span><span class="chip">Datteln</span><span class="chip">Grieß</span><span class="chip">Honig</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Merguez</span>Merguez sind kleine, scharfe Würstchen. Sie sind meist aus Lamm- oder Rindfleisch. Gewürze machen sie rot und kräftig im Geschmack. Oft werden sie auf dem Grill gebraten. Dazu isst man Brot.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Merguez</span><span class="chip">scharfe Würstchen</span><span class="chip">Gewürze</span><span class="chip">Grill</span><span class="chip">Brot</span></p>
+    </div>
+    <img src="bilder/algerien_essen_merguez.jpg" alt="Merguez">
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Nationalmannschaft von Algerien heißt die Wüstenfüchse. Algerien hat sich für die WM 2026 qualifiziert. Der bekannteste Spieler ist Riyad Mahrez. Er spielt heute bei Al-Ahli in Saudi-Arabien. Mahrez ist schnell und trickreich am Ball.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">die Wüstenfüchse</span><span class="chip">WM 2026</span><span class="chip">Riyad Mahrez</span><span class="chip">Al-Ahli</span><span class="chip">trickreich</span></p>
+    </div>
+    <img src="bilder/algerien_fussball.jpg" alt="Fußball Algerien">
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">In der Schule</span>Die meisten Kinder in Algerien gehen gern zur Schule. Sie lernen Arabisch lesen und schreiben. Viele lernen auch Französisch dazu. Nach der Schule helfen sie oft zu Hause. Am Nachmittag spielen sie mit Freunden draußen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schule</span><span class="chip">Arabisch</span><span class="chip">Französisch</span><span class="chip">helfen sie oft zu Hause</span><span class="chip">spielen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Spiel und Freizeit</span>Fußball ist bei den Kindern sehr beliebt. Auf staubigen Plätzen spielen sie zusammen. Manche Familien fahren am Wochenende ans Meer. Im Norden von Algerien gibt es schöne Strände. Dort baden die Kinder im Mittelmeer.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fußball</span><span class="chip">spielen sie zusammen</span><span class="chip">ans Meer</span><span class="chip">Strände</span><span class="chip">Mittelmeer</span></p>
+      </div>
+    </div>
+    <img src="bilder/algerien_kinderalltag.jpg" alt="Kinderalltag Algerien">
+  </div>
+
+  <div class="fuss">Algerien – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

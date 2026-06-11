@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz und Rätsel – Fußball-WM 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a5970;
+    --petrol-dark:#1d3f50;
+    --gelb:#ffd23f;
+    --gruen:#3fa34d;
+    --rot:#e2574c;
+    --ink:#26323a;
+    --ink-soft:#5a6b76;
+    --karte:#ffffff;
+    --bg:#eef3f5;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;}
+  .wrap{max-width:880px;margin:0 auto;padding:24px 18px 60px;}
+
+  header.top{background:var(--petrol);color:#fff;border-radius:22px;padding:26px 28px;margin-bottom:22px;position:relative;overflow:hidden;}
+  header.top h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;margin:0 0 4px;line-height:1.1;}
+  header.top h1 .mark{background:var(--gelb);color:var(--petrol-dark);padding:0 10px;border-radius:8px;}
+  header.top p{margin:0;font-size:16px;opacity:.92;}
+  header.top .ball{position:absolute;right:-10px;bottom:-14px;font-size:96px;opacity:.18;}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .tabs button{font-family:'Fredoka',sans-serif;font-size:16px;font-weight:600;border:none;cursor:pointer;
+    background:#fff;color:var(--petrol);padding:10px 18px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  .tabs button.active{background:var(--petrol);color:#fff;}
+
+  section.panel{display:none;}
+  section.panel.show{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .karte{background:var(--karte);border-radius:18px;padding:20px 22px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:16px;}
+  .frage{font-weight:800;font-size:18px;margin:0 0 12px;display:flex;gap:10px;}
+  .frage .nr{background:var(--petrol);color:#fff;border-radius:50%;width:30px;height:30px;flex:0 0 30px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-size:15px;}
+  .opts{display:grid;gap:8px;}
+  .opt{text-align:left;border:2px solid #e3e9ec;background:#fff;border-radius:12px;padding:11px 15px;font-size:16px;font-family:'Nunito',sans-serif;cursor:pointer;transition:.12s;}
+  .opt:hover{border-color:var(--petrol);}
+  .opt.correct{border-color:var(--gruen);background:#eaf7ec;font-weight:700;}
+  .opt.wrong{border-color:var(--rot);background:#fbeae8;}
+  .opt:disabled{cursor:default;}
+  .tipp{margin-top:10px;font-size:14px;color:var(--ink-soft);min-height:1px;}
+  .tipp.ok{color:var(--gruen);font-weight:700;}
+  .tipp.no{color:var(--rot);font-weight:700;}
+
+  /* Wahr/Falsch */
+  .wf-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eef0f2;flex-wrap:wrap;}
+  .wf-row:last-child{border-bottom:none;}
+  .wf-txt{flex:1;min-width:200px;font-size:16px;}
+  .wf-btns{display:flex;gap:8px;}
+  .wf-btns button{border:2px solid #e3e9ec;background:#fff;border-radius:10px;padding:8px 16px;font-weight:700;font-family:'Fredoka',sans-serif;cursor:pointer;font-size:15px;}
+  .wf-btns button.pick-ok{border-color:var(--gruen);background:#eaf7ec;}
+  .wf-btns button.pick-no{border-color:var(--rot);background:#fbeae8;}
+
+  /* Buchstabensalat */
+  .salat{display:grid;grid-template-columns:1fr;gap:12px;}
+  .salat .item{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .salat .scrambled{font-family:'Fredoka',sans-serif;font-size:22px;letter-spacing:3px;color:var(--petrol);background:#f1f5f7;border-radius:10px;padding:6px 14px;min-width:130px;text-align:center;}
+  .salat .hint{font-size:14px;color:var(--ink-soft);flex:1;min-width:160px;}
+  .salat input{font-family:'Fredoka',sans-serif;font-size:18px;text-transform:uppercase;border:2px solid #e3e9ec;border-radius:10px;padding:7px 12px;width:150px;}
+  .salat input.ok{border-color:var(--gruen);background:#eaf7ec;}
+  .salat input.no{border-color:var(--rot);background:#fbeae8;}
+
+  .score{position:sticky;bottom:14px;background:var(--petrol-dark);color:#fff;border-radius:14px;padding:12px 18px;font-family:'Fredoka',sans-serif;font-size:17px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2);margin-top:8px;}
+  .btn{border:none;background:var(--gelb);color:var(--petrol-dark);font-family:'Fredoka',sans-serif;font-weight:600;border-radius:999px;padding:9px 18px;cursor:pointer;font-size:15px;}
+  .hinweis{font-size:14px;color:var(--ink-soft);margin:0 0 14px;}
+</style>
+</head>
+<body>
+<a href="Info-Heft%20Fu%C3%9Fball-WM%202026.html" style="position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#2a5970;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);">← zum Info-Heft</a>
+<div class="wrap">
+  <header class="top">
+    <h1>Quiz und <span class="mark">Rätsel</span></h1>
+    <p>Rund um die Fußball-WM 2026. Tippe an, rate und prüfe dich selbst.</p>
+    <div class="ball">⚽</div>
+  </header>
+
+  <div class="tabs">
+    <button class="active" data-tab="quiz">⚽ Quiz</button>
+    <button data-tab="wf">✅ Wahr oder Falsch</button>
+    <button data-tab="salat">🔤 Buchstabensalat</button>
+  </div>
+
+  <!-- QUIZ -->
+  <section class="panel show" id="quiz">
+    <p class="hinweis">Tippe bei jeder Frage auf deine Antwort. Richtig wird grün, falsch wird rot.</p>
+    <div id="quizList"></div>
+    <div class="score"><span>Dein Punktestand</span><span id="quizScore">0 / 10</span></div>
+  </section>
+
+  <!-- WAHR/FALSCH -->
+  <section class="panel" id="wf">
+    <p class="hinweis">Ist die Aussage wahr oder falsch? Tippe auf einen Knopf.</p>
+    <div class="karte" id="wfList"></div>
+    <div class="score"><span>Richtig beantwortet</span><span id="wfScore">0 / 6</span></div>
+  </section>
+
+  <!-- BUCHSTABENSALAT -->
+  <section class="panel" id="salat">
+    <p class="hinweis">Die Buchstaben sind durcheinander. Schreibe das richtige Wort in das Feld. Der Tipp hilft dir.</p>
+    <div class="karte salat" id="salatList"></div>
+    <div class="score"><span>Gelöste Wörter</span><span id="salatScore">0 / 6</span></div>
+  </section>
+</div>
+
+<script>
+/* ---------- Daten ---------- */
+const QUIZ = [
+  {f:"Wann findet die Fußball-WM 2026 statt?", o:["im Winter 2026","11. Juni bis 19. Juli 2026","das ganze Jahr 2026"], a:1},
+  {f:"In welchen drei Ländern wird gespielt?", o:["USA, Kanada und Mexiko","Deutschland, Frankreich und Spanien","Brasilien, Argentinien und Uruguay"], a:0},
+  {f:"Wie viele Mannschaften spielen 2026 mit?", o:["16","32","48"], a:2},
+  {f:"Wo gab es die allererste Fußball-WM im Jahr 1930?", o:["in Uruguay","in England","in den USA"], a:0},
+  {f:"Wer ist Titelverteidiger, hat also 2022 gewonnen?", o:["Frankreich","Argentinien","Deutschland"], a:1},
+  {f:"Wie heißt der offizielle Spielball der WM 2026?", o:["Jabulani","Trionda","Telstar"], a:1},
+  {f:"Wie lange dauert ein Fußballspiel normalerweise?", o:["60 Minuten","90 Minuten","120 Minuten"], a:1},
+  {f:"Wie viele Spieler einer Mannschaft stehen auf dem Feld?", o:["9","11","13"], a:1},
+  {f:"Welches Tier ist das WM-Maskottchen der USA?", o:["ein Adler","ein Jaguar","ein Elch"], a:0},
+  {f:"Wie oft findet eine Fußball-WM statt?", o:["jedes Jahr","alle zwei Jahre","alle vier Jahre"], a:2},
+];
+const WF = [
+  {t:"Die WM 2026 findet zum ersten Mal in drei Ländern gleichzeitig statt.", w:true},
+  {t:"Bei der WM 2026 spielen nur 32 Mannschaften mit.", w:false},
+  {t:"Das Maskottchen von Kanada ist ein Elch.", w:true},
+  {t:"Der Torwart darf den Ball mit den Händen fangen.", w:true},
+  {t:"Die allererste Fußball-WM gab es 1930 in Uruguay.", w:true},
+  {t:"Ein Fußballspiel besteht aus drei Halbzeiten.", w:false},
+];
+const SALAT = [
+  {scram:"LLAB", sol:"BALL", hint:"Er ist rund und man kickt ihn."},
+  {scram:"ROT", sol:"TOR", hint:"Da muss der Ball hinein."},
+  {scram:"KOALP", sol:"POKAL", hint:"Das bekommt die Siegermannschaft."},
+  {scram:"DASTION", sol:"STADION", hint:"Hier wird vor vielen Fans gespielt."},
+  {scram:"LCEH", sol:"ELCH", hint:"Das Maskottchen von Kanada."},
+  {scram:"DELRA", sol:"ADLER", hint:"Das Maskottchen der USA."},
+];
+
+/* ---------- Quiz ---------- */
+let quizScore=0;
+const quizList=document.getElementById('quizList');
+QUIZ.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='karte';
+  card.innerHTML='<p class="frage"><span class="nr">'+(i+1)+'</span>'+q.f+'</p>';
+  const opts=document.createElement('div');opts.className='opts';
+  q.o.forEach((txt,j)=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=txt;
+    b.onclick=()=>{
+      if(card.dataset.done)return;card.dataset.done=1;
+      [...opts.children].forEach(c=>c.disabled=true);
+      if(j===q.a){b.classList.add('correct');quizScore++;tip.textContent='Richtig!';tip.className='tipp ok';}
+      else{b.classList.add('wrong');opts.children[q.a].classList.add('correct');tip.textContent='Leider falsch. Die richtige Antwort ist grün.';tip.className='tipp no';}
+      document.getElementById('quizScore').textContent=quizScore+' / 10';
+    };
+    opts.appendChild(b);
+  });
+  const tip=document.createElement('div');tip.className='tipp';
+  card.appendChild(opts);card.appendChild(tip);quizList.appendChild(card);
+});
+
+/* ---------- Wahr/Falsch ---------- */
+let wfScore=0,wfDone=0;
+const wfList=document.getElementById('wfList');
+WF.forEach(item=>{
+  const row=document.createElement('div');row.className='wf-row';
+  row.innerHTML='<div class="wf-txt">'+item.t+'</div>';
+  const btns=document.createElement('div');btns.className='wf-btns';
+  const mk=(label,val)=>{const b=document.createElement('button');b.textContent=label;
+    b.onclick=()=>{ if(row.dataset.done)return;row.dataset.done=1;wfDone++;
+      const right=(val===item.w);
+      b.classList.add(right?'pick-ok':'pick-no');
+      if(right)wfScore++; else {[...btns.children].find(x=>x.dataset.val===String(item.w)).classList.add('pick-ok');}
+      document.getElementById('wfScore').textContent=wfScore+' / 6';
+    };
+    b.dataset.val=String(val);return b;};
+  btns.appendChild(mk('Wahr',true));btns.appendChild(mk('Falsch',false));
+  row.appendChild(btns);wfList.appendChild(row);
+});
+
+/* ---------- Buchstabensalat ---------- */
+let salatScore=0;const salatList=document.getElementById('salatList');
+const solved=new Set();
+SALAT.forEach((s,i)=>{
+  const item=document.createElement('div');item.className='item';
+  item.innerHTML='<span class="scrambled">'+s.scram+'</span><span class="hint">'+s.hint+'</span>';
+  const inp=document.createElement('input');inp.maxLength=s.sol.length+2;inp.placeholder='Wort';
+  inp.oninput=()=>{
+    const v=inp.value.trim().toUpperCase();
+    if(v===s.sol){inp.className='ok';inp.disabled=true;if(!solved.has(i)){solved.add(i);salatScore++;document.getElementById('salatScore').textContent=salatScore+' / 6';}}
+    else if(v.length>=s.sol.length){inp.className='no';}
+    else{inp.className='';}
+  };
+  item.appendChild(inp);salatList.appendChild(item);
+});
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tabs button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('show'));
+    document.getElementById(b.dataset.tab).classList.add('show');
+  };
+});
+</script>
+</body>
+</html>

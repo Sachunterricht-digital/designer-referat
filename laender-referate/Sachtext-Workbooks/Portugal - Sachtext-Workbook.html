@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugal – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Portugal</h1>
+    <span class="flagge">🇵🇹</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/portugal_header.jpg" alt="Portugal: Blick über Lissabon und den Tejo zum Atlantik">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Lissabon</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Portugiesisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Euro</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 10 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 92.000 km², ein bisschen größer als Bayern</td></tr>
+      <tr><td class="k">Großer Berg / Gewässer</td><td class="v">im Westen und Süden der Atlantische Ozean; höchster Berg der Pico auf den Azoren, rund 2.350 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">nur Spanien, im Norden und im Osten</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Portugal gibt es viele besondere Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/portugal_belem.jpg" alt="Turm von Belém in Lissabon am Wasser">
+    <div class="txt">
+      <p><span class="name">Turm von Belém</span>Der Turm von Belém steht in Lissabon direkt am Wasser. Er ist ganz aus weißem Stein gebaut. Vor etwa 500 Jahren passte hier ein Wächter auf die großen Schiffe auf. Damals fuhren die Portugiesen mit ihren Schiffen weit über das Meer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">aus weißem Stein</span><span class="chip">in Lissabon</span><span class="chip">am Wasser</span><span class="chip">alte Schiffe</span><span class="chip">Wächter</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Sintra</span>Sintra ist eine kleine Stadt in den Hügeln nahe bei Lissabon. Dort stehen bunte Schlösser, die aussehen wie aus einem Märchen. Das bekannteste Schloss ist knallbunt angemalt. Es leuchtet schon von weitem in Rot und Gelb.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bunte Schlösser</span><span class="chip">in den Hügeln</span><span class="chip">wie im Märchen</span><span class="chip">knallbunt</span><span class="chip">nahe Lissabon</span></p>
+    </div>
+    <img src="bilder/portugal_sintra.jpg" alt="Buntes Märchenschloss in Sintra auf einem Hügel">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/portugal_kaproca.jpg" alt="Felsklippe am Kap Roca mit weitem Atlantik">
+    <div class="txt">
+      <p><span class="name">Kap Roca</span>Das Kap Roca ist der westlichste Punkt von Europa. Weiter nach Westen geht das Festland nicht mehr. Hier stehen die Menschen auf einer hohen Felsklippe. Vor ihnen liegt nur noch der weite Atlantische Ozean.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">westlichster Punkt</span><span class="chip">Felsklippe</span><span class="chip">Atlantik</span><span class="chip">Rand von Europa</span><span class="chip">weites Meer</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Algarve</span>Die Algarve ist eine Küste im Süden von Portugal. Dort gibt es goldgelbe Felsen und lange Sandstrände. Im Meer haben sich versteckte Höhlen gebildet. Viele Menschen kommen hierher zum Baden und in die Sonne.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Küste im Süden</span><span class="chip">goldgelbe Felsen</span><span class="chip">Sandstrände</span><span class="chip">Höhlen</span><span class="chip">Baden</span></p>
+    </div>
+    <img src="bilder/portugal_algarve.jpg" alt="Goldgelbe Felsen und Sandstrand an der Algarve">
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Portugal leben Tiere, die du bei uns selten oder gar nicht findest.</p>
+
+  <div class="eintrag">
+    <img src="bilder/portugal_iberischer_wolf.jpg" alt="Iberischer Wolf in den Bergen von Nordportugal">
+    <div class="txt">
+      <p><span class="name">Iberischer Wolf</span>Der Iberische Wolf ist ein wilder Wolf. Er lebt vor allem im Norden von Portugal. Sein Fell ist graubraun. Wölfe leben zusammen im Rudel. Sie sind sehr scheu und verstecken sich vor den Menschen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">wilder Wolf</span><span class="chip">im Norden</span><span class="chip">graubraun</span><span class="chip">im Rudel</span><span class="chip">sehr scheu</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Weißstorch</span>In Portugal leben sehr viele Weißstörche. Sie bauen große Nester aus Ästen. Diese Nester liegen oben auf Dächern und auf hohen Masten. Den ganzen Sommer über ziehen die Störche dort ihre Jungen groß.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">viele Störche</span><span class="chip">große Nester</span><span class="chip">auf Dächern</span><span class="chip">auf Masten</span><span class="chip">weiß mit rotem Schnabel</span></p>
+    </div>
+    <img src="bilder/portugal_weissstorch.jpg" alt="Weißstorch auf einem Nest auf einem Dach in Portugal">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/portugal_delfin.jpg" alt="Delfine springen vor der portugiesischen Küste aus dem Wasser">
+    <div class="txt">
+      <p><span class="name">Delfin</span>Vor der Küste von Portugal schwimmen viele Delfine. Sie leben in Gruppen und springen gern aus dem Wasser. Mit kleinen Booten kann man hinausfahren. Dann beobachtet man die Delfine ganz aus der Nähe.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">im Meer</span><span class="chip">in Gruppen</span><span class="chip">springen</span><span class="chip">vom Boot beobachten</span><span class="chip">vor der Küste</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Pastéis de Nata</span>Pastéis de Nata sind kleine Törtchen aus Blätterteig. In der Mitte steckt eine cremige Füllung aus Vanille. Sie kommen ursprünglich aus Lissabon. Heute isst man sie in ganz Portugal sehr gern.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleine Törtchen</span><span class="chip">Blätterteig</span><span class="chip">Vanille-Creme</span><span class="chip">aus Lissabon</span><span class="chip">süß</span></p>
+    </div>
+    <img src="bilder/portugal_essen_pasteis.jpg" alt="Pastéis de Nata, portugiesische Blätterteig-Törtchen">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Bacalhau</span>Bacalhau ist getrockneter und gesalzener Kabeljau, also ein Fisch. Die Portugiesen lieben ihn sehr. Sie sagen, es gibt ihn auf 365 Arten, also für jeden Tag im Jahr anders. So wird er nie langweilig.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">getrockneter Fisch</span><span class="chip">Kabeljau</span><span class="chip">gesalzen</span><span class="chip">365 Arten</span><span class="chip">sehr beliebt</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Piri-Piri-Hähnchen</span>Das Piri-Piri-Hähnchen wird über dem Feuer gegrillt. Darüber kommt eine scharfe Sauce aus kleinen roten Chilis. Diese Chilis heißen Piri-Piri. Vor allem im Süden von Portugal isst man das Gericht oft.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">gegrilltes Hähnchen</span><span class="chip">scharfe Sauce</span><span class="chip">rote Chilis</span><span class="chip">Piri-Piri</span><span class="chip">im Süden</span></p>
+    </div>
+    <img src="bilder/portugal_essen_piripiri.jpg" alt="Gegrilltes Piri-Piri-Hähnchen mit roter Chili-Sauce">
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Portugal hat den Spitznamen Seleção. Sie spielt im roten Trikot, dazu kommt etwas Grün. Bei der WM 2026 ist Portugal wieder dabei und spielt in der Gruppe K. Das Team gilt als eine der stärksten Mannschaften aus Europa und wurde 2016 sogar Europameister.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">rotes Trikot</span><span class="chip">etwas Grün</span><span class="chip">bei der WM 2026 dabei</span><span class="chip">stark in Europa</span><span class="chip">Europameister 2016</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Cristiano Ronaldo ist einer der bekanntesten Fußballer der Welt. Er hat mehr Länderspieltore geschossen als jeder andere Spieler weltweit. Portugal wurde 2016 Europameister. Eine frühere Legende heißt Eusébio, er spielte bei der WM 1966 brillant.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Cristiano Ronaldo</span><span class="chip">meiste Länderspieltore weltweit</span><span class="chip">Eusébio 1966 Legende</span><span class="chip">EM-Sieger 2016</span><span class="chip">8. WM-Teilnahme</span></p>
+    </div>
+    <img src="bilder/portugal_fussball.jpg" alt="Rotes portugiesisches Fußballtrikot mit Fußball">
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Portugal</span>In Portugal gehen die Kinder von Montag bis Freitag zur Schule, so wie bei uns. Viele Schulen tragen eine Schuluniform, also alle die gleiche Kleidung. Der Unterricht dauert oft bis in den Nachmittag. Danach essen die Kinder warm in der Schule.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">Schuluniform</span><span class="chip">gleiche Kleidung</span><span class="chip">bis Nachmittag</span><span class="chip">Mittagessen in der Schule</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben am Meer</span>Sehr viele Familien in Portugal wohnen nah am Atlantik. Darum spielen die Kinder oft am Strand. Manche lernen schon früh das Surfen auf den Wellen. Frischer Fisch vom Meer kommt fast jeden Tag auf den Tisch.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">nah am Meer</span><span class="chip">am Strand spielen</span><span class="chip">Atlantik</span><span class="chip">Surfen</span><span class="chip">frischer Fisch</span></p>
+      </div>
+    </div>
+    <img src="bilder/portugal_kinderalltag.jpg" alt="Kinder spielen am Strand an der portugiesischen Atlantikküste">
+  </div>
+
+  <div class="fuss">Portugal – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bosnien und Herzegowina – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:30pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Bosnien und Herzegowina</h1>
+    <span class="flagge">🇧🇦</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/bosnien_header.jpg" alt="Bosnien und Herzegowina: Blick auf Sarajevo mit Moscheen und grünen Hügeln">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Sarajevo</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa (im Südosten, am Westbalkan)</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Bosnisch, Kroatisch und Serbisch (alle drei sind sehr ähnlich)</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Konvertible Mark</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 3,2 bis 3,5 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 51.000 km², etwa so groß wie das deutsche Bundesland Niedersachsen, also kleiner als Bayern</td></tr>
+      <tr><td class="k">Großer Fluss / Berg</td><td class="v">der Fluss Neretva und der höchste Berg Maglić mit etwa 2.386 Metern</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Kroatien, Serbien und Montenegro</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Bosnien und Herzegowina gibt es viele besondere Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/bosnien_starimost.jpg" alt="Alte Brücke Stari Most über den Fluss Neretva in Mostar">
+    <div class="txt">
+      <p><span class="name">Alte Brücke von Mostar (Stari Most)</span>Die Alte Brücke von Mostar ist eine wunderschöne Steinbogenbrücke über den Fluss Neretva. Sie wurde vor über 400 Jahren gebaut. Im Krieg wurde die Brücke zerstört, danach hat man sie genau wieder aufgebaut. Heute ist sie ein Weltkulturerbe. Mutige Männer springen von der hohen Brücke in den kalten Fluss.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Steinbrücke</span><span class="chip">Fluss Neretva</span><span class="chip">wieder aufgebaut</span><span class="chip">Weltkulturerbe</span><span class="chip">ins Wasser springen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Altstadt von Sarajevo (Baščaršija)</span>Die Altstadt von Sarajevo heißt Baščaršija. Sie hat enge Gassen und einen alten Markt. Hier stehen kleine Handwerkerläden, Cafés und Moscheen dicht nebeneinander. Schon vor langer Zeit haben hier Händler gewohnt und gehandelt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Altstadt</span><span class="chip">enge Gassen</span><span class="chip">alter Markt</span><span class="chip">Handwerkerläden</span><span class="chip">Moscheen</span></p>
+    </div>
+    <img src="bilder/bosnien_altstadt.jpg" alt="Enge Gassen der Altstadt Baščaršija in Sarajevo">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/bosnien_kravica.jpg" alt="Kravica-Wasserfälle mit Badegästen im Naturpool">
+    <div class="txt">
+      <p><span class="name">Kravica-Wasserfälle</span>Die Kravica-Wasserfälle sind breite Wasserfälle mitten in der Natur. Das Wasser stürzt über mehrere Stufen in einen großen See. Im Sommer kommen viele Menschen zum Baden hierher. Rundherum wachsen grüne Bäume und Büsche.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasserfälle</span><span class="chip">stürzt herab</span><span class="chip">großer See</span><span class="chip">baden</span><span class="chip">Natur</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Nationalpark Sutjeska</span>Der Nationalpark Sutjeska ist einer der ältesten und wildesten Nationalparks in Europa. Dort wachsen sehr alte Buchenwälder, durch die kaum ein Mensch geht. Es gibt tiefe Schluchten und den höchsten Berg des Landes, den Maglić. Viele wilde Tiere leben hier geschützt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nationalpark</span><span class="chip">alte Wälder</span><span class="chip">tiefe Schluchten</span><span class="chip">höchster Berg Maglić</span><span class="chip">wilde Tiere</span></p>
+    </div>
+    <img src="bilder/bosnien_nationalpark.jpg" alt="Uralter Buchenwald im Nationalpark Sutjeska">
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Wäldern und Flüssen von Bosnien und Herzegowina leben besondere Tiere.</p>
+
+  <div class="eintrag">
+    <img src="bilder/bosnien_baer.jpg" alt="Braunbär im Bergwald von Bosnien">
+    <div class="txt">
+      <p><span class="name">Braunbär</span>In den Bergwäldern von Bosnien und Herzegowina leben noch viele Braunbären. Der Braunbär ist das größte Landraubtier in Europa. Er ist sehr stark und kann gut klettern. Im Winter hält er einen langen Winterschlaf.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Braunbär</span><span class="chip">Bergwälder</span><span class="chip">größtes Raubtier</span><span class="chip">sehr stark</span><span class="chip">Winterschlaf</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Balkanluchs</span>Der Balkanluchs ist eine seltene Wildkatze mit Pinseln an den Ohren. Es gibt nur noch sehr wenige von ihnen. Sie leben versteckt in den Wäldern am Westbalkan. Bosnien ist eines der letzten Gebiete, in dem dieser Luchs noch lebt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Luchs</span><span class="chip">Wildkatze</span><span class="chip">Pinsel an den Ohren</span><span class="chip">sehr selten</span><span class="chip">lebt versteckt</span></p>
+    </div>
+    <img src="bilder/bosnien_luchs.jpg" alt="Balkanluchs mit Ohrenpinseln im Wald">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/bosnien_huchen.jpg" alt="Huchen im klaren Gebirgsfluss">
+    <div class="txt">
+      <p><span class="name">Huchen</span>Der Huchen ist ein großer Lachsfisch. Er lebt in den klaren und schnellen Flüssen des Landes, zum Beispiel im Fluss Una. Der Huchen kann sehr groß und schwer werden. Er ist selten und braucht sauberes Wasser.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Huchen</span><span class="chip">großer Fisch</span><span class="chip">Lachsfisch</span><span class="chip">klare Flüsse</span><span class="chip">Fluss Una</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Ćevapi</span>Ćevapi sind kleine gegrillte Röllchen aus Hackfleisch. Sie sind das Nationalgericht von Bosnien und Herzegowina. Man isst sie in einem weichen Fladenbrot. Dazu gibt es Zwiebeln und saure Sahne.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fleischröllchen</span><span class="chip">gegrillt</span><span class="chip">Hackfleisch</span><span class="chip">Fladenbrot</span><span class="chip">Nationalgericht</span></p>
+    </div>
+    <img src="bilder/bosnien_cevapi.jpg" alt="Ćevapi im Fladenbrot mit Zwiebeln und saurer Sahne">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Burek</span>Burek ist eine Rolle aus dünnem Blätterteig. Innen ist sie mit Hackfleisch oder Käse gefüllt. Burek wird in einem runden Blech gebacken und in Stücke geschnitten. Viele Menschen essen ihn gern zum Frühstück.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Blätterteig</span><span class="chip">gefüllt</span><span class="chip">Hackfleisch oder Käse</span><span class="chip">rundes Blech</span><span class="chip">zum Frühstück</span></p>
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Baklava</span>Baklava ist eine süße Nachspeise aus dünnem Teig. Zwischen den Teigschichten liegen viele gehackte Nüsse. Über das gebackene Stück kommt süßer Sirup. Baklava ist klebrig und sehr süß.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süße Nachspeise</span><span class="chip">dünner Teig</span><span class="chip">viele Nüsse</span><span class="chip">süßer Sirup</span><span class="chip">klebrig</span></p>
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Bosnien und Herzegowina hat den Spitznamen Zmajevi, das heißt die Drachen. Sie spielt im blauen Trikot mit gelben Streifen. Bosnien ist ein kleines Land, hat aber ein starkes Team. Für die WM 2026 musste die Mannschaft erst in den Playoffs kämpfen. Sie gewann dort gegen Wales und gegen Italien, beide Male im Elfmeterschießen. So hat sich Bosnien für die WM 2026 qualifiziert.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Zmajevi</span><span class="chip">blaues Trikot</span><span class="chip">Playoffs</span><span class="chip">WM 2026</span><span class="chip">Elfmeterschießen</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Edin Džeko ist der bekannteste Fußballer aus Bosnien und Herzegowina. Er hat für berühmte Vereine wie die AS Roma in Italien gespielt und viele Tore geschossen. Džeko ist Bosniens Rekordtorschütze und ein Nationalheld.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Edin Džeko</span><span class="chip">Rekordtorschütze</span><span class="chip">AS Roma</span><span class="chip">Nationalheld</span><span class="chip">Bosnien</span></p>
+    </div>
+    <img src="bilder/bosnien_fussball.jpg" alt="Bosnische Fußball-Nationalmannschaft im blauen Trikot mit gelben Streifen">
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Bosnien und Herzegowina</span>Die Kinder in Bosnien und Herzegowina gehen von Montag bis Freitag zur Schule, so wie bei uns. An manchen Schulen gibt es zwei Schichten. Eine Gruppe hat am Vormittag Unterricht, die andere Gruppe kommt am Nachmittag. Viele Kinder lernen in der Schule drei Sprachen, denn im Land werden Bosnisch, Kroatisch und Serbisch gesprochen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">zwei Schichten</span><span class="chip">Vormittag und Nachmittag</span><span class="chip">drei Sprachen</span><span class="chip">Unterricht</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben in den Bergen</span>Ein großer Teil von Bosnien und Herzegowina besteht aus hohen Bergen. Viele Familien wohnen in kleinen Dörfern zwischen den Wäldern. Im Winter liegt dort oft viel Schnee, und die Kinder fahren Schlitten oder Ski. Manche Familien halten Schafe und Kühe und machen ihren eigenen Käse.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">hohe Berge</span><span class="chip">kleine Dörfer</span><span class="chip">viel Schnee</span><span class="chip">Schlitten und Ski</span><span class="chip">Schafe und Kühe</span></p>
+      </div>
+    </div>
+    <img src="bilder/bosnien_kinderalltag.jpg" alt="Kinder fahren Schlitten in einem bosnischen Bergdorf im Schnee">
+  </div>
+
+  <div class="fuss">Bosnien und Herzegowina – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

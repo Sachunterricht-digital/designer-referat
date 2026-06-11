@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tschechien – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  /* Header-Bild */
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Tschechien</h1>
+    <span class="flagge">🇨🇿</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/tschechien_header.jpg" alt="Tschechien: Böhmische Landschaft mit Burg und Moldautal">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Prag</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa (Mitteleuropa)</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Tschechisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Tschechische Krone</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 10,5 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 79.000 Quadratkilometer, also ein bisschen größer als Bayern</td></tr>
+      <tr><td class="k">Großer Fluss</td><td class="v">die Moldau, sie fließt mitten durch Prag</td></tr>
+      <tr><td class="k">Höchster Berg</td><td class="v">die Schneekoppe, etwa 1.603 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Deutschland (und damit auch Bayern), Polen, die Slowakei und Österreich</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Tschechien gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/tschechien_karlsbruecke.jpg" alt="Karlsbrücke in Prag über die Moldau">
+    <div class="txt">
+      <p><span class="name">Karlsbrücke</span>Die Karlsbrücke ist eine alte Steinbrücke in Prag. Sie führt über den Fluss Moldau. Auf der Brücke stehen viele Statuen von Heiligen. Die Brücke ist über 600 Jahre alt und ein berühmtes Wahrzeichen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Steinbrücke</span><span class="chip">in Prag</span><span class="chip">über die Moldau</span><span class="chip">Statuen</span><span class="chip">Wahrzeichen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Prager Burg</span>Die Prager Burg liegt hoch über der Stadt. Sie ist die größte Burganlage der Welt. Früher wohnte hier der König. Heute hat der Präsident von Tschechien hier seinen Sitz.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">größte Burg der Welt</span><span class="chip">über der Stadt</span><span class="chip">früher König</span><span class="chip">heute Präsident</span><span class="chip">in Prag</span></p>
+    </div>
+    <img src="bilder/tschechien_prager_burg.jpg" alt="Prager Burg hoch über der Stadt">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/tschechien_astronomische_uhr.jpg" alt="Astronomische Uhr am Rathausturm in Prag">
+    <div class="txt">
+      <p><span class="name">Astronomische Uhr</span>In der Altstadt von Prag hängt eine alte astronomische Uhr am Rathausturm. Jede volle Stunde bewegen sich kleine Figuren an der Uhr. Viele Besucher warten extra auf diesen Moment. Die Uhr zeigt nicht nur die Zeit, sondern auch den Stand von Sonne und Mond.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">alte Uhr</span><span class="chip">am Rathausturm</span><span class="chip">jede volle Stunde</span><span class="chip">Figuren bewegen sich</span><span class="chip">Sonne und Mond</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Böhmerwald</span>Der Böhmerwald ist ein großer, ruhiger Wald. Er liegt an der Grenze zu Bayern und Österreich. Dort gibt es Seen, Moore und seltene Tiere. Viele Menschen wandern hier gern.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Wald</span><span class="chip">Grenze zu Bayern</span><span class="chip">Seen und Moore</span><span class="chip">seltene Tiere</span><span class="chip">wandern</span></p>
+    </div>
+    <img src="bilder/tschechien_boehmerwald.jpg" alt="Böhmerwald mit Seen und grünen Hügeln">
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Tschechien leben besondere Tiere in Wäldern, Teichen und Dörfern.</p>
+
+  <div class="eintrag">
+    <img src="bilder/tschechien_weissstorch.jpg" alt="Weißstorch mit rotem Schnabel auf einem Nest">
+    <div class="txt">
+      <p><span class="name">Weißstorch</span>Der Weißstorch ist ein großer Vogel mit langen Beinen und rotem Schnabel. In den Dörfern baut er sein Nest gern auf Schornsteinen und Masten. Viele Tschechen freuen sich über ihn, denn er gilt als Glücksbringer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Vogel</span><span class="chip">lange Beine</span><span class="chip">roter Schnabel</span><span class="chip">Nest auf dem Dach</span><span class="chip">Glücksbringer</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Luchs</span>Der Luchs ist eine wilde Katze mit Pinseln an den Ohren. Er lebt im Böhmerwald und im Erzgebirge. Der Luchs ist sehr scheu und versteckt sich gut. Darum bekommt man ihn fast nie zu sehen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">wilde Katze</span><span class="chip">Pinsel an den Ohren</span><span class="chip">im Böhmerwald</span><span class="chip">scheu</span><span class="chip">versteckt sich</span></p>
+    </div>
+    <img src="bilder/tschechien_luchs.jpg" alt="Luchs im Böhmerwald mit Pinseln an den Ohren">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/tschechien_karpfen.jpg" alt="Karpfen im Teich">
+    <div class="txt">
+      <p><span class="name">Karpfen</span>Der Karpfen ist ein großer Fisch und lebt in Teichen. In Tschechien ist er besonders zu Weihnachten wichtig. Dann essen viele Familien gebratenen Karpfen. Kurz vor dem Fest werden die Fische auf der Straße verkauft.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Fisch</span><span class="chip">lebt im Teich</span><span class="chip">zu Weihnachten</span><span class="chip">gebraten</span><span class="chip">auf der Straße verkauft</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Svíčková</span>Svíčková ist ein Rinderbraten mit einer cremigen Sahnesoße. Dazu gibt es weiche Knödel und ein paar süße Preiselbeeren. Das Gericht kommt in vielen Familien am Sonntag auf den Tisch.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Rinderbraten</span><span class="chip">Sahnesoße</span><span class="chip">Knödel</span><span class="chip">Preiselbeeren</span><span class="chip">Sonntagsessen</span></p>
+    </div>
+    <img src="bilder/tschechien_svickova.jpg" alt="Svíčková: Rinderbraten mit Sahnesoße, Knödeln und Preiselbeeren">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Gulasch mit Knödeln</span>Gulasch ist ein Fleischeintopf in dicker roter Soße. Dazu isst man große, weiche Brotknödel. Das Gericht kommt eigentlich aus Ungarn. In Tschechien mögen es aber fast alle.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fleischeintopf</span><span class="chip">rote Soße</span><span class="chip">Brotknödel</span><span class="chip">aus Ungarn</span><span class="chip">sehr beliebt</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Trdelník</span>Trdelník ist ein süßes Gebäck. Der Teig wird um einen runden Stab gerollt und über dem Feuer gebacken. Danach duftet er nach Zimt und Zucker. Auf den Märkten in Prag kann man ihn überall kaufen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süßes Gebäck</span><span class="chip">um einen Stab gerollt</span><span class="chip">über dem Feuer</span><span class="chip">Zimt und Zucker</span><span class="chip">auf dem Markt</span></p>
+    </div>
+    <img src="bilder/tschechien_trdelnik.jpg" alt="Trdelník: süßes Gebäck über dem Feuer gebacken">
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Tschechien heißt die Löwen und spielt im rot-blau-weißen Trikot. Bei der WM 2026 ist Tschechien wieder dabei, das erste Mal seit 20 Jahren. Früher gab es ein größeres Land mit dem Namen Tschechoslowakei. Diese Mannschaft wurde zweimal sogar WM-Zweiter. Heute spielt Tschechien als eigenes Land und gilt als starke, kämpferische Mannschaft.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">die Löwen</span><span class="chip">rot-blau-weiß</span><span class="chip">WM 2026 dabei</span><span class="chip">Patrik Schick</span><span class="chip">Bayer Leverkusen</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Patrik Schick ist Tschechiens bekanntester Fußballer. Er spielt beim deutschen Verein Bayer Leverkusen. Bei der Europameisterschaft 2021 schoss er ein spektakuläres Tor von fast der Mittellinie, das viele Menschen als das schönste Tor des Turniers sahen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Patrik Schick</span><span class="chip">Bayer Leverkusen</span><span class="chip">EM-Tor von der Mittellinie</span><span class="chip">Spektakular-Tor 2021</span><span class="chip">Tschechien</span></p>
+    </div>
+    <img src="bilder/tschechien_fussball.jpg" alt="Tschechischer Fußballspieler im rot-blau-weißen Trikot">
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Tschechien</span>In Tschechien gehen die Kinder von Montag bis Freitag zur Schule, ganz ähnlich wie bei uns. Sie lernen die tschechische Sprache, die für uns sehr fremd klingt. Viele Kinder lernen außerdem schon früh Englisch oder Deutsch. Nach der Schule gehen sie oft in Vereine, zum Beispiel zum Sport oder zur Musik.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">tschechische Sprache</span><span class="chip">Englisch und Deutsch</span><span class="chip">Vereine</span><span class="chip">Sport und Musik</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Wochenende auf dem Land</span>Viele Familien haben ein kleines Häuschen auf dem Land, das nennt man Chata. Am Wochenende fahren sie dorthin und verbringen Zeit in der Natur. Dort wird im Garten gearbeitet, gewandert und Pilze gesammelt. Im Winter rodeln und Ski fahren die Kinder gern in den Bergen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Häuschen auf dem Land</span><span class="chip">Chata</span><span class="chip">in der Natur</span><span class="chip">Pilze sammeln</span><span class="chip">rodeln und Ski fahren</span></p>
+      </div>
+    </div>
+    <img src="bilder/tschechien_kinderalltag.jpg" alt="Tschechische Kinder am Wochenende bei der Chata in der Natur">
+  </div>
+
+  <div class="fuss">Tschechien – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

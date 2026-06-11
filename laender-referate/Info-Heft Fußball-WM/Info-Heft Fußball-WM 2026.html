@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die Fußball-WM 2026 – Info-Heft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;flex-wrap:wrap;}
+  .titel h1{font-size:32pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:28pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:55mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  p.txt{margin:0 0 4mm;}
+  .name{font-weight:800;color:var(--ink);}
+
+  /* Steckbrief-Karte */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;margin-bottom:5mm;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Drei-Karten-Raster (Gastgeber, Maskottchen) */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-bottom:5mm;}
+  .karte{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sand);break-inside:avoid;}
+  .karte img{width:100%;height:34mm;object-fit:cover;display:block;}
+  .karte .kt{padding:7px 10px 9px;}
+  .karte .kt h3{font-size:13.5pt;color:var(--petrol-dark);margin-bottom:2px;}
+  .karte .kt p{margin:0;font-size:10.5pt;color:var(--ink-soft);line-height:1.4;}
+
+  /* Maskottchen-Karte mit hellem Bild */
+  .karte.mask img{height:40mm;object-fit:contain;background:#fff;padding:3mm;}
+
+  /* Angeberwissen-Box */
+  .fakt{border:1.5px solid var(--petrol);border-left:6px solid var(--petrol);border-radius:8px;padding:8px 13px;margin-bottom:4mm;background:#f2faf8;break-inside:avoid;}
+  .fakt h3{font-size:12.5pt;color:var(--petrol-dark);margin-bottom:2px;display:flex;align-items:center;gap:7px;}
+  .fakt p{margin:0;font-size:11pt;color:var(--ink);}
+
+  /* Regel-Liste */
+  .regeln{display:grid;grid-template-columns:1fr 1fr;gap:3mm 7mm;margin-bottom:5mm;}
+  .regeln .r{display:flex;gap:9px;align-items:flex-start;font-size:11pt;break-inside:avoid;}
+  .regeln .r .em{font-size:16pt;line-height:1;}
+
+  .bildzeile{display:grid;grid-template-columns:1fr 52mm;gap:6mm;align-items:start;margin-bottom:4mm;}
+  .bildzeile img{width:52mm;height:40mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+
+  /* Navigation */
+  .nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .nav-back:hover{background:#1e40af}
+  .nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}
+  .nav-print:hover{background:#15803d}
+
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    .nav-back,.nav-print{display:none!important}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<a class="nav-back" href="../Landing - Startseite.html">← Startseite</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Die Fußball-WM 2026</h1>
+    <span class="flagge">⚽</span>
+    <span class="sub">Das größte Fußballfest der Welt</span>
+  </div>
+
+  <img class="headerbild" src="bilder/wm_header.jpg" alt="Stadion voller Fans mit Pokal und Weltkugel">
+
+  <div class="hinweis">
+    <b>Bevor es mit deinem Land losgeht:</b> Hier erfährst du, was die Fußball-Weltmeisterschaft überhaupt ist und was 2026 ganz besonders an ihr ist. Lies in Ruhe und achte auf die grün umrandeten <b>Spannenden Fakten</b>, mit denen du angeben kannst.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">🌍</span> Was ist die Fußball-WM?</h2>
+    <div class="strich"></div>
+  </div>
+  <p class="txt">Alle vier Jahre treffen sich die besten Fußball-Nationalmannschaften der Welt zur <span class="name">Weltmeisterschaft</span>, kurz WM. Vorher müssen sich die Mannschaften in vielen Spielen dafür qualifizieren. Wer es schafft, darf bei der Endrunde mitspielen. Am Ende gewinnt nur eine Mannschaft den begehrten <span class="name">WM-Pokal</span> und ist für vier Jahre Weltmeister.</p>
+  <p class="txt">Die allererste Fußball-WM gab es im Jahr 1930 im Land Uruguay. Seitdem wird sie immer wieder in einem anderen Teil der Welt ausgetragen.</p>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief der WM 2026</h2>
+    <div class="strich"></div>
+  </div>
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Wann?</td><td class="v">11. Juni bis 19. Juli 2026</td></tr>
+      <tr><td class="k">Wo?</td><td class="v">in den USA, in Kanada und in Mexiko</td></tr>
+      <tr><td class="k">Mannschaften</td><td class="v">48 Mannschaften, so viele wie noch nie</td></tr>
+      <tr><td class="k">Eröffnungsspiel</td><td class="v">im Aztekenstadion in Mexiko-Stadt</td></tr>
+      <tr><td class="k">Endspiel</td><td class="v">im großen Stadion bei New York (USA)</td></tr>
+      <tr><td class="k">Titelverteidiger</td><td class="v">Argentinien (Sieger von 2022)</td></tr>
+      <tr><td class="k">Erste WM überhaupt</td><td class="v">1930 in Uruguay</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Info-Heft Fußball-WM 2026 · HSU · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2 ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🗺️</span> Drei Länder, ein Turnier</h2>
+    <div class="strich"></div>
+  </div>
+  <p class="txt">Die WM 2026 ist etwas Besonderes, denn sie findet zum ersten Mal in <span class="name">drei Ländern gleichzeitig</span> statt. Gespielt wird in 16 Stadien: elf in den USA, drei in Mexiko und zwei in Kanada. Die Mannschaften reisen also viel umher.</p>
+
+  <div class="grid3">
+    <div class="karte">
+      <img src="bilder/gastgeber_usa.jpg" alt="USA">
+      <div class="kt"><h3>USA 🇺🇸</h3><p>Die meisten Spiele finden hier statt. Auch das Endspiel wird in den USA gespielt.</p></div>
+    </div>
+    <div class="karte">
+      <img src="bilder/gastgeber_mexiko.jpg" alt="Mexiko">
+      <div class="kt"><h3>Mexiko 🇲🇽</h3><p>Hier wird die WM eröffnet, im riesigen Aztekenstadion in Mexiko-Stadt.</p></div>
+    </div>
+    <div class="karte">
+      <img src="bilder/gastgeber_kanada.jpg" alt="Kanada">
+      <div class="kt"><h3>Kanada 🇨🇦</h3><p>Auch im hohen Norden in Kanada rollt bei zwei Spielorten der Ball.</p></div>
+    </div>
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">🎉</span> Die drei Maskottchen</h2>
+    <div class="strich"></div>
+  </div>
+  <p class="txt">Jede WM hat ein lustiges Maskottchen, das für gute Stimmung sorgt. Weil es 2026 drei Gastgeberländer gibt, gibt es auch <span class="name">drei Maskottchen</span>, für jedes Land ein Tier.</p>
+
+  <div class="grid3">
+    <div class="karte mask">
+      <img src="bilder/mask_adler.jpg" alt="Adler-Maskottchen">
+      <div class="kt"><h3>Clutch, der Adler</h3><p>Der Weißkopfseeadler steht für die USA.</p></div>
+    </div>
+    <div class="karte mask">
+      <img src="bilder/mask_jaguar.jpg" alt="Jaguar-Maskottchen">
+      <div class="kt"><h3>Zayu, der Jaguar</h3><p>Der Jaguar gehört zu Mexiko.</p></div>
+    </div>
+    <div class="karte mask">
+      <img src="bilder/mask_elch.jpg" alt="Elch-Maskottchen">
+      <div class="kt"><h3>Maple, der Elch</h3><p>Der Elch ist das Maskottchen von Kanada.</p></div>
+    </div>
+  </div>
+
+  <div class="fuss">Info-Heft Fußball-WM 2026 · HSU · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3 ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">⚽</span> So läuft ein Fußballspiel</h2>
+    <div class="strich"></div>
+  </div>
+  <div class="bildzeile">
+    <div class="regeln">
+      <div class="r"><span class="em">⏱️</span><div>Ein Spiel dauert <span class="name">90 Minuten</span>, in zwei Halbzeiten von je 45 Minuten mit Pause.</div></div>
+      <div class="r"><span class="em">👥</span><div>Jede Mannschaft hat <span class="name">11 Spieler</span>, zehn Feldspieler und einen Torwart.</div></div>
+      <div class="r"><span class="em">🧤</span><div>Nur der <span class="name">Torwart</span> darf den Ball mit den Händen fangen.</div></div>
+      <div class="r"><span class="em">🟨</span><div>Der <span class="name">Schiedsrichter</span> leitet das Spiel und zeigt bei Fouls die gelbe oder rote Karte.</div></div>
+    </div>
+    <img src="bilder/wm_stadion.jpg" alt="Stadion mit Spielfeld und Fans">
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">⭐</span> Spannende Fakten</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="bildzeile">
+    <div>
+      <div class="fakt">
+        <h3>🏆 Der Pokal</h3>
+        <p>Die Siegermannschaft bekommt den goldenen FIFA-WM-Pokal. Er ist eine der bekanntesten Trophäen der Welt.</p>
+      </div>
+      <div class="fakt">
+        <h3>⚽ Der Ball heißt Trionda</h3>
+        <p>Der offizielle Spielball trägt die Farben der drei Gastgeber: rot für Kanada, blau für die USA und grün für Mexiko.</p>
+      </div>
+    </div>
+    <img src="bilder/wm_pokal.jpg" alt="Goldener WM-Pokal">
+  </div>
+
+  <div class="fakt">
+    <h3>🎵 Ein eigenes WM-Lied</h3>
+    <p>Zu jeder WM gibt es ein offizielles Lied. So wird das große Fußballfest auf der ganzen Welt gefeiert.</p>
+  </div>
+  <div class="fakt">
+    <h3>🤓 Angeberwissen</h3>
+    <p>Bei der WM 2026 spielen zum ersten Mal 48 Mannschaften mit. Bei den Turnieren davor waren es immer nur 32.</p>
+  </div>
+
+  <div class="hinweis" style="margin-top:6mm;">
+    <b>Jetzt bist du dran:</b> Such dir dein WM-Land aus und werde zum Experten. Mit dem Sachtext-Heft und der Designer-App baust du dein eigenes Länder-Referat.
+  </div>
+
+  <a href="Quiz%20und%20R%C3%A4tsel%20Fu%C3%9Fball-WM.html"
+     style="display:flex;align-items:center;gap:14px;margin-top:6mm;text-decoration:none;background:#16a34a;color:#fff;border-radius:14px;padding:14px 20px;box-shadow:0 2px 10px rgba(0,0,0,.18);">
+    <span style="font-size:26pt;line-height:1;">🎮</span>
+    <span style="flex:1;">
+      <span style="font-family:'Fredoka',sans-serif;font-size:16pt;font-weight:700;display:block;">Teste dich im Quiz</span>
+      <span style="font-size:11pt;opacity:.95;">Quiz, Wahr oder Falsch und Buchstabensalat rund um die WM.</span>
+    </span>
+    <span style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:13pt;white-space:nowrap;">los geht's →</span>
+  </a>
+
+  <div class="fuss">Info-Heft Fußball-WM 2026 · HSU · Seite 3</div>
+</div>
+
+</body>
+</html>

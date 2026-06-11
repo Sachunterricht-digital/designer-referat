@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Australien – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Australien</h1>
+    <span class="flagge">🇦🇺</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/australien_header.jpg" alt="Australien: Opernhaus, Uluru und Känguru">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Canberra</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Australien</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Englisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Australischer Dollar</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 27 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">fast 7,7 Millionen km², also über zwanzigmal so groß wie Deutschland</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Mount Kosciuszko, 2.228 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">keine Länder an Land, denn Australien ist eine riesige Insel; die nächsten Länder über das Meer sind Papua-Neuguinea, Indonesien und Neuseeland</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Australien gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/australien_opernhaus.jpg" alt="Opernhaus von Sydney">
+    <div class="txt">
+      <p><span class="name">Opernhaus von Sydney</span>Das Opernhaus steht am Hafen von Sydney. Sein Dach sieht aus wie große weiße Segel. Hier wird Musik gespielt und gesungen. Das Opernhaus ist ein Wahrzeichen von Australien.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">am Hafen</span><span class="chip">von Sydney</span><span class="chip">weiße Segel</span><span class="chip">Musik</span><span class="chip">Wahrzeichen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Uluru</span>Der Uluru ist ein riesiger roter Felsen in der Wüste. Er liegt mitten in Australien. Für die Ureinwohner ist der Berg heilig. Am Abend leuchtet der Uluru rot in der Sonne.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">roter Felsen</span><span class="chip">in der Wüste</span><span class="chip">mitten in Australien</span><span class="chip">heilig</span><span class="chip">leuchtet</span></p>
+    </div>
+    <img src="bilder/australien_uluru.jpg" alt="Uluru">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/australien_great_barrier_reef.jpg" alt="Great Barrier Reef">
+    <div class="txt">
+      <p><span class="name">Great Barrier Reef</span>Das Great Barrier Reef ist das größte Korallenriff der Welt. Es liegt im Meer vor Australien. Dort leben bunte Fische, Schildkröten und Korallen. Viele Menschen tauchen hier und schauen sich die Tiere an.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">größte Korallenriff</span><span class="chip">im Meer</span><span class="chip">bunte Fische</span><span class="chip">Schildkröten</span><span class="chip">tauchen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Sydney Harbour Bridge</span>Die Harbour Bridge ist eine große Brücke in Sydney. Sie führt über den Hafen und sieht aus wie ein Bogen. Mutige Menschen können oben über die Brücke klettern. Von dort hat man einen tollen Blick auf die Stadt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">große Brücke</span><span class="chip">über den Hafen</span><span class="chip">wie ein Bogen</span><span class="chip">klettern</span><span class="chip">tollen Blick</span></p>
+    </div>
+    <img src="bilder/australien_harbour_bridge.jpg" alt="Sydney Harbour Bridge">
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Australien und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/australien_kaenguru.jpg" alt="Känguru">
+    <div class="txt">
+      <p><span class="name">Känguru</span>Das Känguru lebt nur in Australien. Es hüpft auf seinen starken Hinterbeinen weit durch das Land. Das Baby wächst in einem Beutel am Bauch der Mutter heran. Kängurus fressen am liebsten Gras und Blätter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">nur in Australien</span><span class="chip">starken Hinterbeinen</span><span class="chip">hüpft</span><span class="chip">einem Beutel</span><span class="chip">Gras</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Koala</span>Der Koala sieht aus wie ein kleiner Bär, ist aber keiner. Er lebt auf hohen Eukalyptusbäumen. Den ganzen Tag frisst er Blätter und schläft sehr viel. Auch der Koala trägt sein Baby in einem Beutel.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleiner Bär</span><span class="chip">Eukalyptusbäumen</span><span class="chip">frisst er Blätter</span><span class="chip">schläft sehr viel</span><span class="chip">Baby</span></p>
+    </div>
+    <img src="bilder/australien_koala.jpg" alt="Koala">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/australien_schnabeltier.jpg" alt="Schnabeltier">
+    <div class="txt">
+      <p><span class="name">Schnabeltier</span>Das Schnabeltier ist ein ganz seltsames Tier. Es hat einen Schnabel wie eine Ente und einen breiten Schwanz. Es lebt im Wasser und an Land. Das Schnabeltier legt Eier, obwohl es ein Säugetier ist.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">seltsames Tier</span><span class="chip">wie eine Ente</span><span class="chip">im Wasser</span><span class="chip">legt Eier</span><span class="chip">Säugetier</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Meat Pie</span>Ein Meat Pie ist eine kleine Pastete aus Teig. Innen ist sie mit Fleisch und Soße gefüllt. Man kann sie gut in der Hand halten und essen. In Australien isst man Meat Pies oft beim Sport.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleine Pastete</span><span class="chip">mit Fleisch</span><span class="chip">in der Hand</span><span class="chip">Meat Pies</span><span class="chip">beim Sport</span></p>
+    </div>
+    <img src="bilder/australien_essen_meat_pie.jpg" alt="Meat Pie">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Vegemite</span>Vegemite ist ein dunkler Brotaufstrich aus Australien. Er ist sehr salzig und schmeckt kräftig. Man streicht ihn ganz dünn auf Brot mit Butter. Viele Kinder essen Vegemite schon zum Frühstück.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">dunkler Brotaufstrich</span><span class="chip">sehr salzig</span><span class="chip">ganz dünn</span><span class="chip">mit Butter</span><span class="chip">zum Frühstück</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Lamington</span>Ein Lamington ist ein kleiner süßer Kuchen. Er wird in Schokolade getaucht und in Kokosflocken gewälzt. Innen ist er weich und luftig. Zum Geburtstag gibt es in Australien oft Lamingtons.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süßer Kuchen</span><span class="chip">in Schokolade</span><span class="chip">Kokosflocken</span><span class="chip">weich</span><span class="chip">Lamingtons</span></p>
+    </div>
+    <img src="bilder/australien_essen_lamington.jpg" alt="Lamington">
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußballmannschaft von Australien heißt Socceroos. Der Name kommt vom Känguru, das auf Englisch Kangaroo heißt. Die Spieler tragen meistens ein gelbes Trikot mit grün. Australien ist oft bei der Weltmeisterschaft dabei. Fußball wird im Land immer beliebter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Socceroos</span><span class="chip">vom Känguru</span><span class="chip">gelbes Trikot</span><span class="chip">Weltmeisterschaft</span><span class="chip">immer beliebter</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Die australische Nationalmannschaft heißt Socceroos. Bei der WM 2022 erreichte Australien das Achtelfinale. Bekannte Spieler sind Mat Ryan und Mitchell Duke. In Australien spielt man auch Cricket, Rugby und Australian Football, aber Fußball wird immer beliebter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Socceroos</span><span class="chip">WM 2022 Achtelfinale</span><span class="chip">Mat Ryan</span><span class="chip">Australien-Fußball</span><span class="chip">Down Under</span></p>
+    </div>
+    <img src="bilder/australien_fussball.jpg" alt="Fußball Australien">
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Australien</span>In Australien tragen die Kinder oft eine Schuluniform. Weil die Sonne stark ist, gehört ein Hut dazu. Die großen Ferien sind im Dezember mitten im Sommer. Dann ist bei uns gerade Winter.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">eine Schuluniform</span><span class="chip">ein Hut</span><span class="chip">großen Ferien</span><span class="chip">im Dezember</span><span class="chip">im Sommer</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben am Strand</span>Viele Kinder in Australien wohnen in der Nähe vom Meer. Am Wochenende gehen sie oft an den Strand. Dort lernen sie früh das Schwimmen und das Surfen. Rettungsschwimmer passen auf, dass alle sicher baden.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">vom Meer</span><span class="chip">an den Strand</span><span class="chip">das Schwimmen</span><span class="chip">Surfen</span><span class="chip">Rettungsschwimmer</span></p>
+      </div>
+    </div>
+    <img src="bilder/australien_kinderalltag.jpg" alt="Kinderalltag Australien">
+  </div>
+
+  <div class="fuss">Australien – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

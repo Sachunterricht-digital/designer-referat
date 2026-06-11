@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flaggen-Ausmalbilder – WM 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--petrol:#2a9d8f;--petrol-dark:#1f7568;--gold:#e2a13a;--ink:#26323a;--ink-soft:#5a6b76;--line:#d8dee2;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:#d9d9d9;}
+  .page{width:210mm;min-height:297mm;background:#fff;margin:10mm auto;padding:13mm 15mm 15mm;box-shadow:0 2px 12px rgba(0,0,0,.18);position:relative;}
+  h1,h2{font-family:'Fredoka',sans-serif;margin:0;}
+  .ab-header{display:flex;border:1.5px solid #000;border-radius:6px;overflow:hidden;margin-bottom:6mm;}
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:3mm;flex-wrap:wrap;}
+  .titel h1{font-size:28pt;color:var(--ink);}
+  .titel .sub{font-size:12pt;color:var(--ink-soft);font-weight:600;}
+  .intro{border:1.5px dashed var(--petrol);border-radius:10px;padding:8px 14px;margin-bottom:6mm;font-size:11pt;}
+  .intro b{color:var(--petrol);}
+  .flag-block{break-inside:avoid;margin-bottom:7mm;}
+  .flag-block h2{font-size:16pt;color:var(--ink);margin-bottom:2mm;}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:9mm;align-items:start;}
+  .one .cap{font-size:9.5pt;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);margin-bottom:2mm;}
+  .one svg{width:100%;height:auto;display:block;}
+  .leg{font-size:10.5pt;color:var(--ink-soft);margin-top:3mm;line-height:1.5;}
+  .leg b{color:var(--ink);}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  .scr-only-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .scr-only-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}
+  @media print{body{background:#fff;}.page{margin:0;box-shadow:none;}.scr-only-back,.scr-only-print{display:none!important}@page{size:A4;margin:0;}}
+</style>
+</head>
+<body>
+<a class="scr-only-back" href="Basteln%20und%20Ausmalen.html">← zurück</a>
+<a class="scr-only-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+
+<div id="root"></div>
+
+<script>
+const W=300,H=190;
+function rect(x,y,w,h){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#fff" stroke="#222" stroke-width="2.5"/>`;}
+function numC(x,y,n){return `<circle cx="${x}" cy="${y}" r="12" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="${x}" y="${y+5}" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="15" fill="#222">${n}</text>`;}
+function star(cx,cy,r){let p="";for(let i=0;i<10;i++){const ang=-Math.PI/2+i*Math.PI/5;const rad=i%2?r*0.45:r;p+=(i?"L":"M")+(cx+rad*Math.cos(ang)).toFixed(1)+","+(cy+rad*Math.sin(ang)).toFixed(1)+" ";}return `<path d="${p}Z" fill="#fff" stroke="#222" stroke-width="1.1"/>`;}
+function sun(cx,cy,r){let rays="";for(let i=0;i<12;i++){const a=i*Math.PI/6;rays+=`<line x1="${(cx+r*Math.cos(a)).toFixed(1)}" y1="${(cy+r*Math.sin(a)).toFixed(1)}" x2="${(cx+(r+7)*Math.cos(a)).toFixed(1)}" y2="${(cy+(r+7)*Math.sin(a)).toFixed(1)}" stroke="#222" stroke-width="1.4"/>`;}return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="#222" stroke-width="1.6"/>${rays}`;}
+
+// --- Flaggen-Definitionen: shapes (Outline), numbers (nur Anleitung), legend ---
+const FLAGS = [];
+
+// Deutschland
+FLAGS.push({name:"Deutschland", shapes:rect(0,0,W,H/3)+rect(0,H/3,W,H/3)+rect(0,2*H/3,W,H/3),
+  numbers:[[150,H/6,1],[150,H/2,2],[150,5*H/6,3]],
+  legend:'<b>1</b> = schwarz · <b>2</b> = rot · <b>3</b> = gold'});
+
+// Spanien (1:2:1)
+FLAGS.push({name:"Spanien", shapes:rect(0,0,W,47.5)+rect(0,47.5,W,95)+rect(0,142.5,W,47.5),
+  numbers:[[150,24,1],[150,95,2],[150,166,3]],
+  legend:'<b>1</b> = rot · <b>2</b> = gelb (breiter) · <b>3</b> = rot'});
+
+// Argentinien + Sonne
+FLAGS.push({name:"Argentinien", shapes:rect(0,0,W,H/3)+rect(0,H/3,W,H/3)+rect(0,2*H/3,W,H/3)+sun(150,95,12),
+  numbers:[[150,H/6,1],[70,95,2],[150,5*H/6,3]],
+  legend:'<b>1</b> = hellblau · <b>2</b> = weiß · <b>3</b> = hellblau · die Sonne in der Mitte ist gelb'});
+
+// Mexiko (senkrecht) + Wappen
+FLAGS.push({name:"Mexiko", shapes:rect(0,0,100,H)+rect(100,0,100,H)+rect(200,0,100,H)+`<circle cx="150" cy="95" r="18" fill="#fff" stroke="#222" stroke-width="1.6"/>`,
+  numbers:[[50,95,1],[150,38,2],[250,95,3]],
+  legend:'<b>1</b> = grün · <b>2</b> = weiß · <b>3</b> = rot · in der Mitte ist ein Wappen mit Adler'});
+
+// Kanada (1:2:1 senkrecht) + Ahornblatt
+FLAGS.push({name:"Kanada", shapes:rect(0,0,75,H)+rect(75,0,150,H)+rect(225,0,75,H)+
+  `<path transform="translate(150,96)" d="M0,-40 l4.5,8.5 q1,2 3,1 l6.5,-2.8 -1.8,6.8 q-0.5,2 1.3,2.8 l2.8,1.3 -11,9 q-1.5,1.2 -0.6,2.8 l1,4.5 -10,-1.8 q-2,-0.3 -1.8,1.8 l1.4,15 -3,-1 -3,1 1.4,-15 q0.2,-2.1 -1.8,-1.8 l-10,1.8 1,-4.5 q0.9,-1.6 -0.6,-2.8 l-11,-9 2.8,-1.3 q1.8,-0.8 1.3,-2.8 l-1.8,-6.8 6.5,2.8 q2,1 3,-1 z" fill="#fff" stroke="#222" stroke-width="2"/>`,
+  numbers:[[37,95,1],[110,38,2],[262,95,3]],
+  legend:'<b>1</b> = rot · <b>2</b> = weiß · <b>3</b> = rot · das Ahornblatt in der Mitte ist rot'});
+
+// USA: 13 Streifen + blaues Eck mit Sternen
+(function(){
+  let s="";const sh=H/13;
+  for(let i=0;i<13;i++){ s+=rect(0,i*sh,W,sh); }
+  const cw=120, ch=sh*7;
+  s+=`<rect x="0" y="0" width="${cw}" height="${ch.toFixed(1)}" fill="#fff" stroke="#222" stroke-width="2.5"/>`;
+  for(let r=0;r<4;r++){ for(let c=0;c<5;c++){ s+=star(16+c*22, 14+r*24, 5); } }
+  FLAGS.push({name:"USA", shapes:s, numbers:[[60,Math.round(ch/2),1]],
+    legend:'Streifen abwechselnd rot und weiß, der oberste ist rot. <b>1</b> = blau, die Sterne bleiben weiß'});
+})();
+
+function svgWrap(inner){return `<svg viewBox="0 0 ${W} ${H}"><rect x="0" y="0" width="${W}" height="${H}" fill="#fff" stroke="#222" stroke-width="3"/>${inner}</svg>`;}
+function guide(f){let n="";f.numbers.forEach(p=>n+=numC(p[0],p[1],p[2]));return svgWrap(f.shapes+n);}
+function blank(f){return svgWrap(f.shapes);}
+function block(f){
+  return `<div class="flag-block"><h2>${f.name}</h2><div class="pair">`+
+    `<div class="one"><div class="cap">So sind die Farben</div>${guide(f)}<div class="leg">${f.legend}</div></div>`+
+    `<div class="one"><div class="cap">Zum Ausmalen</div>${blank(f)}</div>`+
+    `</div></div>`;
+}
+
+const header = `<div class="ab-header"><div class="cell"><span class="lbl">Name</span>&nbsp;</div><div class="cell"><span class="lbl">Datum</span>&nbsp;</div><div class="cell">HSU</div></div>
+  <div class="titel"><h1>Flaggen ausmalen</h1><span class="sub">Länder bei der WM 2026</span></div>
+  <div class="intro"><b>So geht's:</b> Links siehst du, welche Farbe wohin gehört. Male rechts die leere Flagge in den richtigen Farben aus.</div>`;
+
+const root=document.getElementById('root');
+// 3 Flaggen pro A4-Seite
+for(let p=0;p<2;p++){
+  const div=document.createElement('div');div.className='page';
+  let html = p===0 ? header : '';
+  for(let i=p*3;i<p*3+3 && i<FLAGS.length;i++){ html+=block(FLAGS[i]); }
+  html+=`<div class="fuss">Flaggen-Ausmalbilder · Fußball-WM 2026 · HSU</div>`;
+  div.innerHTML=html; root.appendChild(div);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schottland – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Schottland</h1>
+    <span class="flagge">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/schottland_header.jpg" alt="Schottland: das Schloss von Edinburgh, der See Loch Ness und die Highlands">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Edinburgh</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Englisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Pfund</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 5,4 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 78.000 km²</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Ben Nevis, rund 1.345 m</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Teil von Großbritannien, grenzt im Süden an England</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Schottland gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/schottland_edinburgh.jpg" alt="Das Schloss von Edinburgh">
+    <div class="txt">
+      <p><span class="name">Das Schloss von Edinburgh</span>Edinburgh ist die Hauptstadt von Schottland. Mitten in der Stadt steht ein großes Schloss. Es wurde auf einem hohen Felsen gebaut. Von dort oben sieht man über die ganze Stadt. Jeden Tag wird dort eine alte Kanone abgefeuert.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Edinburgh</span><span class="chip">Schloss</span><span class="chip">hohen Felsen</span><span class="chip">über die ganze Stadt</span><span class="chip">Kanone</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der See Loch Ness</span>Loch Ness ist ein sehr großer und tiefer See. Das Wasser ist dunkel und kalt. Eine alte Geschichte erzählt von einem Ungeheuer im See. Die Menschen nennen es liebevoll Nessie. Bis heute hat es niemand wirklich gefunden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Loch Ness</span><span class="chip">tiefer See</span><span class="chip">Ungeheuer</span><span class="chip">Nessie</span><span class="chip">niemand wirklich gefunden</span></p>
+    </div>
+    <img src="bilder/schottland_loch_ness.jpg" alt="Der See Loch Ness">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/schottland_highlands.jpg" alt="Die Highlands">
+    <div class="txt">
+      <p><span class="name">Die Highlands</span>Die Highlands sind das Bergland von Schottland. Dort gibt es weite Wiesen und viele Seen. Oft hängt Nebel über den grünen Hügeln. Schafe und Hochlandrinder grasen im Freien. Das Wetter wechselt hier sehr schnell.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Highlands</span><span class="chip">Bergland</span><span class="chip">Seen</span><span class="chip">Nebel</span><span class="chip">Hochlandrinder</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Berg Ben Nevis</span>Der Ben Nevis ist der höchste Berg von Schottland. Er ist sogar der höchste Berg von ganz Großbritannien. Oben ist es oft kalt und neblig. Viele Wanderer steigen trotzdem nach oben. Der Weg dauert mehrere Stunden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Ben Nevis</span><span class="chip">höchste Berg</span><span class="chip">von ganz Großbritannien</span><span class="chip">neblig</span><span class="chip">Wanderer</span></p>
+    </div>
+    <img src="bilder/schottland_ben_nevis.jpg" alt="Der Berg Ben Nevis">
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Schottland und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/schottland_hochlandrind.jpg" alt="Das Hochlandrind">
+    <div class="txt">
+      <p><span class="name">Das Hochlandrind</span>Das Hochlandrind hat ein langes zotteliges Fell. Wegen des Fells friert es auch im Winter nicht. Auf dem Kopf trägt es große geschwungene Hörner. Es grast ruhig auf den Wiesen der Highlands. Sein Fell ist oft rotbraun.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Hochlandrind</span><span class="chip">zotteliges Fell</span><span class="chip">Hörner</span><span class="chip">Highlands</span><span class="chip">rotbraun</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Papageitaucher</span>Der Papageitaucher ist ein kleiner Seevogel. Sein Schnabel leuchtet bunt in Rot und Gelb. An den Küsten brütet er in Höhlen am Felsen. Zum Fressen taucht er nach kleinen Fischen. Im Wasser ist er ein guter Schwimmer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Papageitaucher</span><span class="chip">Seevogel</span><span class="chip">Schnabel</span><span class="chip">am Felsen</span><span class="chip">Fischen</span></p>
+    </div>
+    <img src="bilder/schottland_papageitaucher.jpg" alt="Der Papageitaucher">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/schottland_rothirsch.jpg" alt="Der Rothirsch">
+    <div class="txt">
+      <p><span class="name">Der Rothirsch</span>In den Wäldern und Bergen leben Rothirsche. Der männliche Hirsch trägt ein großes Geweih. Besonders im Herbst ruft er laut über die Täler. Rothirsche fressen Gräser, Blätter und Knospen. Sie sind die größten wilden Tiere des Landes.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Rothirsche</span><span class="chip">Geweih</span><span class="chip">im Herbst</span><span class="chip">Gräser, Blätter und Knospen</span><span class="chip">größten wilden Tiere</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Porridge</span>Porridge ist ein warmer Haferbrei. Viele essen ihn morgens zum Frühstück. Er wird aus Haferflocken und Milch gekocht. Oben drauf kommen oft Beeren oder Honig. Der Brei macht satt und wärmt an kalten Tagen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Porridge</span><span class="chip">Haferbrei</span><span class="chip">Frühstück</span><span class="chip">Haferflocken</span><span class="chip">Honig</span></p>
+    </div>
+    <img src="bilder/schottland_essen_porridge.jpg" alt="Porridge">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Shortbread</span>Shortbread ist ein buttriges Keksgebäck. Es ist süß und zergeht fast im Mund. Aus nur wenigen Zutaten wird der Teig gemacht. Oft hat es die Form von kleinen Fingern. Zum Tee schmeckt es besonders gut.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Shortbread</span><span class="chip">Keksgebäck</span><span class="chip">süß</span><span class="chip">wenigen Zutaten</span><span class="chip">Tee</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Fish and Chips</span>Fish and Chips isst man in ganz Schottland gern. Es gibt gebackenen Fisch mit dicken Pommes. Oft holt man das Essen in einer Tüte ab. Dazu gibt es Essig oder Salz. Frisch schmeckt es am allerbesten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fish and Chips</span><span class="chip">gebackenen Fisch</span><span class="chip">Pommes</span><span class="chip">Essig oder Salz</span><span class="chip">Frisch</span></p>
+    </div>
+    <img src="bilder/schottland_essen_fishandchips.jpg" alt="Fish and Chips">
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Fans von Schottland nennt man die Tartan Army. Schottland hat sich für die WM 2026 qualifiziert. Das war nach vielen Jahren wieder einmal geschafft. Der bekannteste Spieler ist Scott McTominay. Er spielt in Italien bei Napoli.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Tartan Army</span><span class="chip">WM 2026</span><span class="chip">nach vielen Jahren</span><span class="chip">Scott McTominay</span><span class="chip">Napoli</span></p>
+    </div>
+    <img src="bilder/schottland_fussball.jpg" alt="Fußball Schottland">
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">In der Schule</span>Die Kinder in Schottland sprechen Englisch. Manche lernen auch ein paar Wörter Gälisch. Viele tragen in der Schule eine Schuluniform. Das Wetter ist oft kühl und regnerisch. Darum haben die Kinder fast immer eine Jacke dabei.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Englisch</span><span class="chip">Gälisch</span><span class="chip">Schuluniform</span><span class="chip">kühl und regnerisch</span><span class="chip">Jacke</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Feste und Musik</span>In Schottland gibt es eine besondere Musik. Sie kommt aus einem Instrument, dem Dudelsack. Bei Festen tragen manche Männer einen Kilt. Das ist ein karierter Rock aus Schottland. Dazu wird oft getanzt.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Musik</span><span class="chip">Dudelsack</span><span class="chip">Kilt</span><span class="chip">karierter Rock</span><span class="chip">getanzt</span></p>
+      </div>
+    </div>
+    <img src="bilder/schottland_kinderalltag.jpg" alt="Kinderalltag Schottland">
+  </div>
+
+  <div class="fuss">Schottland – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

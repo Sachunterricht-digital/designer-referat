@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Südkorea – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Südkorea</h1>
+    <span class="flagge">🇰🇷</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/suedkorea_header.jpg" alt="Seoul mit Han-Fluss und Skyline">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Seoul</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Asien</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Koreanisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Won</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 51 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 100.000 km², also ungefähr ein Viertel so groß wie Deutschland</td></tr>
+      <tr><td class="k">Höchster Berg</td><td class="v">der Hallasan auf der Insel Jeju, fast 2.000 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">im Norden grenzt Südkorea an Nordkorea. Über das Meer liegen Japan und China.</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Südkorea gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/suedkorea_palast.jpg" alt="Gyeongbokgung-Palast in Seoul">
+    <div class="txt">
+      <p><span class="name">Gyeongbokgung-Palast</span>Der Gyeongbokgung-Palast steht mitten in der Hauptstadt Seoul. Es ist ein großer, alter Königspalast mit vielen Gebäuden und Toren. Früher wohnten hier die Könige von Korea. Heute kann man den Palast besuchen und sich dort sogar in alte Kleider verkleiden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Königspalast</span><span class="chip">in Seoul</span><span class="chip">große Tore</span><span class="chip">Könige</span><span class="chip">zum Verkleiden</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">N Seoul Tower</span>Der N Seoul Tower ist ein hoher Turm auf einem Berg in Seoul. Von ganz oben hat man einen tollen Blick über die riesige Stadt. Am Geländer hängen viele bunte Liebesschlösser. Bei Nacht leuchtet der Turm in vielen Farben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">hoher Turm</span><span class="chip">auf dem Berg</span><span class="chip">Blick über die Stadt</span><span class="chip">Liebesschlösser</span><span class="chip">leuchtet bunt</span></p>
+    </div>
+    <img src="bilder/suedkorea_seoultower.jpg" alt="N Seoul Tower auf dem Berg bei Nacht">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/suedkorea_jeju.jpg" alt="Insel Jeju mit schwarzen Felsen und Wasserfällen">
+    <div class="txt">
+      <p><span class="name">Insel Jeju</span>Die Insel Jeju liegt im Meer vor der Südküste. Sie ist aus einem Vulkan entstanden, darum gibt es dort schwarze Felsen und Wasserfälle. Auf der Insel steht auch der höchste Berg des Landes. Viele Familien machen hier Urlaub.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Insel</span><span class="chip">im Meer</span><span class="chip">Vulkan</span><span class="chip">schwarze Felsen</span><span class="chip">Wasserfälle</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Bukchon Hanok Village</span>Bukchon Hanok Village ist ein altes Stadtviertel in Seoul. Hier stehen viele traditionelle koreanische Häuser, die man Hanok nennt. Die Dächer sind geschwungen und aus Ziegeln. Zwischen den hohen Hochhäusern wirkt das Viertel wie aus alter Zeit.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">altes Viertel</span><span class="chip">in Seoul</span><span class="chip">Hanok-Häuser</span><span class="chip">geschwungene Dächer</span><span class="chip">traditionell</span></p>
+    </div>
+    <img src="bilder/suedkorea_hanok.jpg" alt="Bukchon Hanok Village mit traditionellen Häusern">
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Wäldern und an den Küsten Südkoreas leben besondere Tiere.</p>
+
+  <div class="eintrag">
+    <img src="bilder/suedkorea_tiger.jpg" alt="Sibirischer Tiger im Wald">
+    <div class="txt">
+      <p><span class="name">Sibirischer Tiger</span>Der Tiger ist das wichtigste Wappentier von Südkorea. Er kommt in vielen alten Märchen und Geschichten vor. In der Natur lebt er auf der koreanischen Halbinsel heute fast nicht mehr. Trotzdem ist er für die Menschen ein Zeichen für Mut und Stärke.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wappentier</span><span class="chip">in Märchen</span><span class="chip">stark</span><span class="chip">selten geworden</span><span class="chip">Symbol für Mut</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Asiatischer Schwarzbär</span>Der Asiatische Schwarzbär lebt in den Bergwäldern von Südkorea. Sein Fell ist schwarz und auf der Brust hat er einen hellen Fleck, der wie ein Mond aussieht. Darum nennt man ihn auch Mondbär. Heute gibt es nur noch wenige von ihnen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Bär</span><span class="chip">schwarzes Fell</span><span class="chip">Bergwald</span><span class="chip">heller Fleck</span><span class="chip">Mondbär</span></p>
+    </div>
+    <img src="bilder/suedkorea_mondbear.jpg" alt="Asiatischer Schwarzbär mit hellem Brustfleck">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/suedkorea_loeffler.jpg" alt="Schwarzgesicht-Löffler am Wasser">
+    <div class="txt">
+      <p><span class="name">Schwarzgesicht-Löffler</span>Der Schwarzgesicht-Löffler ist ein seltener weißer Wasservogel. Sein Schnabel ist vorne breit und sieht aus wie ein Löffel. Damit fängt er im flachen Wasser kleine Tiere. An der Küste von Südkorea baut er seine Nester.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasservogel</span><span class="chip">weiß</span><span class="chip">Schnabel wie Löffel</span><span class="chip">an der Küste</span><span class="chip">selten</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Kimchi</span>Kimchi ist das bekannteste Essen aus Korea. Es ist Gemüse, das scharf gewürzt und eingelegt wird, meistens Chinakohl. Kimchi schmeckt scharf und ein bisschen sauer. Fast zu jedem Essen steht eine kleine Schüssel davon auf dem Tisch.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">eingelegtes Gemüse</span><span class="chip">Chinakohl</span><span class="chip">scharf</span><span class="chip">zu jeder Mahlzeit</span><span class="chip">bekanntestes Gericht</span></p>
+    </div>
+    <img src="bilder/suedkorea_kimchi.jpg" alt="Kimchi in einer Schüssel">
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Bibimbap</span>Bibimbap ist ein bunter Reistopf. In der Schüssel liegen Reis, Gemüse, ein Ei und oft auch Fleisch. Dazu kommt eine würzige rote Soße. Vor dem Essen mischt man alles gut durch.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Reistopf</span><span class="chip">Gemüse</span><span class="chip">Ei</span><span class="chip">rote Soße</span><span class="chip">gut durchmischen</span></p>
+    </div>
+    <img src="bilder/suedkorea_bibimbap.jpg" alt="Bibimbap bunter Reistopf mit Ei und Gemüse">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Tteokbokki</span>Tteokbokki sind weiche Reiskuchen in einer Soße. Die Soße ist süß und scharf zugleich. Die Reiskuchen sind zäh wie Kaugummi. Man kauft sie gern als Snack an einem Stand auf der Straße.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Reiskuchen</span><span class="chip">weich und zäh</span><span class="chip">süß-scharfe Soße</span><span class="chip">Snack</span><span class="chip">von der Straße</span></p>
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Südkorea heißt die Taegeuk-Krieger. Sie spielt im roten Trikot. Bei der WM 2026 in den USA, Mexiko und Kanada ist Südkorea wieder dabei. Die Mannschaft ist die beste in ganz Asien und ist bekannt für schnelles und ausdauerndes Spielen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Taegeuk-Krieger</span><span class="chip">rotes Trikot</span><span class="chip">WM 2026</span><span class="chip">Son Heung-min</span><span class="chip">vierte WM</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Son Heung-min ist Südkoreas größter Fußballstar. Er spielt beim englischen Verein Tottenham Hotspur und ist für seine Schnelligkeit bekannt. In Südkorea liebt ihn fast jeder. Bei der WM 2002 schaffte Südkorea das Halbfinale, das war ein historischer Erfolg für Asien.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Son Heung-min</span><span class="chip">Tottenham Hotspur</span><span class="chip">sehr schnell</span><span class="chip">WM 2002 Halbfinale</span><span class="chip">Asien-Sensation</span></p>
+    </div>
+    <img src="bilder/suedkorea_fussball.jpg" alt="Rotes Fußballtrikot mit Ball">
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Südkorea</span>In Südkorea lernen die Kinder sehr viel. Die Schule beginnt am Morgen und dauert oft bis zum Nachmittag. Viele Kinder gehen danach noch in eine extra Lernschule, die Hagwon heißt. Dort üben sie zum Beispiel Englisch, Mathe oder Musik. So ist der Tag für viele Kinder ganz schön lang.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">viel lernen</span><span class="chip">langer Schultag</span><span class="chip">Hagwon</span><span class="chip">Lernschule am Nachmittag</span><span class="chip">Englisch und Mathe</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">K-Pop und Computerspiele</span>In Südkorea sind viele Kinder ganz verrückt nach K-Pop. Das ist koreanische Popmusik mit bunten Tänzen und großen Bands. Die Lieder kennen Kinder auf der ganzen Welt. Auch Computerspiele sind sehr beliebt. In Südkorea schauen viele Menschen sogar im Stadion zu, wenn Profis gegeneinander spielen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">K-Pop</span><span class="chip">Tanz</span><span class="chip">große Bands</span><span class="chip">Computerspiele</span><span class="chip">Profis im Stadion</span></p>
+      </div>
+    </div>
+    <img src="bilder/suedkorea_kinderalltag.jpg" alt="Koreanische Kinder in der Schule">
+  </div>
+
+  <div class="fuss">Südkorea – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

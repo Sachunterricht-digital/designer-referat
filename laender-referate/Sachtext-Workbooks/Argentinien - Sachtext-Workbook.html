@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentinien – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Argentinien</h1>
+    <span class="flagge">🇦🇷</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/argentinien_header.jpg" alt="Argentinien: Iguazú-Wasserfälle, Anden und die Pampa">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Buenos Aires</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Südamerika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Spanisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Argentinischer Peso</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 46 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 2,8 Millionen km², also fast achtmal so groß wie Deutschland</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Aconcagua, 6.961 Meter hoch, der höchste Berg von ganz Amerika</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Chile, Bolivien, Paraguay, Brasilien und Uruguay</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Argentinien gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/argentinien_iguazu.jpg" alt="Iguazú-Wasserfälle">
+    <div class="txt">
+      <p><span class="name">Iguazú-Wasserfälle</span>Die Iguazú-Wasserfälle sind riesige Wasserfälle im Norden von Argentinien. Das Wasser stürzt laut donnernd in die Tiefe. Rundherum wächst dichter Regenwald. Bunte Schmetterlinge und Vögel leben hier.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">riesige Wasserfälle</span><span class="chip">stürzt</span><span class="chip">in die Tiefe</span><span class="chip">dichter Regenwald</span><span class="chip">Schmetterlinge</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Perito-Moreno-Gletscher</span>Der Perito-Moreno-Gletscher ist ein riesiger Gletscher aus Eis. Er liegt im Süden in der Region Patagonien. Immer wieder brechen große Stücke ab und fallen ins Wasser. Das macht ein lautes Krachen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">riesiger Gletscher</span><span class="chip">aus Eis</span><span class="chip">Patagonien</span><span class="chip">brechen große Stücke ab</span><span class="chip">lautes Krachen</span></p>
+    </div>
+    <img src="bilder/argentinien_gletscher.jpg" alt="Perito-Moreno-Gletscher">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/argentinien_la_boca.jpg" alt="La Boca">
+    <div class="txt">
+      <p><span class="name">La Boca</span>La Boca ist ein bunter Stadtteil in Buenos Aires. Die Häuser sind in vielen kräftigen Farben angemalt. Auf den Straßen tanzen Menschen den Tango. Viele Künstler stellen hier ihre Bilder aus.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bunter Stadtteil</span><span class="chip">in Buenos Aires</span><span class="chip">kräftigen Farben</span><span class="chip">den Tango</span><span class="chip">Künstler</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Pampa</span>Die Pampa ist eine riesige flache Grasebene in Argentinien. Hier leben viele Rinder auf weiten Weiden. Die Cowboys von Argentinien heißen Gauchos. Sie reiten auf Pferden und hüten die Herden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">flache Grasebene</span><span class="chip">viele Rinder</span><span class="chip">weiten Weiden</span><span class="chip">Gauchos</span><span class="chip">auf Pferden</span></p>
+    </div>
+    <img src="bilder/argentinien_pampa.jpg" alt="Die Pampa">
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Argentinien und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/argentinien_puma.jpg" alt="Puma">
+    <div class="txt">
+      <p><span class="name">Puma</span>Der Puma ist eine große Raubkatze in Argentinien. Er hat ein braunes Fell und kann sehr weit springen. Am liebsten jagt der Puma allein in der Nacht. Er lebt in den Bergen und in der Pampa.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">große Raubkatze</span><span class="chip">braunes Fell</span><span class="chip">weit springen</span><span class="chip">in der Nacht</span><span class="chip">in den Bergen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Magellanpinguin</span>An der Küste von Argentinien leben viele Pinguine. Sie heißen Magellanpinguine und watscheln an Land. Im Wasser sind sie sehr schnelle Schwimmer. Sie fangen Fische zum Fressen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">An der Küste</span><span class="chip">viele Pinguine</span><span class="chip">watscheln</span><span class="chip">schnelle Schwimmer</span><span class="chip">Fische</span></p>
+    </div>
+    <img src="bilder/argentinien_pinguin.jpg" alt="Magellanpinguin">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/argentinien_kondor.jpg" alt="Anden-Kondor">
+    <div class="txt">
+      <p><span class="name">Anden-Kondor</span>Der Anden-Kondor ist ein sehr großer Vogel. Er hat breite Flügel und kann hoch über den Bergen gleiten. Der Kondor sucht von oben nach Futter. Er gehört zu den größten Vögeln der Welt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">sehr großer Vogel</span><span class="chip">breite Flügel</span><span class="chip">über den Bergen</span><span class="chip">von oben</span><span class="chip">größten Vögeln</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Empanadas</span>Empanadas sind kleine gefüllte Teigtaschen. Innen sind sie mit Fleisch, Käse oder Gemüse gefüllt. Man backt sie im Ofen oder brät sie in Öl. In Argentinien isst man Empanadas sehr oft.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">gefüllte Teigtaschen</span><span class="chip">mit Fleisch</span><span class="chip">im Ofen</span><span class="chip">Empanadas</span><span class="chip">sehr oft</span></p>
+    </div>
+    <img src="bilder/argentinien_essen_empanadas.jpg" alt="Empanadas">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Asado</span>Asado ist gegrilltes Fleisch vom Rind. In Argentinien gibt es sehr viele Rinder. Die Familie grillt das Fleisch am Wochenende zusammen. Alle sitzen draußen und essen gemeinsam.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">gegrilltes Fleisch</span><span class="chip">vom Rind</span><span class="chip">viele Rinder</span><span class="chip">am Wochenende</span><span class="chip">gemeinsam</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Dulce de Leche</span>Dulce de Leche ist eine süße braune Creme. Sie wird aus Milch und Zucker lange gekocht. Die Creme schmeckt wie weiches Karamell. Kinder essen sie gern auf dem Brot oder im Keks.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süße braune Creme</span><span class="chip">aus Milch</span><span class="chip">wie weiches Karamell</span><span class="chip">auf dem Brot</span><span class="chip">im Keks</span></p>
+    </div>
+    <img src="bilder/argentinien_essen_dulce_de_leche.jpg" alt="Dulce de Leche">
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Nationalmannschaft von Argentinien heißt La Albiceleste. Das bedeutet weiß-himmelblau, wie die Flagge. Argentinien wurde schon dreimal Weltmeister. Der berühmteste Spieler heißt Lionel Messi. In Argentinien lieben fast alle den Fußball.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">La Albiceleste</span><span class="chip">weiß-himmelblau</span><span class="chip">dreimal Weltmeister</span><span class="chip">Lionel Messi</span><span class="chip">den Fußball</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Bei der WM 2022 wurde Argentinien Weltmeister. Im Finale besiegten sie Frankreich im Elfmeterschießen. Lionel Messi spielte brillant und viele nennen ihn den besten Fußballer aller Zeiten. Es war sein erster WM-Titel, die ganze Welt jubelte mit ihm.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Lionel Messi</span><span class="chip">WM-Sieger 2022</span><span class="chip">Elfmeter gegen Frankreich</span><span class="chip">bester Spieler aller Zeiten</span><span class="chip">La Albiceleste</span></p>
+    </div>
+    <img src="bilder/argentinien_fussball.jpg" alt="Fußball Argentinien">
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Argentinien</span>In Argentinien tragen viele Kinder einen weißen Kittel über der Kleidung. So sehen alle gleich aus. Die Schule beginnt am Morgen mit der Fahne. Die Kinder lernen Lesen, Schreiben und Rechnen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">einen weißen Kittel</span><span class="chip">gleich aus</span><span class="chip">am Morgen</span><span class="chip">der Fahne</span><span class="chip">Rechnen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Sommer und Strand</span>In Argentinien ist im Dezember und Januar Sommer. Dann haben die Kinder lange Sommerferien. Viele Familien fahren ans Meer an den Strand. Dort baden und spielen die Kinder im Sand.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">im Dezember</span><span class="chip">Sommer</span><span class="chip">Sommerferien</span><span class="chip">ans Meer</span><span class="chip">im Sand</span></p>
+      </div>
+    </div>
+    <img src="bilder/argentinien_kinderalltag.jpg" alt="Kinderalltag Argentinien">
+  </div>
+
+  <div class="fuss">Argentinien – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

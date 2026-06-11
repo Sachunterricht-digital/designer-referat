@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haiti – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Haiti</h1>
+    <span class="flagge">🇭🇹</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/haiti_header.jpg" alt="Haiti: Eindrücke aus dem Land bei der WM 2026">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Port-au-Prince</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Nordamerika (Karibik)</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Französisch und Haitianisch-Kreolisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Gourde</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 11 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 27.000 km²</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Pic la Selle, rund 2.700 m</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">die Dominikanische Republik (beide teilen sich eine Insel)</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Haiti gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/haiti_sehens1.jpg" alt="Die Insel Hispaniola">
+    <div class="txt">
+      <p><span class="name">Die Insel Hispaniola</span>Haiti liegt auf einer Insel im Meer. Die Insel heißt Hispaniola. Haiti teilt sich diese Insel mit einem Nachbarland. Das Nachbarland heißt Dominikanische Republik. Rund um die Insel liegt das warme Karibische Meer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Hispaniola</span><span class="chip">Insel</span><span class="chip">Nachbarland</span><span class="chip">Dominikanische Republik</span><span class="chip">Karibische Meer</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Festung Citadelle</span>Auf einem hohen Berg steht eine riesige Festung. Sie heißt Citadelle Laferrière. Vor langer Zeit haben die Menschen sie aus Steinen gebaut. Von dort oben konnte man das ganze Land schützen. Heute ist die Festung weltberühmt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Festung</span><span class="chip">Citadelle Laferrière</span><span class="chip">aus Steinen gebaut</span><span class="chip">schützen</span><span class="chip">weltberühmt</span></p>
+    </div>
+    <img src="bilder/haiti_sehens2.jpg" alt="Die Festung Citadelle">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/haiti_sehens3.jpg" alt="Die Hauptstadt Port-au-Prince">
+    <div class="txt">
+      <p><span class="name">Die Hauptstadt Port-au-Prince</span>Port-au-Prince ist die Hauptstadt von Haiti. Hier leben sehr viele Menschen zusammen. Die Stadt liegt direkt am Meer. Auf den bunten Märkten wird viel verkauft. Überall hört man Musik und Stimmen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Port-au-Prince</span><span class="chip">Hauptstadt</span><span class="chip">am Meer</span><span class="chip">bunten Märkten</span><span class="chip">Musik</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Strände am Meer</span>Haiti hat schöne Strände am Karibischen Meer. Der Sand ist hell und das Wasser ist warm. Palmen wachsen dicht am Ufer. Im klaren Wasser kann man baden und schwimmen. Viele Boote der Fischer liegen am Strand.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Strände</span><span class="chip">Der Sand ist hell</span><span class="chip">warm</span><span class="chip">Palmen</span><span class="chip">Boote der Fischer</span></p>
+    </div>
+    <img src="bilder/haiti_sehens4.jpg" alt="Die Strände am Meer">
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Haiti und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/haiti_tier1.jpg" alt="Der Kolibri">
+    <div class="txt">
+      <p><span class="name">Der Kolibri</span>Auf Haiti leben winzige Kolibris. Sie sind kleiner als viele andere Vögel. Mit ihren Flügeln schwirren sie sehr schnell. So bleiben sie in der Luft stehen. Aus den Blüten trinken sie süßen Nektar.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Kolibris</span><span class="chip">winzige</span><span class="chip">schwirren</span><span class="chip">in der Luft stehen</span><span class="chip">Nektar</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Flamingo</span>An flachen Seen stehen rosa Flamingos. Sie haben lange, dünne Beine. Mit dem Schnabel suchen sie im Wasser nach Futter. Oft stehen sie ganz still auf einem Bein. Ihre Federn leuchten schön rosa.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Flamingos</span><span class="chip">rosa</span><span class="chip">lange, dünne Beine</span><span class="chip">Schnabel</span><span class="chip">auf einem Bein</span></p>
+    </div>
+    <img src="bilder/haiti_tier2.jpg" alt="Der Flamingo">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/haiti_tier3.jpg" alt="Die Meeresschildkröte">
+    <div class="txt">
+      <p><span class="name">Die Meeresschildkröte</span>Im warmen Meer schwimmen Meeresschildkröten. Sie gleiten ruhig durch das klare Wasser. Mit ihren Flossen rudern sie vorwärts. Am Strand legen sie ihre Eier in den Sand. Daraus schlüpfen winzige Schildkröten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Meeresschildkröten</span><span class="chip">klare Wasser</span><span class="chip">Flossen</span><span class="chip">Eier in den Sand</span><span class="chip">schlüpfen</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Riz Djon Djon</span>Riz Djon Djon ist ein besonderes Reisgericht. Es wird mit kleinen schwarzen Pilzen gekocht. Davon wird der Reis ganz dunkel. Das Gericht schmeckt würzig und gut. Es ist auf Haiti sehr beliebt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Riz Djon Djon</span><span class="chip">Reisgericht</span><span class="chip">schwarzen Pilzen</span><span class="chip">dunkel</span><span class="chip">würzig</span></p>
+    </div>
+    <img src="bilder/haiti_essen1.jpg" alt="Riz Djon Djon">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Griot</span>Griot ist ein Gericht aus Schweinefleisch. Das Fleisch wird zuerst gewürzt und dann gebraten. Außen wird es schön knusprig. Dazu isst man oft Reis und Bohnen. Griot wird gern an Festtagen gegessen.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Griot</span><span class="chip">Schweinefleisch</span><span class="chip">knusprig</span><span class="chip">Reis und Bohnen</span><span class="chip">Festtagen</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Frische Früchte</span>Auf Haiti wachsen viele süße Früchte. Es gibt Mangos, Bananen und Ananas. Die Früchte reifen in der warmen Sonne. Auf den Märkten werden sie frisch verkauft. Kinder essen sie besonders gern.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Früchte</span><span class="chip">Mangos</span><span class="chip">warmen Sonne</span><span class="chip">Märkten</span><span class="chip">Kinder</span></p>
+    </div>
+    <img src="bilder/haiti_essen3.jpg" alt="Frische Früchte">
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Nationalmannschaft von Haiti heißt Les Grenadiers. Erst zum zweiten Mal ist Haiti bei einer WM dabei. Das ist für das kleine Land eine große Freude. Ein bekannter Spieler ist Jean-Ricner Bellegarde. Er spielt in England bei den Wolverhampton Wanderers.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Les Grenadiers</span><span class="chip">zweiten Mal</span><span class="chip">große Freude</span><span class="chip">Jean-Ricner Bellegarde</span><span class="chip">Wolverhampton Wanderers</span></p>
+    </div>
+    <img src="bilder/haiti_fussball.jpg" alt="Fußball Haiti">
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">In der Schule</span>Viele Kinder auf Haiti tragen eine Schuluniform. In der Schule lernen sie Französisch und Kreolisch. Kreolisch sprechen sie auch zu Hause. Der Schulweg ist für manche Kinder weit. Nach der Schule helfen sie oft der Familie.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schuluniform</span><span class="chip">Französisch und Kreolisch</span><span class="chip">zu Hause</span><span class="chip">Schulweg</span><span class="chip">der Familie</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Musik und Spiel</span>Musik gehört auf Haiti zum Leben dazu. Die Kinder singen und tanzen oft zusammen. Trommeln geben den Takt vor. Am liebsten spielen viele Kinder Fußball. Dafür reicht ihnen ein freier Platz.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Musik</span><span class="chip">tanzen</span><span class="chip">Trommeln</span><span class="chip">Fußball</span><span class="chip">freier Platz</span></p>
+      </div>
+    </div>
+    <img src="bilder/haiti_alltag1.jpg" alt="Kinderalltag Haiti">
+  </div>
+
+  <div class="fuss">Haiti – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Mein Länder-Heft – Blanko-Workbook (Muster)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0; background: #e9e9ec; font-family: 'Nunito', sans-serif; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    padding: 16mm 18mm 14mm;
+    margin: 0 auto 8mm; background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-sizing: border-box; display: flex; flex-direction: column;
+    position: relative;
+  }
+  /* dünner Außenrahmen */
+  .sheet::before {
+    content: ""; position: absolute; inset: 8mm;
+    border: 1.3px solid #2a9d8f; border-radius: 4mm; pointer-events: none;
+  }
+
+  /* dezente Name-Zeile (nur Deckblatt) */
+  .name-zeile { display: flex; justify-content: flex-end; align-items: flex-end; gap: 2mm; margin-bottom: 6mm; flex: 0 0 auto; }
+  .name-zeile .nl-label { font-size: 11pt; font-weight: 700; color: #264653; }
+  .name-zeile .nl { width: 70mm; border-bottom: 1.4px solid #000; height: 6mm; }
+
+  /* Deckblatt-Titel */
+  .titel { text-align: center; display: flex; align-items: center; justify-content: center; gap: 4mm; margin-bottom: 1mm; flex: 0 0 auto; }
+  .titel .ball { width: 17mm; height: 17mm; flex: 0 0 17mm; object-fit: contain; }
+  .titel h1 { font-family: 'Fredoka', sans-serif; font-size: 31pt; font-weight: 700; color: #264653; margin: 0; line-height: 1; }
+  .untertitel { text-align: center; font-family: 'Fredoka', sans-serif; font-size: 15pt; color: #2a9d8f; font-weight: 600; margin: 0 0 7mm; flex: 0 0 auto; }
+
+  .land-feld { display: flex; align-items: flex-end; gap: 4mm; margin-bottom: 6mm; flex: 0 0 auto; }
+  .land-feld .label { font-size: 15pt; font-weight: 800; color: #264653; white-space: nowrap; }
+  .land-feld .linie { flex: 1; border-bottom: 1.8px solid #000; height: 11mm; }
+
+  .auftrag { background: #fef3c7; border: 1.5px solid #fcd34d; border-radius: 3mm; padding: 4mm 5mm; margin-bottom: 6mm; display: flex; gap: 4mm; align-items: flex-start; flex: 0 0 auto; }
+  .auftrag .ic { flex: 0 0 8mm; width: 8mm; height: 8mm; }
+  .auftrag .txt { font-size: 12pt; line-height: 1.45; color: #1a1a1a; }
+  .auftrag .txt b { color: #264653; }
+
+  .malfeld-wrap { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .malfeld-cap { font-size: 11pt; font-weight: 700; color: #264653; margin-bottom: 2mm; flex: 0 0 auto; }
+  .malfeld { flex: 1; border: 2.5px dashed #b7b7b7; border-radius: 4mm; position: relative; min-height: 0; }
+  .malfeld .hint { position: absolute; bottom: 3mm; right: 5mm; font-size: 9.5pt; color: #999; font-style: italic; }
+
+  .fuss { text-align: center; font-size: 9.5pt; color: #999; font-style: italic; margin-top: 5mm; flex: 0 0 auto; }
+
+  /* Seiten-Überschrift (Innenseiten) */
+  .seiten-titel { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.5mm; margin-top: 1mm; flex: 0 0 auto; }
+  .seiten-titel .ic { width: 9mm; height: 9mm; flex: 0 0 9mm; }
+  .seiten-titel h2 { font-family: 'Fredoka', sans-serif; font-size: 22pt; font-weight: 600; color: #264653; margin: 0; }
+  .titel-strich { height: 2.6px; background: #2a9d8f; border-radius: 2px; margin-bottom: 7mm; flex: 0 0 auto; }
+
+  /* Schritte-Anleitung */
+  .schritte { display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 2mm 0; }
+  .schritt { display: flex; gap: 5mm; align-items: center; }
+  .schritt .num { flex: 0 0 15mm; width: 15mm; height: 15mm; border-radius: 50%; background: #2a9d8f; color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 19pt; display: flex; align-items: center; justify-content: center; }
+  .schritt .inhalt { flex: 1; }
+  .schritt .kopf { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16pt; color: #264653; }
+  .schritt .erkl { font-size: 12pt; color: #333; line-height: 1.4; margin-top: 1mm; }
+
+  /* Steckbrief-Felder */
+  .sb-hinweis { font-size: 12pt; color: #333; line-height: 1.45; margin-bottom: 6mm; flex: 0 0 auto; }
+  .sb-liste { display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 1mm 0 3mm; }
+  .sb-zeile { display: flex; align-items: flex-end; gap: 4mm; }
+  .sb-zeile .lbl { flex: 0 0 48mm; font-size: 13pt; font-weight: 800; color: #264653; }
+  .sb-zeile .linie { flex: 1; border-bottom: 1.6px solid #000; height: 10mm; }
+
+  /* Kategorie-Eintrag (blanko) */
+  .leitfrage { background: #e6f4f1; border: 1.5px solid #b8ddd6; border-radius: 3mm; padding: 4mm 5mm; margin-bottom: 7mm; font-size: 12pt; color: #1a1a1a; line-height: 1.45; flex: 0 0 auto; }
+  .leitfrage b { color: #1f7568; }
+  .eintraege { display: flex; flex-direction: column; justify-content: space-between; flex: 1; }
+  .eintrag .thema { display: flex; align-items: flex-end; gap: 3mm; margin-bottom: 2.5mm; }
+  .eintrag .thema .n { flex: 0 0 7mm; width: 7mm; height: 7mm; border-radius: 50%; background: #264653; color: #fff; font-weight: 800; font-size: 11pt; display: flex; align-items: center; justify-content: center; }
+  .eintrag .thema .tlabel { flex: 0 0 auto; font-size: 12.5pt; font-weight: 800; color: #264653; }
+  .eintrag .thema .linie { flex: 1; border-bottom: 1.8px solid #000; height: 9mm; }
+  .eintrag .stich-cap { font-size: 11pt; font-weight: 700; color: #2a9d8f; margin: 0 0 2mm 10mm; }
+  .eintrag .zeile { border-bottom: 1.3px solid #c4c4c4; height: 8mm; margin-left: 10mm; }
+
+  /* Flaggen-Übersicht (Warmup) */
+  .intro-text { font-size: 12pt; color: #333; line-height: 1.5; margin-bottom: 5mm; flex: 0 0 auto; }
+  .intro-text b { color: #264653; }
+  .flaggen-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3.5mm 3mm; flex: 1; align-content: space-between; padding: 1mm 0 2mm; }
+  .flagge { display: flex; flex-direction: column; align-items: center; gap: 1.4mm; }
+  .flagge img { width: 21mm; height: 14mm; object-fit: contain; border: 1px solid #ddd; border-radius: 1mm; background: #fff; display: block; }
+  .flagge span { font-size: 8.5pt; font-weight: 700; color: #264653; text-align: center; line-height: 1.08; }
+  .quelle { font-size: 8pt; color: #aaa; text-align: right; margin-top: 3mm; flex: 0 0 auto; }
+
+  /* Wahl-Thema: Ankreuz-Optionen */
+  .wahl-optionen { display: flex; gap: 10mm; margin-bottom: 6mm; flex: 0 0 auto; }
+  .wahl-opt { display: flex; align-items: center; gap: 3mm; font-size: 14pt; font-weight: 800; color: #264653; }
+  .wahl-opt .wbox { width: 8mm; height: 8mm; border: 1.8px solid #264653; border-radius: 2mm; }
+
+  /* Trikot-Malfeld */
+  .trikot-feld { border: 1.5px dashed #2a9d8f; border-radius: 2mm; height: 58mm; margin-left: 10mm; background: #fff; margin-top: 2mm; }
+
+  /* Checkliste */
+  .check-liste { display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 1mm 0 2mm; }
+  .check-item { display: flex; align-items: flex-start; gap: 4mm; font-size: 13pt; color: #1a1a1a; }
+  .check-item .cbox { flex: 0 0 7mm; width: 7mm; height: 7mm; border: 1.8px solid #264653; border-radius: 1.5mm; margin-top: 0.5mm; }
+  .partner { display: flex; align-items: flex-end; gap: 3mm; margin: 6mm 0; flex: 0 0 auto; }
+  .partner .pl { font-size: 12pt; font-weight: 800; color: #2a9d8f; white-space: nowrap; }
+  .partner .linie { flex: 1; border-bottom: 1.4px solid #000; height: 8mm; }
+
+  /* App-Feld (QR + Link) */
+  .app-box { display: flex; gap: 6mm; align-items: center; border: 1.5px solid #b8ddd6; background: #e6f4f1; border-radius: 3mm; padding: 5mm 6mm; flex: 0 0 auto; }
+  .qr-ph { flex: 0 0 28mm; width: 28mm; height: 28mm; border: 2px dashed #2a9d8f; border-radius: 2mm; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1f7568; background: #fff; padding: 2mm; }
+  .app-text { flex: 1; }
+  .app-text h3 { font-family: 'Fredoka', sans-serif; font-size: 14pt; color: #264653; margin: 0 0 2mm; }
+  .app-text p { font-size: 11pt; color: #333; margin: 0 0 3mm; line-height: 1.4; }
+  .app-text .link-zeile { display: flex; align-items: flex-end; gap: 2mm; }
+  .app-text .link-zeile .ll { font-size: 11pt; font-weight: 700; color: #264653; }
+  .app-text .link-zeile .linie { flex: 1; border-bottom: 1.3px solid #888; height: 6mm; }
+
+  @media print {
+    body { background: #fff; }
+    .sheet { box-shadow: none; margin: 0; page-break-after: always; }
+    .sheet:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="../Landing - Startseite.html">← Startseite</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ==================== SEITE 1: DECKBLATT ==================== -->
+<div class="sheet">
+  <div class="name-zeile">
+    <span class="nl-label">Name:</span>
+    <span class="nl"></span>
+  </div>
+
+  <div class="titel">
+    <img class="ball" src="bilder/ball_logo.jpg" alt="Fußball">
+    <h1>Mein Länder-Heft</h1>
+  </div>
+  <p class="untertitel">Fußball-WM 2026</p>
+
+  <div class="land-feld">
+    <span class="label">Mein Land:</span>
+    <span class="linie"></span>
+  </div>
+
+  <div class="auftrag">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 20l4-1L19 8a2.1 2.1 0 0 0-3-3L5 16l-1 4z"/>
+      <path d="M14.5 6.5l3 3"/>
+    </svg>
+    <span class="txt">Schau dir die <b>echte Flagge</b> deines Landes genau an. Male sie hier <b>groß und ordentlich</b> ab. Achte auf die richtigen Farben und Formen. Du fotografierst deine Flagge später für deine digitale Präsentation.</span>
+  </div>
+
+  <div class="malfeld-wrap">
+    <div class="malfeld-cap">Hier ist meine Flagge:</div>
+    <div class="malfeld">
+      <span class="hint">Hier malst du deine Flagge</span>
+    </div>
+  </div>
+
+  <p class="fuss">Das ist die erste Seite deines Länder-Hefts. Hier sammelst du danach deinen Steckbrief und deine Vortrags-Notizen.</p>
+</div>
+
+<!-- ==================== SEITE 2: FLAGGEN DER WM 2026 ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 21V4"/>
+      <path d="M5 4c3-1.5 6 1.5 9 0s5-1 5-1v9s-2-.5-5 1-6-1.5-9 0"/>
+    </svg>
+    <h2>Die Flaggen der WM 2026</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="intro-text">
+    An der Fußball-Weltmeisterschaft 2026 nehmen zum ersten Mal <b>48 Mannschaften</b> teil. Gespielt wird in drei Ländern: in den <b>USA</b>, in <b>Kanada</b> und in <b>Mexiko</b>. Hier siehst du alle Länder mit ihren Flaggen. Findest du dein Land?
+  </div>
+
+  <div class="flaggen-grid">
+    <div class="flagge"><img src="bilder/flaggen/eg.png" alt="Ägypten"><span>Ägypten</span></div>
+    <div class="flagge"><img src="bilder/flaggen/dz.png" alt="Algerien"><span>Algerien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ar.png" alt="Argentinien"><span>Argentinien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/au.png" alt="Australien"><span>Australien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/be.png" alt="Belgien"><span>Belgien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ba.png" alt="Bosnien und Herzegowina"><span>Bosnien-Herz.</span></div>
+    <div class="flagge"><img src="bilder/flaggen/br.png" alt="Brasilien"><span>Brasilien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/cw.png" alt="Curaçao"><span>Curaçao</span></div>
+    <div class="flagge"><img src="bilder/flaggen/de.png" alt="Deutschland"><span>Deutschland</span></div>
+    <div class="flagge"><img src="bilder/flaggen/cd.png" alt="DR Kongo"><span>DR Kongo</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ec.png" alt="Ecuador"><span>Ecuador</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ci.png" alt="Elfenbeinküste"><span>Elfenbeinküste</span></div>
+    <div class="flagge"><img src="bilder/flaggen/gb-eng.png" alt="England"><span>England</span></div>
+    <div class="flagge"><img src="bilder/flaggen/fr.png" alt="Frankreich"><span>Frankreich</span></div>
+    <div class="flagge"><img src="bilder/flaggen/gh.png" alt="Ghana"><span>Ghana</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ht.png" alt="Haiti"><span>Haiti</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ir.png" alt="Iran"><span>Iran</span></div>
+    <div class="flagge"><img src="bilder/flaggen/iq.png" alt="Irak"><span>Irak</span></div>
+    <div class="flagge"><img src="bilder/flaggen/jp.png" alt="Japan"><span>Japan</span></div>
+    <div class="flagge"><img src="bilder/flaggen/jo.png" alt="Jordanien"><span>Jordanien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ca.png" alt="Kanada"><span>Kanada</span></div>
+    <div class="flagge"><img src="bilder/flaggen/cv.png" alt="Kap Verde"><span>Kap Verde</span></div>
+    <div class="flagge"><img src="bilder/flaggen/qa.png" alt="Katar"><span>Katar</span></div>
+    <div class="flagge"><img src="bilder/flaggen/co.png" alt="Kolumbien"><span>Kolumbien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/hr.png" alt="Kroatien"><span>Kroatien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ma.png" alt="Marokko"><span>Marokko</span></div>
+    <div class="flagge"><img src="bilder/flaggen/mx.png" alt="Mexiko"><span>Mexiko</span></div>
+    <div class="flagge"><img src="bilder/flaggen/nz.png" alt="Neuseeland"><span>Neuseeland</span></div>
+    <div class="flagge"><img src="bilder/flaggen/nl.png" alt="Niederlande"><span>Niederlande</span></div>
+    <div class="flagge"><img src="bilder/flaggen/no.png" alt="Norwegen"><span>Norwegen</span></div>
+    <div class="flagge"><img src="bilder/flaggen/at.png" alt="Österreich"><span>Österreich</span></div>
+    <div class="flagge"><img src="bilder/flaggen/pa.png" alt="Panama"><span>Panama</span></div>
+    <div class="flagge"><img src="bilder/flaggen/py.png" alt="Paraguay"><span>Paraguay</span></div>
+    <div class="flagge"><img src="bilder/flaggen/pt.png" alt="Portugal"><span>Portugal</span></div>
+    <div class="flagge"><img src="bilder/flaggen/sa.png" alt="Saudi-Arabien"><span>Saudi-Arabien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/gb-sct.png" alt="Schottland"><span>Schottland</span></div>
+    <div class="flagge"><img src="bilder/flaggen/se.png" alt="Schweden"><span>Schweden</span></div>
+    <div class="flagge"><img src="bilder/flaggen/ch.png" alt="Schweiz"><span>Schweiz</span></div>
+    <div class="flagge"><img src="bilder/flaggen/sn.png" alt="Senegal"><span>Senegal</span></div>
+    <div class="flagge"><img src="bilder/flaggen/es.png" alt="Spanien"><span>Spanien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/za.png" alt="Südafrika"><span>Südafrika</span></div>
+    <div class="flagge"><img src="bilder/flaggen/kr.png" alt="Südkorea"><span>Südkorea</span></div>
+    <div class="flagge"><img src="bilder/flaggen/cz.png" alt="Tschechien"><span>Tschechien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/tn.png" alt="Tunesien"><span>Tunesien</span></div>
+    <div class="flagge"><img src="bilder/flaggen/tr.png" alt="Türkei"><span>Türkei</span></div>
+    <div class="flagge"><img src="bilder/flaggen/uy.png" alt="Uruguay"><span>Uruguay</span></div>
+    <div class="flagge"><img src="bilder/flaggen/us.png" alt="USA"><span>USA</span></div>
+    <div class="flagge"><img src="bilder/flaggen/uz.png" alt="Usbekistan"><span>Usbekistan</span></div>
+  </div>
+
+  <div class="quelle">Flaggen: gemeinfrei (flagcdn.com)</div>
+</div>
+
+<!-- ==================== SEITE 3: SO ARBEITEST DU ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/>
+      <polygon points="12,6 14.5,12 12,18 9.5,12" fill="#264653" stroke="none"/>
+    </svg>
+    <h2>So arbeitest du mit deinem Heft</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="schritte">
+    <div class="schritt">
+      <div class="num">1</div>
+      <div class="inhalt">
+        <div class="kopf">Male deine Flagge</div>
+        <div class="erkl">Schau dir die Flagge deines Landes genau an und male sie vorne auf dem Deckblatt ab.</div>
+      </div>
+    </div>
+    <div class="schritt">
+      <div class="num">2</div>
+      <div class="inhalt">
+        <div class="kopf">Fülle deinen Steckbrief aus</div>
+        <div class="erkl">Trage hier die wichtigsten Daten zu deinem Land ein.</div>
+      </div>
+    </div>
+    <div class="schritt">
+      <div class="num">3</div>
+      <div class="inhalt">
+        <div class="kopf">Lies deinen Sachtext</div>
+        <div class="erkl">Dein Sachtext ist deine wichtigste Hilfe. Such dir zu jedem Bereich aus, was du am spannendsten findest.</div>
+      </div>
+    </div>
+    <div class="schritt">
+      <div class="num">4</div>
+      <div class="inhalt">
+        <div class="kopf">Schreib deine Stichpunkte</div>
+        <div class="erkl">Schreib pro Bereich dein Thema auf und 4 bis 5 wichtige Stichpunkte. Keine ganzen Sätze, nur die wichtigen Wörter.</div>
+      </div>
+    </div>
+    <div class="schritt">
+      <div class="num">5</div>
+      <div class="inhalt">
+        <div class="kopf">Baue deine Präsentation und trag vor</div>
+        <div class="erkl">Mit deinen Stichpunkten baust du deine Präsentation in der App und erzählst frei vor der Klasse.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="fuss">Lesen, ausarbeiten, bauen, vorstellen. Schritt für Schritt wird dein Vortrag fertig.</p>
+</div>
+
+<!-- ==================== SEITE 3: STECKBRIEF ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="5" y="3" width="14" height="18" rx="2"/>
+      <path d="M9 3h6v3H9z" fill="#264653" stroke="none"/>
+      <path d="M8.5 11h7M8.5 15h7M8.5 18h4"/>
+    </svg>
+    <h2>Mein Steckbrief</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="sb-hinweis">Trage hier die wichtigsten Daten zu deinem Land ein. Diese Angaben tippst du später in der App genauso ab.</div>
+
+  <div class="sb-liste">
+    <div class="sb-zeile"><span class="lbl">Hauptstadt</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Kontinent</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Sprache</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Währung</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Einwohner</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Fläche</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Höchster Berg oder Fluss</span><span class="linie"></span></div>
+    <div class="sb-zeile"><span class="lbl">Nachbarländer</span><span class="linie"></span></div>
+  </div>
+
+  <p class="fuss">Wenn du etwas noch nicht weißt, hilft dir dein Sachtext weiter.</p>
+</div>
+
+<!-- ==================== SEITE 4: SEHENSWÜRDIGKEITEN ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 21c4-4 7-7.5 7-11a7 7 0 0 0-14 0c0 3.5 3 7 7 11z"/>
+      <circle cx="12" cy="10" r="2.5"/>
+    </svg>
+    <h2>Sehenswürdigkeiten</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="leitfrage">
+    <b>Welche berühmten Orte muss man in deinem Land gesehen haben?</b> Lies in deinem Sachtext und such dir drei aus. Schreib den Namen auf die Linie und darunter, was du dazu erzählst.
+  </div>
+
+  <div class="eintraege">
+    <div class="eintrag">
+      <div class="thema"><span class="n">1</span><span class="tlabel">Mein Ort:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">2</span><span class="tlabel">Mein Ort:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">3</span><span class="tlabel">Mein Ort:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+  </div>
+
+  <p class="fuss">Genauso arbeitest du danach Tiere, Essen und dein Wahl-Thema aus.</p>
+</div>
+
+<!-- ==================== SEITE 6: TIERE ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="#264653" stroke="none" aria-hidden="true">
+      <ellipse cx="6.5" cy="10" rx="1.8" ry="2.4"/>
+      <ellipse cx="10.5" cy="6.8" rx="1.8" ry="2.5"/>
+      <ellipse cx="15" cy="6.8" rx="1.8" ry="2.5"/>
+      <ellipse cx="18.5" cy="10.5" rx="1.8" ry="2.4"/>
+      <path d="M12.5 11.5c2.8 0 5.6 1.8 5.6 4.2 0 1.9-1.7 3.1-3.4 3.1-1 0-1.2-.5-1.9-.5s-.9.5-1.9.5c-1.7 0-3.4-1.2-3.4-3.1 0-2.4 2.2-4.2 5-4.2z"/>
+    </svg>
+    <h2>Tiere</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="leitfrage">
+    <b>Welche Tiere leben in deinem Land, die es bei uns nicht gibt?</b> Lies in deinem Sachtext und such dir drei aus. Schreib den Namen auf die Linie und darunter, was du dazu erzählst.
+  </div>
+
+  <div class="eintraege">
+    <div class="eintrag">
+      <div class="thema"><span class="n">1</span><span class="tlabel">Mein Tier:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">2</span><span class="tlabel">Mein Tier:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">3</span><span class="tlabel">Mein Tier:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+  </div>
+
+  <p class="fuss">Tiere sind oft spannend. Such dir die aus, die du am tollsten findest.</p>
+</div>
+
+<!-- ==================== SEITE 7: ESSEN ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M7 2v6a2.5 2.5 0 0 1-5 0V2"/>
+      <path d="M4.5 8v14"/>
+      <path d="M18 2c-1.7 0-3 2.2-3 5s1.3 4 3 4"/>
+      <path d="M18 2v20"/>
+    </svg>
+    <h2>Essen</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="leitfrage">
+    <b>Was essen die Menschen in deinem Land gern?</b> Such dir in deinem Sachtext drei Gerichte aus. Schreib den Namen auf die Linie und darunter, was du dazu erzählst.
+  </div>
+
+  <div class="eintraege">
+    <div class="eintrag">
+      <div class="thema"><span class="n">1</span><span class="tlabel">Mein Gericht:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">2</span><span class="tlabel">Mein Gericht:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">3</span><span class="tlabel">Mein Gericht:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+  </div>
+
+  <p class="fuss">Welches Gericht würdest du gern einmal probieren?</p>
+</div>
+
+<!-- ==================== SEITE 8: WAHL-THEMA FUSSBALL ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="#264653" stroke="none" aria-hidden="true">
+      <polygon points="12,3 14.7,9.1 21.2,9.7 16.2,14.1 17.8,20.5 12,17.1 6.2,20.5 7.8,14.1 2.8,9.7 9.3,9.1"/>
+    </svg>
+    <h2>Wahl-Thema: Fußball</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="leitfrage">
+    <b>Wähle ein Wahl-Thema oder beide.</b> Hier: Fußball. Schreibe Stichpunkte und male das Trikot deiner Mannschaft.
+  </div>
+
+  <div class="eintraege" style="justify-content:flex-start;gap:6mm;">
+    <div class="eintrag">
+      <div class="thema"><span class="n">1</span><span class="tlabel">Gut zu wissen:</span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">2</span><span class="tlabel">Profi-Wissen:</span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag" style="flex:1;display:flex;flex-direction:column;min-height:0;">
+      <div class="thema"><span class="n">3</span><span class="tlabel">Trikot:</span></div>
+      <div class="stich-cap">Male das Trikot deiner Mannschaft:</div>
+      <div class="trikot-feld" style="flex:1;height:auto;min-height:62mm;"></div>
+    </div>
+  </div>
+
+  <p class="fuss">Schau dir das echte Trikot in der App an und male es nach.</p>
+</div>
+
+<!-- ==================== SEITE 9: WAHL-THEMA KINDERALLTAG ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="#264653" stroke="none" aria-hidden="true">
+      <polygon points="12,3 14.7,9.1 21.2,9.7 16.2,14.1 17.8,20.5 12,17.1 6.2,20.5 7.8,14.1 2.8,9.7 9.3,9.1"/>
+    </svg>
+    <h2>Wahl-Thema: Kinderalltag</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="leitfrage">
+    <b>Wähle ein Wahl-Thema oder beide.</b> Hier: Kinderalltag. Wie leben Kinder in deinem Land? Such dir zwei Themen aus.
+  </div>
+
+  <div class="eintraege">
+    <div class="eintrag">
+      <div class="thema"><span class="n">1</span><span class="tlabel">Mein Thema:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">2</span><span class="tlabel">Mein Thema:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+    <div class="eintrag">
+      <div class="thema"><span class="n">3</span><span class="tlabel">Mein Thema:</span><span class="linie"></span></div>
+      <div class="stich-cap">Das erzähle ich dazu:</div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+      <div class="zeile"></div>
+    </div>
+  </div>
+
+  <p class="fuss">Such dir das Thema aus, über das du am meisten erzählen kannst.</p>
+</div>
+
+<!-- ==================== SEITE 10: CHECKLISTE ==================== -->
+<div class="sheet">
+  <div class="seiten-titel">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#264653" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="5" y="3" width="14" height="18" rx="2"/>
+      <path d="M9 3h6v3H9z" fill="#264653" stroke="none"/>
+      <path d="M8.5 13l2.3 2.3L15 10.5"/>
+    </svg>
+    <h2>Bin ich fertig?</h2>
+  </div>
+  <div class="titel-strich"></div>
+
+  <div class="check-liste">
+    <div class="check-item"><span class="cbox"></span>Mein Steckbrief ist ganz ausgefüllt.</div>
+    <div class="check-item"><span class="cbox"></span>Ich habe Stichpunkte zu Sehenswürdigkeiten, Tieren und Essen.</div>
+    <div class="check-item"><span class="cbox"></span>Ich habe mindestens ein Wahl-Thema bearbeitet (Fußball oder Kinderalltag).</div>
+    <div class="check-item"><span class="cbox"></span>Ich habe alles über mein Land noch einmal durchgelesen.</div>
+    <div class="check-item"><span class="cbox"></span>Ich habe meinen Vortrag einmal leise geübt.</div>
+    <div class="check-item"><span class="cbox"></span>Meine Folien in der App sind fertig.</div>
+  </div>
+
+  <div class="partner">
+    <span class="pl">Ein Tipp von meinem Partnerkind:</span>
+    <span class="linie"></span>
+  </div>
+
+  <div class="app-box">
+    <div class="qr-ph" style="padding:1.5mm"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYAQMAAACEqAqfAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFLElEQVR4nO3cMZKjQAwFULkcEPoIHIWjwdE4CkcgdOCylm7pq4VnNphpggm+yuXFu/bbSNXdkkCE8aN4aMTxqbw/dBnq56fMz/KV432yb7xE7roeL/vtTbdb+/lOixatbisS09NzFxl0OQgFqvXHVTFxeslYLw9rg0uLFq0LrJrefrGX9C7Es1hac/ugy+8DlWIdMZp1c5QWLVrXW3tdYmtWL/WXtuJKTW994eIt47stt7Ro0brcKt/DbjgWWo+08S15/q4oLVq0rrUsYDWlZvhS98ES509L7Nj1/ncfTYsWrd9YEc7V2tDHa71/vmzXu/23zkSLFq2fWzm+W2Ujt49YU6F2tL3vf4MWLVo/t7D3VT3Van2hFT+UlrDyUD2LlgucRS02WrRo9Vt1s2vrpP81akNLEqdzrVakQUW50aJF6xqrKWGpZ/Ui6KDcW1av9/RlE9+lj7LTokWr2ypv6GKWrz+w3x28dxLEitkCEa/SbuKJTYsWrSstTbVaS2nFhIGmLS8WXcvnrbJxQYsWrb9l2UvQipmf2ErjeopF24aG7qkvKr5006JFq9eyfN59K21JfhDtXBt5rm1U4YgN6/ZYk1ytp0OLFq0ey9ZavIudcWs+z+q5LRiktdOt1Zy2L6UmWrRo9Vof43uYcz8UGTzPZ23EKkAtpd+e25sRtGjR6rRqKFoxIsjq9P5tbos4h6BFi1avZWGlX6fPTdHZvvFdbm/iA0RjngmkRYtWn9XKQ1EbOsf0QlXohb+6JZEWLVr9FgpDnttS+6I4gnqS62fvJI8qbJJnkGjRotVh4V6T7MYqK5KSPA8piA+5j8bRokXrKkvSKRKH0jkKtYP/03pvjcwV94EpLI0+DC1atH5txVobuWmQEeigRAtzPe99N8FgwY0WLVrdVqy1adH9SOxlQGJrm73b8PiQuKBFi9bfsqK8JJiuVczxtQ11WOoXm3iFSWIgkBYtWp0WCIv8cfnYR9fvTvhmbKIV7k6LFq1LLDRhWp1JPLdnzLlPcVtZbciMeAbCJjlo0aLVZWlMDAU6gMOQwmof0txQCWuK3vyaFi1avZbtd63aBFSttoRVttScXujDqNeZxoDe8fAuWrRoXWPZcdS4OY6gH3MKaVpBUlVo870vLVq0ui30YQyymGPIffBara2yJfKtmeIVotHXWlq0aPVagiXW3FBUcU+YnMq1ltsl7G4wtRMpLVq0ei2HdlRpd6S0eMwxSIuhoVWcSBtfWrRoXWCZIhgakjTnPufnbN2bOOE4KjiLjrH3pUWLVoclKNGqep4vqNXOcUMYCkNtE4zn+qSgRYtWtyUnyGI5P0pEMOGuMXuHU2gUiXZatGj9KUtzR7S6s/oEnz7b0r2e5/gUD+yKC1q0aPVaaU7Borj5GQjow0zq95RNegpLb1q0aF1j+Z843T687lsCuZ3rTGqHWkUfxm6+9hkkWrRodVhpTiFEW2ibWGOVFpO2DowHLVq0+q0c4dr6isQ+0DiFhjjGkLtNDwktWrS6rUdLz4+PattfzA2ZMqWGzHY7vXZatGh1W56s6dEFCxK41Wrrj9d4Mkna+0rrxtCiRavbQrlWYoYIrdH52e4+WQUrbl10N7RMLLZ4JgktWrQusrTOEC34/SJ+KJ2SJV/OotsN51patGhda4n3Mv29pncssYJp91hov8zx0aJFq8OyePhZVB6nXuaMG1Ait32trf86Ktonn2dRWrRo/caKiPS2fF6GtAPGVMFq/8PdR3xCVKVFi9afshg/in8l9QIeOaBNqgAAAABJRU5ErkJggg==" alt="QR-Code zur App, fuehrt zur Designer-App" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+    <div class="app-text">
+      <h3>Deine digitale Präsentation</h3>
+      <p>Scanne den Code oder tippe die Adresse ein, dann baust du deine Folien.</p>
+      <div class="link-zeile"><span class="ll">Adresse:</span><span class="linie"></span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

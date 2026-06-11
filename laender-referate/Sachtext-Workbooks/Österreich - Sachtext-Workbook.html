@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Österreich – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  /* Header-Bild */
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;margin-bottom:5mm;display:block;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Österreich</h1>
+    <span class="flagge">🇦🇹</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/oesterreich_header.jpg" alt="Österreich: Weites Alpenpanorama mit schneebedeckten Bergen und grünen Tälern">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Wien</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Deutsch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Euro</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 9 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 84.000 km², ein bisschen größer als Bayern</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">der Großglockner, mit 3.798 Metern der höchste Berg des Landes</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Deutschland, Tschechien, Slowakei, Ungarn, Slowenien, Italien, Schweiz und Liechtenstein</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Österreich gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/oesterreich_schoenbrunn.jpg" alt="Schloss Schönbrunn in Wien, gelbes Barockschloss mit großem Park">
+    <div class="txt">
+      <p><span class="name">Schloss Schönbrunn</span>Schloss Schönbrunn ist ein riesiges, gelbes Schloss in Wien. Früher wohnten hier die Kaiser von Österreich. Heute kommen jedes Jahr Millionen Besucher und gehen durch die Säle und den großen Park. Hinter dem Schloss gibt es sogar einen alten Tiergarten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">gelbes Schloss</span><span class="chip">in Wien</span><span class="chip">Kaiser</span><span class="chip">großer Park</span><span class="chip">Millionen Besucher</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Hallstatt</span>Hallstatt ist ein kleines Dorf an einem See, rundherum stehen hohe Berge. Die bunten Häuser spiegeln sich im Wasser. Der Ort sieht so schön aus, dass Menschen aus aller Welt extra dorthin reisen. Schon vor langer Zeit haben die Menschen hier nach Salz gegraben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleines Dorf</span><span class="chip">am See</span><span class="chip">Berge</span><span class="chip">Salz</span><span class="chip">viele Besucher</span></p>
+    </div>
+    <img src="bilder/oesterreich_hallstatt.jpg" alt="Hallstatt mit bunten Häusern am See und Bergen im Hintergrund">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/oesterreich_stephansdom.jpg" alt="Stephansdom in Wien, gotische Kirche mit buntem Ziegeldach und hohem Turm">
+    <div class="txt">
+      <p><span class="name">Stephansdom</span>Der Stephansdom steht mitten in Wien und ist eine sehr alte Kirche. Sein Turm ist über 136 Meter hoch. Das Dach ist mit bunten Ziegeln gedeckt und zeigt ein großes Muster. Viele Menschen klettern die Stufen im Turm hinauf und schauen über die Stadt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">alte Kirche</span><span class="chip">in Wien</span><span class="chip">hoher Turm</span><span class="chip">buntes Dach</span><span class="chip">über die Stadt</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Großglockner-Hochalpenstraße</span>Die Großglockner-Hochalpenstraße ist eine kurvige Bergstraße hoch hinauf in die Alpen. Sie führt an vielen Kurven vorbei immer weiter nach oben. Von ganz oben sieht man einen Gletscher und viele Berggipfel. Im Sommer fahren viele Autos und Motorräder diese Straße entlang.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Bergstraße</span><span class="chip">viele Kurven</span><span class="chip">in den Alpen</span><span class="chip">Gletscher</span><span class="chip">Berggipfel</span></p>
+    </div>
+    <img src="bilder/oesterreich_grossglockner.jpg" alt="Großglockner-Hochalpenstraße mit vielen Kurven und Gletscher im Hintergrund">
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Bergen und Wäldern Österreichs leben Tiere, die du bei uns nicht immer in der Natur siehst.</p>
+
+  <div class="eintrag">
+    <img src="bilder/oesterreich_gaemse.jpg" alt="Gämse springt auf Felsen in den Alpen">
+    <div class="txt">
+      <p><span class="name">Gämse</span>Die Gämse ist ein Tier, das ein bisschen wie eine Ziege aussieht. Sie lebt hoch oben in den Alpen. Mit ihren festen Hufen springt sie geschickt von Fels zu Fels. So findet sie auch an steilen Hängen genug Futter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">wie eine Ziege</span><span class="chip">in den Alpen</span><span class="chip">springt</span><span class="chip">von Fels zu Fels</span><span class="chip">steile Hänge</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Steinadler</span>Der Steinadler ist ein großer Greifvogel und lebt in den Bergen von Österreich. Er kreist hoch oben am Himmel und breitet dabei seine weiten Flügel aus. Mit seinen scharfen Augen sieht er kleine Tiere weit unten am Boden. Dann stürzt er blitzschnell hinab.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Greifvogel</span><span class="chip">in den Bergen</span><span class="chip">kreist am Himmel</span><span class="chip">scharfe Augen</span><span class="chip">weite Flügel</span></p>
+    </div>
+    <img src="bilder/oesterreich_steinadler.jpg" alt="Steinadler kreist mit ausgebreiteten Flügeln über den Alpen">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/oesterreich_lipizzaner.jpg" alt="Lipizzaner weiße Pferde in der Spanischen Hofreitschule Wien">
+    <div class="txt">
+      <p><span class="name">Lipizzaner</span>Lipizzaner sind weiße Pferde, die in Wien ausgebildet werden. Das geschieht in der Spanischen Hofreitschule. Dort lernen sie schwierige Kunststücke und tanzen fast wie im Zirkus. Als Fohlen sind sie noch dunkel und werden erst später ganz weiß.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">weiße Pferde</span><span class="chip">in Wien</span><span class="chip">Hofreitschule</span><span class="chip">Kunststücke</span><span class="chip">erst dunkel</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Wiener Schnitzel</span>Das Wiener Schnitzel ist das bekannteste Gericht aus Österreich. Es ist ein dünnes Stück Fleisch, das in Ei und Semmelbröseln gewendet wird. Dann wird es in heißem Fett goldgelb gebacken. Sein Name kommt von der Hauptstadt Wien.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">dünnes Fleisch</span><span class="chip">Semmelbrösel</span><span class="chip">gebacken</span><span class="chip">goldgelb</span><span class="chip">aus Wien</span></p>
+    </div>
+    <img src="bilder/oesterreich_schnitzel.jpg" alt="Wiener Schnitzel goldgelb gebacken auf einem Teller mit Zitrone">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Apfelstrudel</span>Der Apfelstrudel ist eine süße Nachspeise aus dünnem Teig. In den Teig kommen Äpfel, Zimt und Zucker, dann wird alles zu einer Rolle gewickelt. Am liebsten isst man ihn warm. Dazu gibt es oft Vanillesauce oder Schlagsahne.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">dünner Teig</span><span class="chip">Äpfel</span><span class="chip">Zimt</span><span class="chip">gerollt</span><span class="chip">warm</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Kaiserschmarrn</span>Der Kaiserschmarrn ist ein lockerer Pfannkuchen, der in kleine Stücke zerrissen wird. Obendrauf kommt viel Puderzucker. Dazu isst man gern Apfelmus oder Zwetschgenmus. Sein Name kommt vom Kaiser Franz Joseph, der ihn sehr gemocht haben soll.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Pfannkuchen</span><span class="chip">zerrissen</span><span class="chip">Puderzucker</span><span class="chip">Apfelmus</span><span class="chip">vom Kaiser</span></p>
+    </div>
+    <img src="bilder/oesterreich_kaiserschmarrn.jpg" alt="Kaiserschmarrn mit Puderzucker und Apfelmus auf einem Teller">
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Nationalmannschaft von Österreich heißt nach den Farben der Flagge Rot-Weiß-Rot und spielt im rot-weißen Trikot. Bei der WM 2026 ist Österreich wieder dabei, zum achten Mal überhaupt und zum ersten Mal seit 1998. Den größten Erfolg gab es 1954, da wurde das Team Dritter bei der Weltmeisterschaft. Heute zählt Österreich wieder zu den guten Mannschaften in Europa.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Rot-Weiß-Rot</span><span class="chip">rot-weißes Trikot</span><span class="chip">8. WM</span><span class="chip">seit 1998 wieder dabei</span><span class="chip">1954 Dritter</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>David Alaba ist Österreichs bekanntester Fußballer. Er spielt in Spanien bei Real Madrid und ist sehr vielseitig. Alaba kann hinten verteidigen und auch in der Mitte spielen. Sein Vater kommt aus Nigeria, seine Mutter aus den Philippinen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">David Alaba</span><span class="chip">Real Madrid</span><span class="chip">sehr vielseitig</span><span class="chip">multikulturell</span><span class="chip">Weltklasse</span></p>
+    </div>
+    <img src="bilder/oesterreich_fussball.jpg" alt="Rot-weißes österreichisches Fußballtrikot mit Fußball">
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Österreich</span>Die Schule in Österreich ist ganz ähnlich wie bei uns in Bayern. Die Kinder gehen von Montag bis Freitag in die Schule und haben am Wochenende frei. In der Pause essen viele Kinder eine Jause, so heißt dort das Pausenbrot. Auch in Österreich spricht man Deutsch, aber manche Wörter klingen ein bisschen anders.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">Jause</span><span class="chip">Pausenbrot</span><span class="chip">Deutsch</span><span class="chip">andere Wörter</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Berge, Wandern und Ski</span>Österreich hat viele hohe Berge, darum sind die Kinder oft draußen in der Natur. Im Sommer wandern viele Familien zusammen auf einen Gipfel oder zu einer Almhütte. Im Winter liegt viel Schnee, dann fahren die Kinder gern Ski oder rodeln den Hang hinunter. Manche Schulen machen sogar eine eigene Skiwoche.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">hohe Berge</span><span class="chip">wandern</span><span class="chip">Almhütte</span><span class="chip">Ski fahren</span><span class="chip">Skiwoche</span></p>
+      </div>
+    </div>
+    <img src="bilder/oesterreich_kinderalltag.jpg" alt="Kinder wandern mit Rucksäcken in den Alpen, Sommertag">
+  </div>
+
+  <div class="fuss">Österreich – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

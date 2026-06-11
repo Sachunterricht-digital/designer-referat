@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uruguay – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Uruguay</h1>
+    <span class="flagge">🇺🇾</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/uruguay_header.jpg" alt="Uruguay: die Hauptstadt Montevideo am Río de la Plata mit Strandpromenade">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Montevideo</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Südamerika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Spanisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Uruguayischer Peso</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 3,4 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 176.000 km² (ein eher kleines Land in Südamerika)</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Cerro Catedral, rund 514 m (der höchste Punkt des Landes)</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Argentinien und Brasilien</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Uruguay gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/uruguay_montevideo.jpg" alt="Montevideo">
+    <div class="txt">
+      <p><span class="name">Montevideo</span>Montevideo ist die Hauptstadt von Uruguay. Sie liegt direkt am Wasser am Río de la Plata. In der Altstadt stehen viele alte Häuser. Eine lange Strandpromenade führt am Meer entlang. Hier wohnen die meisten Menschen des Landes.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montevideo</span><span class="chip">Hauptstadt</span><span class="chip">am Wasser</span><span class="chip">Altstadt</span><span class="chip">Strandpromenade</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Punta del Este</span>Punta del Este ist ein bekannter Badeort am Meer. Im Sommer kommen viele Urlauber zum Baden. Am Strand steht eine riesige Hand aus Beton. Diese Hand ragt aus dem Sand heraus. Viele Menschen machen dort ein Foto.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Punta del Este</span><span class="chip">Badeort</span><span class="chip">Strand</span><span class="chip">riesige Hand</span><span class="chip">Foto</span></p>
+    </div>
+    <img src="bilder/uruguay_punta_del_este.jpg" alt="Punta del Este">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/uruguay_colonia.jpg" alt="Colonia del Sacramento">
+    <div class="txt">
+      <p><span class="name">Colonia del Sacramento</span>Colonia del Sacramento ist eine sehr alte Stadt. Sie hat enge Gassen mit altem Pflaster. Die bunten Häuser sehen aus wie früher. Die Altstadt gehört zum Welterbe. Von hier blickt man über den breiten Fluss.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Colonia del Sacramento</span><span class="chip">enge Gassen</span><span class="chip">bunten Häuser</span><span class="chip">Welterbe</span><span class="chip">Fluss</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Cabo Polonio</span>Cabo Polonio ist ein kleines Dorf hinter den Dünen. Es gibt dort keine Straße mit Autos. Über große Sanddünen kommt man zum Meer. Auf den Felsen leben viele Seelöwen. Nachts leuchtet ein alter Leuchtturm.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Cabo Polonio</span><span class="chip">hinter den Dünen</span><span class="chip">Sanddünen</span><span class="chip">Seelöwen</span><span class="chip">Leuchtturm</span></p>
+    </div>
+    <img src="bilder/uruguay_cabo_polonio.jpg" alt="Cabo Polonio">
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Uruguay und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/uruguay_seeloewe.jpg" alt="Der Seelöwe">
+    <div class="txt">
+      <p><span class="name">Der Seelöwe</span>An der Küste von Uruguay leben viele Seelöwen. Sie liegen gern auf warmen Felsen in der Sonne. Im Wasser schwimmen sie schnell und fangen Fische. Seelöwen haben ein dickes Fell. Ihr lautes Brüllen hört man von weitem.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Seelöwen</span><span class="chip">Felsen</span><span class="chip">schwimmen</span><span class="chip">Fische</span><span class="chip">Fell</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Nandu</span>Der Nandu ist ein großer Laufvogel. Er kann nicht fliegen, aber sehr schnell rennen. Mit seinen langen Beinen läuft er über die Wiesen. Der Nandu frisst Gräser und kleine Tiere. Er lebt in der weiten Steppe.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nandu</span><span class="chip">Laufvogel</span><span class="chip">schnell rennen</span><span class="chip">langen Beinen</span><span class="chip">Steppe</span></p>
+    </div>
+    <img src="bilder/uruguay_nandu.jpg" alt="Der Nandu">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/uruguay_wasserschwein.jpg" alt="Das Wasserschwein">
+    <div class="txt">
+      <p><span class="name">Das Wasserschwein</span>Das Wasserschwein heißt auch Capybara. Es ist das größte Nagetier der Welt. Am liebsten lebt es nahe am Wasser. Mit seinen Füßen kann es gut schwimmen. Es frisst Gräser und ruht in Gruppen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasserschwein</span><span class="chip">Capybara</span><span class="chip">größte Nagetier</span><span class="chip">am Wasser</span><span class="chip">schwimmen</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Asado</span>Asado ist gegrilltes Fleisch über dem Feuer. Die Familie trifft sich oft am Wochenende. Das Fleisch wird langsam über der Glut gegrillt. Dazu gibt es Brot und Salat. Asado ist sehr beliebt in Uruguay.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Asado</span><span class="chip">gegrilltes Fleisch</span><span class="chip">über dem Feuer</span><span class="chip">Glut</span><span class="chip">Brot</span></p>
+    </div>
+    <img src="bilder/uruguay_essen_asado.jpg" alt="Asado">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Chivito</span>Chivito ist ein dickes belegtes Brot. Darin steckt gegrilltes Fleisch mit Käse. Dazu kommen Salat, Tomate und ein Ei. Oft isst man Pommes dazu. Chivito macht richtig satt.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Chivito</span><span class="chip">belegtes Brot</span><span class="chip">gegrilltes Fleisch</span><span class="chip">Ei</span><span class="chip">Pommes</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Dulce de Leche</span>Dulce de Leche ist eine süße Creme. Sie wird aus Milch und Zucker gekocht. Lange kocht man sie, bis sie braun wird. Man streicht sie auf Brot oder in Kuchen. Kinder mögen die süße Creme sehr.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Dulce de Leche</span><span class="chip">süße Creme</span><span class="chip">Milch und Zucker</span><span class="chip">braun</span><span class="chip">Brot</span></p>
+    </div>
+    <img src="bilder/uruguay_essen_dulce_de_leche.jpg" alt="Dulce de Leche">
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Nationalmannschaft von Uruguay heißt La Celeste. Das bedeutet die Himmelblaue. Uruguay hat sich für die WM 2026 qualifiziert. Der bekannteste Spieler ist Federico Valverde. Er spielt bei Real Madrid in Spanien.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">La Celeste</span><span class="chip">Himmelblaue</span><span class="chip">WM 2026</span><span class="chip">Federico Valverde</span><span class="chip">Real Madrid</span></p>
+    </div>
+    <img src="bilder/uruguay_fussball.jpg" alt="Fußball Uruguay">
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">In der Schule</span>Die Kinder in Uruguay tragen in der Schule einen weißen Kittel. Dazu gehört eine blaue Schleife. Sie lernen Lesen, Schreiben und Rechnen auf Spanisch. Die Schule ist für alle Kinder da. Nach der Schule helfen viele zu Hause.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">weißen Kittel</span><span class="chip">blaue Schleife</span><span class="chip">Spanisch</span><span class="chip">Schule</span><span class="chip">helfen viele zu Hause</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Karneval und Spiel</span>In Uruguay wird ein langer Karneval gefeiert. Dabei spielen Trommeln den lauten Candombe. Die Kinder ziehen mit bunten Kostümen durch die Straßen. Fußball spielen sie überall sehr gern. Im Sommer gehen viele an den Strand.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Karneval</span><span class="chip">Trommeln</span><span class="chip">Candombe</span><span class="chip">Fußball</span><span class="chip">Strand</span></p>
+      </div>
+    </div>
+    <img src="bilder/uruguay_kinderalltag.jpg" alt="Kinderalltag Uruguay">
+  </div>
+
+  <div class="fuss">Uruguay – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

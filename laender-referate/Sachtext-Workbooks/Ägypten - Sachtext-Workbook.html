@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ägypten – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Ägypten</h1>
+    <span class="flagge">🇪🇬</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/aegypten_header.jpg" alt="Ägypten: Pyramiden, Sphinx und der Nil">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Kairo</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Afrika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Arabisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Ägyptisches Pfund</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 115 bis 120 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 1 Million km², fast so groß wie Deutschland, Österreich und die Schweiz zusammen</td></tr>
+      <tr><td class="k">Großer Fluss</td><td class="v">der Nil, einer der längsten Flüsse der Welt</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Libyen, Sudan und Israel; am Roten Meer und am Mittelmeer</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Ägypten gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/aegypten_pyramiden.jpg" alt="Pyramiden von Gizeh">
+    <div class="txt">
+      <p><span class="name">Pyramiden von Gizeh</span>Die Pyramiden von Gizeh sind die bekanntesten Bauwerke der Welt und gelten als ein echtes Weltwunder. Vor fast 5000 Jahren wurden sie ganz aus Stein als Grabmäler für die Pharaonen errichtet. Bis heute stehen die riesigen Bauten am Rand der Wüste. Die größte heißt Cheops-Pyramide und ist etwa 140 Meter hoch, also höher als jedes Haus bei uns. Für den Bau wurden über zwei Millionen schwere Steinblöcke aufeinandergestapelt. Niemand weiß bis heute ganz genau, wie die Menschen das ohne Maschinen geschafft haben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Grabmal</span><span class="chip">Pharaonen</span><span class="chip">Wüste</span><span class="chip">Weltwunder</span><span class="chip">aus Stein</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Sphinx</span>Direkt neben den Pyramiden liegt die Sphinx, eine riesige Figur aus Stein. Sie hat den Körper eines Löwen und den Kopf eines Menschen. Wie ein Wächter bewacht sie die Gräber, und das schon seit sehr langer Zeit. Die Sphinx ist etwa 20 Meter hoch und über 70 Meter lang, damit ist sie länger als ein Schwimmbecken. Sie wurde aus einem einzigen großen Felsen herausgehauen. Der Wüstensand hat sie früher fast ganz zugedeckt, erst später gruben die Menschen sie wieder frei.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Löwenkörper</span><span class="chip">Menschenkopf</span><span class="chip">aus Stein</span><span class="chip">Wächter</span><span class="chip">sehr alt</span></p>
+    </div>
+    <img src="bilder/aegypten_sphinx.jpg" alt="Sphinx">
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Sehenswürdigkeiten (Fortsetzung) ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Hier kommen die letzten beiden berühmten Orte.</p>
+
+  <div class="eintrag">
+    <img src="bilder/aegypten_nil.jpg" alt="Nil mit Segelboot">
+    <div class="txt">
+      <p><span class="name">Nil-Kreuzfahrt</span>Der Nil ist ein langer Fluss und bringt Wasser mitten durch das sonst trockene Land. Bei einer Nil-Kreuzfahrt fährt man mit dem Boot am Ufer entlang und sieht dabei alte Tempel und kleine Dörfer. Schon vor langer Zeit segelten die Menschen mit hölzernen Booten über den Fluss. Links und rechts vom Wasser ist alles grün, denn nur dort können die Bauern ihre Felder bewässern. Weiter weg vom Ufer beginnt sofort die trockene Wüste.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">langer Fluss</span><span class="chip">mit dem Boot</span><span class="chip">alte Tempel</span><span class="chip">am Ufer</span><span class="chip">Wasser</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Tal der Könige</span>Das Tal der Könige liegt bei der Stadt Luxor. Dort wurden viele Pharaonen in versteckten Gräbern begraben. Die Wände sind bunt bemalt, und früher lagen in den Kammern große Schätze aus Gold. Das berühmteste Grab gehört dem jungen König Tutanchamun. In seiner goldenen Maske kann man ihn bis heute bestaunen. Die Gräber wurden tief in den Felsen gegraben, damit Grabräuber die Schätze nicht so leicht finden konnten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Pharaonen-Gräber</span><span class="chip">bei Luxor</span><span class="chip">bunt bemalt</span><span class="chip">versteckt</span><span class="chip">Schätze</span></p>
+    </div>
+    <img src="bilder/aegypten_taldkoenige.jpg" alt="Tal der Könige">
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Ägypten leben Tiere, die du bei uns nicht in der Natur findest.</p>
+
+  <div class="eintrag">
+    <img src="bilder/aegypten_nilkrokodil.jpg" alt="Nilkrokodil">
+    <div class="txt">
+      <p><span class="name">Nilkrokodil</span>Das Nilkrokodil lebt im Nil und ist ein riesiges Reptil. Es kann über fünf Meter lang werden und hat scharfe Zähne. Darum ist es ziemlich gefährlich. Oft liegt es ganz ruhig am Ufer und wartet auf Beute. Ein großes Krokodil kann mehr wiegen als 500 Kilogramm. Das Weibchen legt seine Eier in ein Nest am Ufer und bewacht sie. Die alten Ägypter hatten großen Respekt vor dem Tier und verehrten sogar einen Krokodil-Gott.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">lebt im Nil</span><span class="chip">über 5 Meter</span><span class="chip">Reptil</span><span class="chip">scharfe Zähne</span><span class="chip">gefährlich</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Dromedar</span>Das Dromedar ist ein Kamel mit nur einem Höcker und ein echtes Wüstentier. Es kommt lange ohne Wasser aus, trägt schwere Lasten durch den heißen Sand und ist oft bei den Pyramiden zu sehen. In seinem Höcker speichert es Fett, davon kann es tagelang zehren. Die langen Wimpern und die verschließbaren Nasenlöcher schützen es vor dem Sand. Wenn es endlich trinkt, schafft es sehr viel Wasser auf einmal.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">ein Höcker</span><span class="chip">Wüstentier</span><span class="chip">Kamel</span><span class="chip">trägt Lasten</span><span class="chip">bei den Pyramiden</span></p>
+    </div>
+    <img src="bilder/aegypten_dromedar.jpg" alt="Dromedar">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/aegypten_ibis.jpg" alt="Ibis">
+    <div class="txt">
+      <p><span class="name">Ibis</span>Der Ibis ist ein weißer Wasservogel mit einem langen, nach unten gebogenen Schnabel. Die alten Ägypter hielten ihn für heilig und malten ihn oft an die Wände ihrer Tempel. Mit seinem krummen Schnabel stochert er im Schlamm nach Würmern und kleinen Tieren. Für die Ägypter stand der Vogel für den Gott Thot, den Gott der Schrift. Heute ist diese Art in Ägypten selten geworden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasservogel</span><span class="chip">langer Schnabel</span><span class="chip">war heilig</span><span class="chip">Gott Thot</span><span class="chip">stochert im Schlamm</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Kushari</span>Kushari ist das Lieblingsgericht vieler Ägypter. Es besteht aus Nudeln und Reis mit Linsen und einer würzigen Tomatensauce. Obendrauf kommen knusprige Röstzwiebeln. Das Gericht ist günstig und macht satt. Oft kommen auch Kichererbsen dazu. In den Städten gibt es viele Läden, die nur Kushari verkaufen. Es ist ein Essen ganz ohne Fleisch, deshalb können es alle gut essen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nudeln und Reis</span><span class="chip">Linsen</span><span class="chip">Tomatensauce</span><span class="chip">Röstzwiebeln</span><span class="chip">macht satt</span></p>
+    </div>
+    <img src="bilder/aegypten_essen_kushari.jpg" alt="Kushari">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Falafel</span>Falafel sind kleine Bällchen aus Bohnen, die in heißem Öl frittiert werden. Man isst sie gern zum Frühstück, eingewickelt im Fladenbrot und mit frischem Gemüse. In Ägypten heißen sie auch Taameya. Anders als in vielen Ländern macht man sie hier aus dicken Bohnen statt aus Kichererbsen. Frische Kräuter geben dem Teig innen eine grüne Farbe. Außen sind die Bällchen knusprig braun und innen ganz weich.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleine Bällchen</span><span class="chip">aus Bohnen</span><span class="chip">frittiert</span><span class="chip">im Fladenbrot</span><span class="chip">zum Frühstück</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Umm Ali</span>Umm Ali ist ein süßes Dessert aus Brot und Milch mit Nüssen und Rosinen. Man isst es am liebsten warm, besonders an Festtagen. Der Name bedeutet übersetzt „Mutter von Ali". Das Brot saugt die warme Milch auf und wird dabei ganz weich. Es schmeckt ein bisschen wie ein warmer Pudding und ist sehr beliebt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süßes Dessert</span><span class="chip">Brot und Milch</span><span class="chip">Nüsse und Rosinen</span><span class="chip">an Festtagen</span><span class="chip">wie Pudding</span></p>
+    </div>
+    <img src="bilder/aegypten_essen_ummali.jpg" alt="Umm Ali">
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Ägypten heißt die Pharaonen und spielt im rot-weißen Trikot. Das Land war schon viermal bei der WM dabei (1934, 1990, 2018 und 2026) und gehört zu den stärksten Teams in Afrika, den Afrika-Cup hat es sogar sieben Mal gewonnen. Damit hat Ägypten diesen großen Pokal öfter geholt als jedes andere Land in Afrika. Ägypten war 1934 außerdem die erste afrikanische Mannschaft überhaupt bei einer WM.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">rot-weißes Trikot</span><span class="chip">4x bei der WM</span><span class="chip">stark in Afrika</span><span class="chip">Mohamed Salah</span><span class="chip">der König</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Der bekannteste Spieler ist Mohamed Salah. Er spielt in England beim FC Liverpool und trifft sehr viele Tore. In Ägypten ist er ein Nationalheld, alle nennen ihn den König von Ägypten. Ägypten hat viermal den Afrika-Cup gewonnen, das ist der wichtigste Pokal für Nationalteams in Afrika.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Mohamed Salah</span><span class="chip">Liverpool-Star</span><span class="chip">4x Afrika-Cup</span><span class="chip">König von Ägypten</span><span class="chip">Pharaonen</span></p>
+    </div>
+    <img src="bilder/aegypten_fussball.jpg" alt="Rot-weißes Trikot und Fußball">
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+<!-- ===================== SEITE 7: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Ägypten</span>In Ägypten gehen die Kinder von Sonntag bis Donnerstag zur Schule, das Wochenende ist am Freitag und Samstag, also genau andersherum als bei uns. Der Unterricht beginnt früh am Morgen, oft müssen die Kinder zuerst die Flagge grüßen und die Hymne singen. Weil es so heiß werden kann, ist die Schule oft schon am frühen Nachmittag zu Ende. In der Schule lernen die Kinder auch das arabische Schreiben, das von rechts nach links geht. Viele tragen eine einheitliche Schulkleidung.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Sonntag bis Donnerstag</span><span class="chip">Wochenende Fr und Sa</span><span class="chip">Flagge grüßen</span><span class="chip">Hymne singen</span><span class="chip">früh am Morgen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Markt und Tee</span>Viele Familien kaufen frisches Obst und Gemüse auf dem Markt ein, den man Souk nennt. Das beliebteste Getränk ist Tee, auf Arabisch Schai. Wenn Besuch kommt, wird er fast immer mit einem Glas Tee begrüßt. Auf dem Souk wird oft laut um den Preis gehandelt, bis sich beide einig sind. Der Tee wird heiß und sehr süß in kleinen Gläsern getrunken. Gastfreundschaft ist den Menschen in Ägypten sehr wichtig.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Souk</span><span class="chip">frisches Obst</span><span class="chip">Tee</span><span class="chip">Schai</span><span class="chip">Besuch begrüßen</span></p>
+      </div>
+    </div>
+    <img src="bilder/aegypten_kinderalltag.jpg" alt="Kinderalltag in Ägypten: Schule und Markt">
+  </div>
+
+  <div class="fuss">Ägypten – Sachtext-Workbook · WM 2026 · Seite 7</div>
+</div>
+
+</body>
+</html>

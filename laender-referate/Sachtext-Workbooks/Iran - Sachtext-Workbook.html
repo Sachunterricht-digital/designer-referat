@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iran – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--petrol:#2a9d8f;--petrol-dark:#1f7568;--gold:#e2a13a;--green-line:#6a9a2f;--sand:#faf6ee;--ink:#264653;--ink-soft:#4a6170;--line:#e4dcc9;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:#d9d9d9;font-size:12pt;line-height:1.5;}
+  .page{width:210mm;min-height:297mm;background:#fff;margin:10mm auto;padding:14mm 15mm 16mm;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.18);}
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+  .ab-header{display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;}
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+  .fw{margin-top:5px;font-size:10pt;line-height:1.9;border-top:1px dotted var(--line);padding-top:5px;}
+  .fw .fw-label{display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;}
+  .fw .chip{display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);color:#3f5e1c;font-weight:700;border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;}
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{body{background:#fff;}.page{margin:0;box-shadow:none;page-break-after:always;}.page:last-child{page-break-after:auto;}@page{size:A4;margin:0;}}
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- SEITE 1 -->
+<div class="page">
+  <div class="ab-header"><div class="cell"><span class="lbl">Name</span>&nbsp;</div><div class="cell"><span class="lbl">Datum</span>&nbsp;</div><div class="cell">HSU</div></div>
+  <div class="titel"><h1>Iran</h1><span class="flagge">🇮🇷</span><span class="sub">Mein Land bei der WM 2026</span></div>
+  <img class="headerbild" src="bilder/iran_header.jpg" alt="Iran: Moschee mit blauer Kuppel, Berge und Basar">
+  <div class="hinweis"><b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.</div>
+  <div class="kat"><h2><span class="icon">📋</span> Steckbrief</h2><div class="strich"></div></div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+  <div class="steckbrief"><table>
+    <tr><td class="k">Hauptstadt</td><td class="v">Teheran</td></tr>
+    <tr><td class="k">Kontinent</td><td class="v">Asien</td></tr>
+    <tr><td class="k">Sprache</td><td class="v">Persisch (Farsi)</td></tr>
+    <tr><td class="k">Währung</td><td class="v">Iranischer Rial</td></tr>
+    <tr><td class="k">Einwohner</td><td class="v">rund 90 Millionen Menschen</td></tr>
+    <tr><td class="k">Fläche</td><td class="v">etwa 1,6 Millionen km², mehr als vier Mal so groß wie Deutschland</td></tr>
+    <tr><td class="k">Großer Berg</td><td class="v">der Damavand, 5.610 Meter hoch, der höchste Berg des Landes und ein Vulkan</td></tr>
+    <tr><td class="k">Nachbarländer</td><td class="v">unter anderem Irak, Türkei, Afghanistan, Pakistan und Turkmenistan</td></tr>
+  </table></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- SEITE 2 -->
+<div class="page">
+  <div class="kat"><h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2><div class="strich"></div></div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Im Iran gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+  <div class="eintrag"><img src="bilder/iran_persepolis.jpg" alt="Steinruinen von Persepolis"><div class="txt"><p><span class="name">Persepolis</span>Persepolis war früher eine prächtige Königsstadt im Süden des Landes. Sie wurde vor mehr als 2500 Jahren gebaut und ist heute sehr alt. Von den Palästen sind nur noch große Ruinen aus Stein übrig. Trotzdem kann man hohe Säulen bewundern. Persepolis gehört zum Weltkulturerbe.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Königsstadt</span><span class="chip">sehr alt</span><span class="chip">Ruinen aus Stein</span><span class="chip">hohe Säulen</span><span class="chip">Weltkulturerbe</span></p></div></div>
+  <div class="eintrag rechts"><div class="txt"><p><span class="name">Imam-Platz in Isfahan</span>In der Stadt Isfahan liegt ein riesiger großer Platz. Er ist einer der größten Plätze der ganzen Welt. An seinem Rand steht eine Moschee mit einer großen blauen Kuppel. Gleich daneben beginnt ein langer Basar zum Einkaufen. Viele Menschen kommen hierher.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Platz</span><span class="chip">Stadt Isfahan</span><span class="chip">eine Moschee</span><span class="chip">blauen Kuppel</span><span class="chip">langer Basar</span></p></div><img src="bilder/iran_imam-platz.jpg" alt="Großer Platz in Isfahan mit Moschee"></div>
+  <div class="eintrag"><img src="bilder/iran_basar.jpg" alt="Basar mit Teppichen und Gewürzen"><div class="txt"><p><span class="name">Großer Basar</span>Ein Basar ist ein großer überdachter Markt mit vielen Gängen. Hier reihen sich viele Stände dicht nebeneinander. Man kann bunte Teppiche und duftende Gewürze kaufen. Auch Schmuck und Süßigkeiten gibt es zum Einkaufen. Im Basar ist es immer voll und lebendig.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">überdachter Markt</span><span class="chip">viele Stände</span><span class="chip">bunte Teppiche</span><span class="chip">Gewürze</span><span class="chip">zum Einkaufen</span></p></div></div>
+  <div class="eintrag rechts"><div class="txt"><p><span class="name">Elburs-Gebirge</span>Das Elburs-Gebirge liegt im Norden des Landes. Es hat sehr hohe Berge. Hier steht auch der höchste Berg des Landes, der Damavand. Seine Spitze ist oft mit Schnee bedeckt, sogar im Sommer. Viele Menschen gehen hier gern wandern.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">hohe Berge</span><span class="chip">im Norden</span><span class="chip">höchste Berg</span><span class="chip">mit Schnee bedeckt</span><span class="chip">wandern</span></p></div><img src="bilder/iran_elburs.jpg" alt="Schneebedeckter Berg im Elburs-Gebirge"></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- SEITE 3 -->
+<div class="page">
+  <div class="kat"><h2><span class="icon">🐾</span> Tiere</h2><div class="strich"></div></div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben im Iran und sind ganz besonders.</p>
+  <div class="eintrag"><img src="bilder/iran_leopard.jpg" alt="Persischer Leopard auf einem Felsen"><div class="txt"><p><span class="name">Persischer Leopard</span>Der Persische Leopard ist eine große Raubkatze. Sein Fell ist hellbraun und überall mit dunklen Flecken bedeckt. Er lebt in den Bergen und schleicht sich gut an seine Beute heran. Als guter Jäger fängt er zum Beispiel Wildziegen. Leider ist er selten geworden.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">große Raubkatze</span><span class="chip">dunklen Flecken</span><span class="chip">lebt in den Bergen</span><span class="chip">guter Jäger</span><span class="chip">selten geworden</span></p></div></div>
+  <div class="eintrag rechts"><div class="txt"><p><span class="name">Asiatischer Gepard</span>Der Asiatische Gepard ist eine schlanke Katze mit langen Beinen. Er kann sehr schnell rennen und ist eines der schnellsten Tiere überhaupt. Sein Fell hat viele kleine Flecken. Diesen Gepard gibt es heute nur noch im Iran. Er ist leider stark bedroht.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">schlanke Katze</span><span class="chip">sehr schnell</span><span class="chip">kleine Flecken</span><span class="chip">nur noch im Iran</span><span class="chip">stark bedroht</span></p></div><img src="bilder/iran_gepard.jpg" alt="Asiatischer Gepard in trockener Landschaft"></div>
+  <div class="eintrag"><img src="bilder/iran_wildesel.jpg" alt="Sandfarbener Wildesel in der Steppe"><div class="txt"><p><span class="name">Wildesel</span>Der Wildesel lebt frei in der trockenen Steppe des Landes. Sein Fell ist sandfarben, so passt er gut in die Landschaft. Bei Gefahr kann er schnell laufen. Wildesel leben gern zusammen in Herden. So passen sie gemeinsam besser auf.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">trockenen Steppe</span><span class="chip">sandfarben</span><span class="chip">schnell laufen</span><span class="chip">in Herden</span><span class="chip">gemeinsam</span></p></div></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- SEITE 4 -->
+<div class="page">
+  <div class="kat"><h2><span class="icon">🍽️</span> Essen</h2><div class="strich"></div></div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+  <div class="essen-grid"><div class="block"><p><span class="name">Tschelo Kebab</span>Tschelo Kebab ist das Nationalgericht des Landes. Dabei wird mariniertes Fleisch auf einem Grill zubereitet. Das gegrillte Fleisch kommt frisch auf den Teller. Dazu gibt es lockeren Reis. Oft wird der Reis mit gelbem Safran gewürzt.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nationalgericht</span><span class="chip">auf einem Grill</span><span class="chip">gegrillte Fleisch</span><span class="chip">lockeren Reis</span><span class="chip">mit gelbem Safran</span></p></div><img src="bilder/iran_essen_kebab.jpg" alt="Teller mit Kebab und Reis"></div>
+  <div class="block" style="margin-top:4mm;"><p><span class="name">Ghormeh Sabzi</span>Ghormeh Sabzi ist ein grüner Eintopf und ein sehr beliebtes Gericht. Er wird aus vielen frischen Kräutern gekocht. Im Topf sind außerdem weiche Bohnen und kleine Fleischstücke. Dazu wird immer lockerer Reis gegessen. Der Eintopf schmeckt würzig.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">grüner Eintopf</span><span class="chip">beliebtes Gericht</span><span class="chip">frischen Kräutern</span><span class="chip">Bohnen</span><span class="chip">lockerer Reis</span></p></div>
+  <div class="essen-grid" style="margin-top:4mm;"><div class="block"><p><span class="name">Safran-Reis</span>Reis ist die wichtigste Beilage in der persischen Küche. Der lockere Reis wird vorsichtig gedämpft. Oft färbt man ihn mit Safran goldgelb. Am Boden des Topfes bildet sich eine knusprige Kruste. Diese Kruste mögen viele besonders gern.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">wichtigste Beilage</span><span class="chip">lockere Reis</span><span class="chip">mit Safran</span><span class="chip">goldgelb</span><span class="chip">knusprige Kruste</span></p></div><img src="bilder/iran_essen_reis.jpg" alt="Schüssel mit goldgelbem Safran-Reis"></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- SEITE 5 -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+  <div class="kat"><h2><span class="icon">⚽</span> Fußball</h2><div class="strich"></div></div>
+  <div class="fussball-grid"><div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft des Iran heißt Team Melli. Das bedeutet einfach die Nationalmannschaft. Die Spieler tragen oft rote Trikots. Das Team gehört zu den besten Mannschaften in Asien. Auch bei der WM 2026 ist der Iran wieder dabei.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Team Melli</span><span class="chip">Nationalmannschaft</span><span class="chip">rote Trikots</span><span class="chip">besten Mannschaften in Asien</span><span class="chip">bei der WM 2026</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Ein bekannter Spieler ist Mehdi Taremi. Er ist ein guter Stürmer und spielt in Italien bei Inter Mailand. Im Iran kennen ihn fast alle Fußballfans. Ali Daei war früher die große Legende des Irans, er hielt lange Zeit den Rekord für die meisten Länderspieltore weltweit.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Mehdi Taremi</span><span class="chip">Inter Mailand</span><span class="chip">Ali Daei Legende</span><span class="chip">Team Melli</span><span class="chip">asiatische Qualifikation</span></p>
+    </div><img src="bilder/iran_fussball.jpg" alt="Rote Trikots der iranischen Nationalmannschaft"></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- SEITE 6 -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+  <div class="kat"><h2><span class="icon">🎒</span> Kinderalltag</h2><div class="strich"></div></div>
+  <div class="alltag-grid"><div>
+    <div class="block"><p><span class="name">Schule im Iran</span>Auch im Iran gehen die Kinder jeden Tag in die Schule. Dort lernen sie lesen und rechnen, genau wie du. Sie schreiben in der persischen Schrift, die von rechts nach links geht. Sie sitzen im Klassenraum und hören der Lehrerin zu. Am Nachmittag machen sie Hausaufgaben.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">in die Schule</span><span class="chip">lesen und rechnen</span><span class="chip">persischen Schrift</span><span class="chip">im Klassenraum</span><span class="chip">Hausaufgaben</span></p></div>
+    <div class="block"><p><span class="name">Nouruz, das Neujahrsfest</span>Nouruz ist das große Neujahrsfest und bedeutet neuer Tag. Es wird im Frühling gefeiert, wenn die Natur erwacht. Nouruz ist ein schönes Familienfest, bei dem alle zusammenkommen. In der Mitte steht ein bunter Tisch mit besonderen Dingen. Die Kinder freuen sich über Geschenke.</p><p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Neujahrsfest</span><span class="chip">im Frühling</span><span class="chip">Familienfest</span><span class="chip">ein bunter Tisch</span><span class="chip">Geschenke</span></p></div>
+  </div><img src="bilder/iran_kinderalltag.jpg" alt="Schulkinder im Klassenraum im Iran"></div>
+  <div class="fuss">Iran – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

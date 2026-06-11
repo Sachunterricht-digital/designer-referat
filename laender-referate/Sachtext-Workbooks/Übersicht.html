@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachtext-Hefte · Länderreferate WM 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#faf6ee; --ink:#243b53; --petrol:#264653;
+    --gruen:#1f8a70; --gruen-soft:#eaf6f1; --gruen-line:#c4e6da;
+    --gold:#cf8a2b; --muted:#6b7787;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Nunito',Arial,sans-serif; color:var(--ink);
+    background:var(--sand); line-height:1.5; padding:0 0 50px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:0 18px;}
+  header{text-align:center; padding:34px 18px 8px;}
+  .kicker{
+    display:inline-block; font-size:.8rem; font-weight:800; letter-spacing:.5px;
+    text-transform:uppercase; color:var(--gruen); background:var(--gruen-soft);
+    border:1px solid var(--gruen-line); padding:5px 12px; border-radius:999px; margin-bottom:12px;
+  }
+  h1{font-family:'Fredoka',sans-serif; font-size:1.9rem; margin:0 0 6px; color:var(--petrol);}
+  .sub{color:var(--muted); font-size:1rem; margin:0;}
+  .back{
+    display:inline-flex; align-items:center; gap:6px; margin:18px 0 4px; text-decoration:none;
+    font-weight:700; color:var(--gruen); font-size:.95rem;
+  }
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+    gap:13px; margin-top:18px;
+  }
+  .land{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    text-decoration:none; background:#fff; border:2px solid var(--gruen-line);
+    border-radius:16px; padding:16px 10px; min-height:104px;
+    transition:transform .12s, border-color .2s, box-shadow .2s;
+  }
+  .land:hover{border-color:var(--gruen); box-shadow:0 4px 14px rgba(31,138,112,.14); transform:translateY(-2px);}
+  .land .fl{font-size:38px; line-height:1;}
+  .land .nm{font-family:'Fredoka',sans-serif; font-weight:600; color:var(--petrol); text-align:center; line-height:1.15;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="kicker">📚 Sachtext-Hefte</span>
+      <h1>Welches Land liest du?</h1>
+      <p class="sub">Tippe auf ein Land und öffne sein Sachtext-Heft mit den grünen Folien-Wörtern.</p>
+    </header>
+    <a class="back" href="../Landing - Startseite.html">← Zurück zur Startseite</a>
+    <div class="grid">
+      <a class="land" href="Ägypten - Sachtext-Workbook.html"><span class="fl">🇪🇬</span><span class="nm">Ägypten</span></a>
+      <a class="land" href="Algerien - Sachtext-Workbook.html"><span class="fl">🇩🇿</span><span class="nm">Algerien</span></a>
+      <a class="land" href="Argentinien - Sachtext-Workbook.html"><span class="fl">🇦🇷</span><span class="nm">Argentinien</span></a>
+      <a class="land" href="Australien - Sachtext-Workbook.html"><span class="fl">🇦🇺</span><span class="nm">Australien</span></a>
+      <a class="land" href="Belgien - Sachtext-Workbook.html"><span class="fl">🇧🇪</span><span class="nm">Belgien</span></a>
+      <a class="land" href="Bosnien und Herzegowina - Sachtext-Workbook.html"><span class="fl">🇧🇦</span><span class="nm">Bosnien und Herzegowina</span></a>
+      <a class="land" href="Brasilien - Sachtext-Workbook.html"><span class="fl">🇧🇷</span><span class="nm">Brasilien</span></a>
+      <a class="land" href="Curaçao - Sachtext-Workbook.html"><span class="fl">🇨🇼</span><span class="nm">Curaçao</span></a>
+      <a class="land" href="Deutschland - Sachtext-Workbook.html"><span class="fl">🇩🇪</span><span class="nm">Deutschland</span></a>
+      <a class="land" href="DR Kongo - Sachtext-Workbook.html"><span class="fl">🇨🇩</span><span class="nm">DR Kongo</span></a>
+      <a class="land" href="Ecuador - Sachtext-Workbook.html"><span class="fl">🇪🇨</span><span class="nm">Ecuador</span></a>
+      <a class="land" href="Elfenbeinküste - Sachtext-Workbook.html"><span class="fl">🇨🇮</span><span class="nm">Elfenbeinküste</span></a>
+      <a class="land" href="England - Sachtext-Workbook.html"><span class="fl">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="nm">England</span></a>
+      <a class="land" href="Frankreich - Sachtext-Workbook.html"><span class="fl">🇫🇷</span><span class="nm">Frankreich</span></a>
+      <a class="land" href="Ghana - Sachtext-Workbook.html"><span class="fl">🇬🇭</span><span class="nm">Ghana</span></a>
+      <a class="land" href="Haiti - Sachtext-Workbook.html"><span class="fl">🇭🇹</span><span class="nm">Haiti</span></a>
+      <a class="land" href="Irak - Sachtext-Workbook.html"><span class="fl">🇮🇶</span><span class="nm">Irak</span></a>
+      <a class="land" href="Iran - Sachtext-Workbook.html"><span class="fl">🇮🇷</span><span class="nm">Iran</span></a>
+      <a class="land" href="Japan - Sachtext-Workbook.html"><span class="fl">🇯🇵</span><span class="nm">Japan</span></a>
+      <a class="land" href="Jordanien - Sachtext-Workbook.html"><span class="fl">🇯🇴</span><span class="nm">Jordanien</span></a>
+      <a class="land" href="Kanada - Sachtext-Workbook.html"><span class="fl">🇨🇦</span><span class="nm">Kanada</span></a>
+      <a class="land" href="Kap Verde - Sachtext-Workbook.html"><span class="fl">🇨🇻</span><span class="nm">Kap Verde</span></a>
+      <a class="land" href="Katar - Sachtext-Workbook.html"><span class="fl">🇶🇦</span><span class="nm">Katar</span></a>
+      <a class="land" href="Kolumbien - Sachtext-Workbook.html"><span class="fl">🇨🇴</span><span class="nm">Kolumbien</span></a>
+      <a class="land" href="Kroatien - Sachtext-Workbook.html"><span class="fl">🇭🇷</span><span class="nm">Kroatien</span></a>
+      <a class="land" href="Marokko - Sachtext-Workbook.html"><span class="fl">🇲🇦</span><span class="nm">Marokko</span></a>
+      <a class="land" href="Mexiko - Sachtext-Workbook.html"><span class="fl">🇲🇽</span><span class="nm">Mexiko</span></a>
+      <a class="land" href="Neuseeland - Sachtext-Workbook.html"><span class="fl">🇳🇿</span><span class="nm">Neuseeland</span></a>
+      <a class="land" href="Niederlande - Sachtext-Workbook.html"><span class="fl">🇳🇱</span><span class="nm">Niederlande</span></a>
+      <a class="land" href="Norwegen - Sachtext-Workbook.html"><span class="fl">🇳🇴</span><span class="nm">Norwegen</span></a>
+      <a class="land" href="Österreich - Sachtext-Workbook.html"><span class="fl">🇦🇹</span><span class="nm">Österreich</span></a>
+      <a class="land" href="Panama - Sachtext-Workbook.html"><span class="fl">🇵🇦</span><span class="nm">Panama</span></a>
+      <a class="land" href="Paraguay - Sachtext-Workbook.html"><span class="fl">🇵🇾</span><span class="nm">Paraguay</span></a>
+      <a class="land" href="Portugal - Sachtext-Workbook.html"><span class="fl">🇵🇹</span><span class="nm">Portugal</span></a>
+      <a class="land" href="Saudi-Arabien - Sachtext-Workbook.html"><span class="fl">🇸🇦</span><span class="nm">Saudi-Arabien</span></a>
+      <a class="land" href="Schottland - Sachtext-Workbook.html"><span class="fl">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><span class="nm">Schottland</span></a>
+      <a class="land" href="Schweden - Sachtext-Workbook.html"><span class="fl">🇸🇪</span><span class="nm">Schweden</span></a>
+      <a class="land" href="Schweiz - Sachtext-Workbook.html"><span class="fl">🇨🇭</span><span class="nm">Schweiz</span></a>
+      <a class="land" href="Senegal - Sachtext-Workbook.html"><span class="fl">🇸🇳</span><span class="nm">Senegal</span></a>
+      <a class="land" href="Spanien - Sachtext-Workbook.html"><span class="fl">🇪🇸</span><span class="nm">Spanien</span></a>
+      <a class="land" href="Südafrika - Sachtext-Workbook.html"><span class="fl">🇿🇦</span><span class="nm">Südafrika</span></a>
+      <a class="land" href="Südkorea - Sachtext-Workbook.html"><span class="fl">🇰🇷</span><span class="nm">Südkorea</span></a>
+      <a class="land" href="Tschechien - Sachtext-Workbook.html"><span class="fl">🇨🇿</span><span class="nm">Tschechien</span></a>
+      <a class="land" href="Tunesien - Sachtext-Workbook.html"><span class="fl">🇹🇳</span><span class="nm">Tunesien</span></a>
+      <a class="land" href="Türkei - Sachtext-Workbook.html"><span class="fl">🇹🇷</span><span class="nm">Türkei</span></a>
+      <a class="land" href="Uruguay - Sachtext-Workbook.html"><span class="fl">🇺🇾</span><span class="nm">Uruguay</span></a>
+      <a class="land" href="USA - Sachtext-Workbook.html"><span class="fl">🇺🇸</span><span class="nm">USA</span></a>
+      <a class="land" href="Usbekistan - Sachtext-Workbook.html"><span class="fl">🇺🇿</span><span class="nm">Usbekistan</span></a>
+    </div>
+  </div>
+</body>
+</html>

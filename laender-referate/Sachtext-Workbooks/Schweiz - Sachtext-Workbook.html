@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schweiz – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  /* Header-Bild */
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:5mm;display:block;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Schweiz</h1>
+    <span class="flagge">🇨🇭</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/schweiz_header.jpg" alt="Schweiz: Alpenpanorama mit Schneebergen, grünen Wiesen und Bergdorf">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Bern</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">vier Amtssprachen: Deutsch, Französisch, Italienisch und Rätoromanisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Schweizer Franken</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 8,9 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 41.000 km², ungefähr halb so groß wie Bayern</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">der höchste Berg heißt Dufourspitze und ist 4.634 Meter hoch. Das berühmteste Wahrzeichen ist das Matterhorn mit seiner spitzen Form.</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Deutschland, Frankreich, Italien, Österreich und Liechtenstein</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏔️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der Schweiz gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/schweiz_matterhorn.jpg" alt="Matterhorn mit spitzer Bergspitze bei Zermatt">
+    <div class="txt">
+      <p><span class="name">Matterhorn</span>Das Matterhorn ist der bekannteste Berg der Schweiz. Es hat eine spitze Form wie ein Zahn und ist 4.478 Meter hoch. Viele Bergsteiger wollen ganz nach oben klettern. Das Matterhorn steht beim Dorf Zermatt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Berg</span><span class="chip">spitze Form</span><span class="chip">4478 Meter</span><span class="chip">Bergsteiger</span><span class="chip">Zermatt</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Rheinfall</span>Der Rheinfall ist der größte Wasserfall in Europa. Das Wasser stürzt laut und tosend in die Tiefe. Mit einem Boot kommt man ganz nah heran. Der Rheinfall liegt bei der Stadt Schaffhausen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasserfall</span><span class="chip">größter in Europa</span><span class="chip">Boot</span><span class="chip">Schaffhausen</span><span class="chip">tosend</span></p>
+    </div>
+    <img src="bilder/schweiz_rheinfall.jpg" alt="Rheinfall bei Schaffhausen, tosende Wassermassen">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/schweiz_jungfraujoch.jpg" alt="Jungfraujoch Bergstation mit Zahnradbahn und Schnee">
+    <div class="txt">
+      <p><span class="name">Jungfraujoch</span>Das Jungfraujoch ist eine Bergstation hoch oben in den Alpen. Mit einer Zahnradbahn fährt man fast 3.500 Meter nach oben. Dort liegt das ganze Jahr Schnee. Man nennt den Ort auch „Top of Europe".</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Bergstation</span><span class="chip">Zahnradbahn</span><span class="chip">3500 Meter</span><span class="chip">Schnee</span><span class="chip">Alpen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Genfersee</span>Der Genfersee ist ein großer See im Westen der Schweiz. An seinem Ufer steht das alte Schloss Chillon, das aussieht wie aus einem Ritterfilm. In Genf gibt es eine riesige Wasserfontäne, die hoch in die Luft spritzt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer See</span><span class="chip">Schloss Chillon</span><span class="chip">Burg</span><span class="chip">Wasserfontäne</span><span class="chip">Genf</span></p>
+    </div>
+    <img src="bilder/schweiz_genfersee.jpg" alt="Genfersee mit Schloss Chillon und Wasserfontäne in Genf">
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Schweizer Alpen und Bergen leben Tiere, die man bei uns selten zu sehen bekommt.</p>
+
+  <div class="eintrag">
+    <img src="bilder/schweiz_steinbock.jpg" alt="Steinbock mit gebogenen Hörnern auf einem Felsen in den Alpen">
+    <div class="txt">
+      <p><span class="name">Steinbock</span>Der Steinbock ist ein wildes Tier in den Schweizer Alpen. Er hat große, gebogene Hörner. Mit seinen Hufen klettert er sicher auf steile Felsen. Der Steinbock ist ein Zeichen für die Berge.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Alpen</span><span class="chip">gebogene Hörner</span><span class="chip">klettert</span><span class="chip">steile Felsen</span><span class="chip">wild</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Murmeltier</span>Das Murmeltier ist ein kleines, kuscheliges Tier und lebt in den Bergen. Es wohnt in einem Bau unter der Erde. Im Winter hält es einen langen Winterschlaf. Bei Gefahr pfeift es laut zur Warnung.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">lebt in den Bergen</span><span class="chip">Bau unter der Erde</span><span class="chip">Winterschlaf</span><span class="chip">pfeift</span><span class="chip">klein</span></p>
+    </div>
+    <img src="bilder/schweiz_murmeltier.jpg" alt="Murmeltier auf einem Felsen in den Alpen">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/schweiz_bernhardiner.jpg" alt="Bernhardiner Hund im Schnee mit Fässchen am Halsband">
+    <div class="txt">
+      <p><span class="name">Bernhardiner</span>Der Bernhardiner ist ein sehr großer Hund aus der Schweiz. Früher half er Mönchen, Menschen im tiefen Schnee zu finden. Er ist stark und freundlich. Bekannt ist er durch das kleine Fässchen am Halsband.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Hund</span><span class="chip">hilft im Schnee</span><span class="chip">Mönche</span><span class="chip">Fässchen</span><span class="chip">stark</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Käsefondue</span>Beim Käsefondue wird Käse in einem Topf geschmolzen. Man tunkt Brotstücke an einer langen Gabel hinein. Gegessen wird es gern im Winter mit der ganzen Familie. Das Käsefondue ist ein typisches Schweizer Gericht.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">geschmolzener Käse</span><span class="chip">Topf</span><span class="chip">Brotstücke</span><span class="chip">lange Gabel</span><span class="chip">Winter</span></p>
+    </div>
+    <img src="bilder/schweiz_kaesfondue.jpg" alt="Käsefondue mit Brotstücken und langen Gabeln im Topf">
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Rösti</span>Rösti ist ein gebratener Kuchen aus Kartoffeln. Außen ist er knusprig und innen weich. Man brät ihn in der Pfanne. In der ganzen Schweiz ist Rösti sehr beliebt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Kartoffeln</span><span class="chip">gebraten</span><span class="chip">knusprig</span><span class="chip">Pfanne</span><span class="chip">beliebt</span></p>
+    </div>
+    <img src="bilder/schweiz_roesti.jpg" alt="Rösti, goldbrauner gebratener Kartoffelkuchen in der Pfanne">
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Schweizer Schokolade</span>Die Schweiz ist auf der ganzen Welt für ihre Schokolade bekannt. Sie schmeckt süß und cremig. Marken wie Lindt und Toblerone kommen von dort. Viele Menschen lieben Schweizer Schokolade.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schokolade</span><span class="chip">cremig</span><span class="chip">Lindt</span><span class="chip">Toblerone</span><span class="chip">weltbekannt</span></p>
+    </div>
+    <img src="bilder/schweiz_schokolade.jpg" alt="Schweizer Schokolade, Lindt und Toblerone vor Bergpanorama">
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft der Schweiz hat den Spitznamen „Nati". Sie spielt im roten Trikot mit dem weißen Kreuz. Bei der WM 2026 ist die Schweiz dabei und spielt in der Gruppe B gegen Katar, Bosnien und Kanada. Die Nati gehört zu den starken Teams in Europa und kam schon oft ins Achtelfinale.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nati</span><span class="chip">rotes Trikot</span><span class="chip">weißes Kreuz</span><span class="chip">WM 2026</span><span class="chip">Gruppe B</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Granit Xhaka ist ein bekannter Schweizer Fußballer. Er spielt beim deutschen Verein Bayer Leverkusen. Xhaka ist bekannt für seinen harten Schuss. Bei der WM 2022 kam die Schweiz ins Achtelfinale. Yann Sommer ist der bekannte Schweizer Torwart.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Granit Xhaka</span><span class="chip">Bayer Leverkusen</span><span class="chip">harter Schuss</span><span class="chip">WM 2022 Achtelfinale</span><span class="chip">Yann Sommer</span></p>
+    </div>
+    <img src="bilder/schweiz_fussball.jpg" alt="Schweizer rotes Trikot mit weißem Kreuz und Fußball">
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in der Schweiz</span>In der Schweiz gehen die Kinder von Montag bis Freitag zur Schule, so wie bei uns in Bayern. Viele Kinder sprechen zu Hause Schweizerdeutsch, lernen in der Schule aber auch Hochdeutsch. In manchen Teilen des Landes wird der Unterricht auf Französisch oder Italienisch gehalten. So lernen viele Kinder schon früh mehrere Sprachen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">Schweizerdeutsch</span><span class="chip">Hochdeutsch</span><span class="chip">Französisch</span><span class="chip">mehrere Sprachen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben in den Bergen</span>Viele Kinder in der Schweiz wohnen in der Nähe der Berge. Im Winter fahren sie oft Ski oder rodeln im Schnee. Im Sommer wandern die Familien auf Bergwegen und sehen Kühe auf den Wiesen. Die Kühe tragen große Glocken um den Hals, die man weit hören kann.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Berge</span><span class="chip">Ski fahren</span><span class="chip">Schnee</span><span class="chip">wandern</span><span class="chip">Kühe</span></p>
+      </div>
+    </div>
+    <img src="bilder/schweiz_kinderalltag.jpg" alt="Schweizer Kinder beim Skifahren und Rodeln in den Bergen">
+  </div>
+
+  <div class="fuss">Schweiz – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

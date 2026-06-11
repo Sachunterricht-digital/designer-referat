@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kroatien – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  /* Headerbild */
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:10px;margin-bottom:5mm;display:block;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Kroatien</h1>
+    <span class="flagge">🇭🇷</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/kroatien_header.jpg" alt="Kroatien: Adriaküste mit türkisblauem Meer und roten Dächern">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Zagreb</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Kroatisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Euro (seit 2023)</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 3,9 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 57.000 km², etwas kleiner als Bayern</td></tr>
+      <tr><td class="k">Großes Gewässer</td><td class="v">die Adria, ein Teil des Mittelmeers, mit vielen Inseln</td></tr>
+      <tr><td class="k">Höchster Berg</td><td class="v">die Dinara, etwa 1.830 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Slowenien, Ungarn, Serbien, Bosnien-Herzegowina und Montenegro</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Kroatien gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/kroatien_plitvicer_seen.jpg" alt="Plitvicer Seen mit türkisblauem Wasser und Wasserfällen">
+    <div class="txt">
+      <p><span class="name">Plitvicer Seen</span>Die Plitvicer Seen sind eine Landschaft aus 16 Seen mitten im Wald. Die Seen sind durch viele Wasserfälle miteinander verbunden. Das Wasser schimmert türkisblau und grün. Über schmale Holzstege kann man mitten durch die Natur wandern.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">16 Seen</span><span class="chip">Wasserfälle</span><span class="chip">türkisblau</span><span class="chip">Wald</span><span class="chip">Holzstege</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Altstadt von Dubrovnik</span>Dubrovnik ist eine alte Stadt direkt am Meer. Eine hohe Stadtmauer umschließt die ganze Altstadt. Man kann oben auf der Mauer um die komplette Stadt herumlaufen. Von dort hat man einen tollen Blick auf das Meer und die roten Dächer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Stadtmauer</span><span class="chip">am Meer</span><span class="chip">Altstadt</span><span class="chip">rote Dächer</span><span class="chip">herumlaufen</span></p>
+    </div>
+    <img src="bilder/kroatien_dubrovnik.jpg" alt="Altstadt Dubrovnik mit Stadtmauer und roten Dächern am Meer">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/kroatien_diokletian.jpg" alt="Diokletianspalast in Split mit alten römischen Mauern">
+    <div class="txt">
+      <p><span class="name">Diokletianspalast in Split</span>In der Stadt Split steht ein riesiger Palast aus der Römerzeit. Er ist schon fast 2000 Jahre alt. Das Besondere ist: Mitten in den alten Mauern wohnen heute echte Menschen. Es gibt dort Wohnungen, Läden und kleine Cafés.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">alter Palast</span><span class="chip">Römerzeit</span><span class="chip">Split</span><span class="chip">uralt</span><span class="chip">Menschen wohnen drin</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Inseln in der Adria</span>Vor der Küste von Kroatien liegen über tausend Inseln im Meer. Das Wasser der Adria ist klar und blau. Viele Menschen fahren mit dem Schiff von Insel zu Insel. Sie baden im Meer und liegen in der Sonne am Strand.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">viele Inseln</span><span class="chip">Adria</span><span class="chip">klares Wasser</span><span class="chip">Schiff</span><span class="chip">Strand</span></p>
+    </div>
+    <img src="bilder/kroatien_inseln.jpg" alt="Viele Inseln in der blauen Adria von oben">
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Wäldern, Bergen und am Meer Kroatiens leben Tiere, die man bei uns kaum findet.</p>
+
+  <div class="eintrag">
+    <img src="bilder/kroatien_braunbaer.jpg" alt="Braunbär im Wald in Kroatien">
+    <div class="txt">
+      <p><span class="name">Braunbär</span>In den Wäldern und Bergen von Kroatien leben echte Braunbären. Sie sind groß und stark, aber sehr scheu. Darum bekommt man sie kaum zu sehen. Am liebsten bleiben sie weit weg von den Städten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">lebt im Wald</span><span class="chip">groß und stark</span><span class="chip">scheu</span><span class="chip">in den Bergen</span><span class="chip">selten zu sehen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Dalmatiner</span>Der Dalmatiner ist ein Hund mit schwarzen Punkten auf weißem Fell. Diese Hunderasse kommt aus der kroatischen Küstenregion Dalmatien. Daher hat der Hund auch seinen Namen. Dalmatiner sind verspielt und können sehr schnell laufen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">schwarze Punkte</span><span class="chip">weißes Fell</span><span class="chip">aus Dalmatien</span><span class="chip">Hund</span><span class="chip">schnell</span></p>
+    </div>
+    <img src="bilder/kroatien_dalmatiner.jpg" alt="Dalmatiner Hund mit schwarzen Punkten auf weißem Fell">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/kroatien_gaensegeier.jpg" alt="Gänsegeier mit breiten Flügeln über dem Meer bei der Insel Cres">
+    <div class="txt">
+      <p><span class="name">Gänsegeier</span>Auf der Insel Cres leben viele Gänsegeier. Das sind riesige Vögel mit breiten Flügeln. Wenn sie die Flügel ausbreiten, sind sie über zwei Meter breit. Sie segeln hoch oben am Himmel über dem Meer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">riesiger Vogel</span><span class="chip">Insel Cres</span><span class="chip">breite Flügel</span><span class="chip">über 2 Meter</span><span class="chip">am Himmel</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Ćevapi</span>Ćevapi sind kleine Röllchen aus Hackfleisch. Sie werden auf dem Grill gebraten. Dazu gibt es Fladenbrot und rohe Zwiebeln. Im ganzen Land essen die Menschen dieses Gericht gern.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Hackfleisch</span><span class="chip">vom Grill</span><span class="chip">Fladenbrot</span><span class="chip">Zwiebeln</span><span class="chip">kleine Röllchen</span></p>
+    </div>
+    <img src="bilder/kroatien_cevapi.jpg" alt="Ćevapi: gegrillte Hackfleisch-Röllchen mit Fladenbrot und Zwiebeln">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <div class="essen-grid">
+      <div>
+        <p><span class="name">Peka</span>Bei der Peka wird Fleisch oder Gemüse unter einer schweren Glocke gegart. Auf die Glocke kommt heiße Glut. So gart das Essen ganz langsam. Es dauert lange, schmeckt aber besonders saftig.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">unter der Glocke</span><span class="chip">heiße Glut</span><span class="chip">Fleisch und Gemüse</span><span class="chip">langsam</span><span class="chip">saftig</span></p>
+      </div>
+      <img src="bilder/kroatien_peka.jpg" alt="Peka: Fleisch und Gemüse unter einer Eisenglocke mit Glut">
+    </div>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Fritule</span>Fritule sind kleine, runde Krapfen. Sie sehen aus wie winzige Donuts. Man backt sie oft zu Weihnachten. Sie schmecken nach Zitrone und sind innen weich.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleine Krapfen</span><span class="chip">runde Bällchen</span><span class="chip">Weihnachten</span><span class="chip">Zitrone</span><span class="chip">süß</span></p>
+    </div>
+    <img src="bilder/kroatien_fritule.jpg" alt="Fritule: kleine runde Krapfen mit Puderzucker">
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Kroatien heißt Vatreni, das bedeutet die Feurigen. Sie spielt im rot-weiß karierten Trikot, das aussieht wie ein Schachbrett. Dieses Muster erkennt man auf der ganzen Welt. Kroatien ist eine sehr starke Mannschaft. 2018 wurde das Land Vize-Weltmeister und 2022 sogar WM-Dritter. Bei der WM 2026 ist Kroatien wieder dabei.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Vatreni</span><span class="chip">rot-weiß kariert</span><span class="chip">Schachbrett</span><span class="chip">WM 2026</span><span class="chip">Luka Modrić</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Luka Modrić ist Kroatiens größter Fußballstar. Bei der WM 2018 führte er das kleine Land bis ins Finale. In diesem Jahr wurde er zum besten Spieler der Welt gewählt. Kroatien hat nur etwa vier Millionen Einwohner, ist aber trotzdem sehr gut im Fußball.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Luka Modrić</span><span class="chip">WM-Finale 2018</span><span class="chip">bester Spieler der Welt</span><span class="chip">kleines Land</span><span class="chip">große Leistung</span></p>
+    </div>
+    <img src="bilder/kroatien_fussball.jpg" alt="Kroatisches Fußballtrikot in rot-weiß kariertem Schachbrett-Muster">
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Kroatien</span>In Kroatien beginnt die Schule für die Kinder mit sechs oder sieben Jahren. Viele Schulen haben so viele Kinder, dass nicht alle gleichzeitig Platz haben. Darum gehen manche Kinder am Vormittag zur Schule und andere am Nachmittag. In der Woche darauf wird oft getauscht. So eine Schicht-Schule kennen wir bei uns nicht.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schule ab 6</span><span class="chip">zu viele Kinder</span><span class="chip">Vormittag</span><span class="chip">Nachmittag</span><span class="chip">Schicht-Schule</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben am Meer</span>Sehr viele Kinder in Kroatien wohnen in der Nähe der Adria. Im Sommer ist es dort sehr heiß. Nach der Schule gehen viele Kinder ans Meer und baden im klaren Wasser. Am Hafen liegen kleine Boote, und auf dem Markt kaufen die Familien frischen Fisch und Obst.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">am Meer</span><span class="chip">Adria</span><span class="chip">baden</span><span class="chip">Boote im Hafen</span><span class="chip">Markt</span></p>
+      </div>
+    </div>
+    <img src="bilder/kroatien_kinderalltag.jpg" alt="Kinder am Adriastrand mit Booten im Hafen">
+  </div>
+
+  <div class="fuss">Kroatien – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

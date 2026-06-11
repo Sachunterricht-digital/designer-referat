@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutschland – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Deutschland</h1>
+    <span class="flagge">🇩🇪</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/deutschland_header.jpg" alt="Deutschland: Brandenburger Tor, Schloss Neuschwanstein und die Alpen">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Berlin</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Deutsch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Euro</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 84 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 357.000 km², das ist ungefähr so groß wie eine Million Fußballfelder nebeneinander</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Zugspitze, 2.962 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Dänemark, Polen, Tschechien, Österreich, die Schweiz, Frankreich, Luxemburg, Belgien und die Niederlande</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Deutschland gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/deutschland_brandenburger_tor.jpg" alt="Brandenburger Tor">
+    <div class="txt">
+      <p><span class="name">Brandenburger Tor</span>Das Brandenburger Tor steht mitten in Berlin. Es ist ein berühmtes Wahrzeichen von ganz Deutschland. Oben auf dem Tor steht ein Wagen mit vier Pferden aus Kupfer. Viele Menschen besuchen das Tor jedes Jahr.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">in Berlin</span><span class="chip">Wahrzeichen</span><span class="chip">vier Pferden</span><span class="chip">aus Kupfer</span><span class="chip">berühmtes</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Schloss Neuschwanstein</span>Schloss Neuschwanstein liegt in Bayern auf einem Berg. König Ludwig der Zweite ließ es vor langer Zeit bauen. Das Schloss sieht aus wie aus einem Märchen. Jedes Jahr kommen sehr viele Besucher zu dem Schloss.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">in Bayern</span><span class="chip">auf einem Berg</span><span class="chip">König Ludwig</span><span class="chip">wie aus einem Märchen</span><span class="chip">Besucher</span></p>
+    </div>
+    <img src="bilder/deutschland_neuschwanstein.jpg" alt="Schloss Neuschwanstein">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/deutschland_koelner_dom.jpg" alt="Kölner Dom">
+    <div class="txt">
+      <p><span class="name">Kölner Dom</span>Der Kölner Dom ist eine riesige Kirche in der Stadt Köln. Er hat zwei sehr hohe Türme. Der Bau dauerte mehr als 600 Jahre. Heute ist der Dom eines der bekanntesten Bauwerke in Deutschland.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">riesige Kirche</span><span class="chip">in der Stadt Köln</span><span class="chip">zwei</span><span class="chip">hohe Türme</span><span class="chip">600 Jahre</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Zugspitze</span>Die Zugspitze ist der höchste Berg in Deutschland. Sie ist 2.962 Meter hoch und liegt in Bayern. Mit einer Seilbahn kann man ganz nach oben fahren. Von dort hat man einen weiten Blick über die Berge.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">höchste Berg</span><span class="chip">2.962 Meter</span><span class="chip">in Bayern</span><span class="chip">Seilbahn</span><span class="chip">weiten Blick</span></p>
+    </div>
+    <img src="bilder/deutschland_zugspitze.jpg" alt="Zugspitze">
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Deutschland und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/deutschland_rothirsch.jpg" alt="Rothirsch">
+    <div class="txt">
+      <p><span class="name">Rothirsch</span>Der Rothirsch ist eines der größten Tiere im deutschen Wald. Die Männchen tragen ein großes Geweih auf dem Kopf. Im Herbst hört man die Hirsche laut röhren. Rothirsche fressen am liebsten Gras, Blätter und Kräuter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">größten Tiere</span><span class="chip">im deutschen Wald</span><span class="chip">Geweih</span><span class="chip">röhren</span><span class="chip">Gras</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Wildschwein</span>Das Wildschwein lebt im Wald und hat ein braunes, borstiges Fell. Es wühlt mit der Nase im Boden nach Futter. Die kleinen Babys heißen Frischlinge und haben Streifen. Wildschweine sind meistens in der Nacht unterwegs.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">im Wald</span><span class="chip">borstiges Fell</span><span class="chip">Nase</span><span class="chip">Frischlinge</span><span class="chip">in der Nacht</span></p>
+    </div>
+    <img src="bilder/deutschland_wildschwein.jpg" alt="Wildschwein">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/deutschland_storch.jpg" alt="Weißstorch">
+    <div class="txt">
+      <p><span class="name">Weißstorch</span>Der Weißstorch ist ein großer Vogel mit weißen Federn und einem roten Schnabel. Er baut sein großes Nest gern auf Dächern und Masten. Im Winter fliegt der Storch in warme Länder nach Süden. Störche fressen Frösche, Mäuse und Würmer.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Vogel</span><span class="chip">roten Schnabel</span><span class="chip">Nest</span><span class="chip">in warme Länder</span><span class="chip">Frösche</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Brezel</span>Die Brezel ist ein Gebäck aus Teig in einer besonderen Form. Sie hat oben grobes Salz und schmeckt herzhaft. Vor allem in Bayern essen viele Menschen gern eine Brezel. Man kann sie beim Bäcker kaufen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Gebäck</span><span class="chip">besonderen Form</span><span class="chip">grobes Salz</span><span class="chip">in Bayern</span><span class="chip">beim Bäcker</span></p>
+    </div>
+    <img src="bilder/deutschland_essen_brezel.jpg" alt="Brezel">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Bratwurst</span>Die Bratwurst ist eine Wurst, die in der Pfanne oder auf dem Grill gebraten wird. Sie schmeckt gut mit Senf oder Ketchup. Oft isst man sie in einem Brötchen. Besonders gern isst man sie auf vielen Festen.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wurst</span><span class="chip">auf dem Grill</span><span class="chip">mit Senf</span><span class="chip">Brötchen</span><span class="chip">auf vielen Festen</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Schwarzwälder Kirschtorte</span>Die Schwarzwälder Kirschtorte ist eine süße Torte aus Schokolade und Sahne. Zwischen den Schichten liegen saure Kirschen. Sie kommt aus der Gegend vom Schwarzwald. Viele Menschen essen sie zum Kaffee am Nachmittag.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">süße Torte</span><span class="chip">Sahne</span><span class="chip">Kirschen</span><span class="chip">vom Schwarzwald</span><span class="chip">zum Kaffee</span></p>
+    </div>
+    <img src="bilder/deutschland_essen_kirschtorte.jpg" alt="Schwarzwälder Kirschtorte">
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die deutsche Nationalmannschaft heißt auch Die Mannschaft. Die Spieler tragen ein weißes Trikot mit schwarzen Details. Deutschland wurde schon viermal Weltmeister, nämlich 1954, 1974, 1990 und 2014. Fußball ist in Deutschland sehr beliebt bei Groß und Klein. Viele Menschen schauen die Spiele zusammen im Fernsehen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Die Mannschaft</span><span class="chip">weißes Trikot</span><span class="chip">viermal Weltmeister</span><span class="chip">2014</span><span class="chip">sehr beliebt</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>2006 richtete Deutschland die Weltmeisterschaft selbst aus. Die Stimmung war so schön, dass alle von Sommermärchen sprachen. 2014 wurde Deutschland Weltmeister. Mario Götze schoss das Entscheidungstor im Finale gegen Argentinien. Deutschland wurde bisher viermal Weltmeister.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Sommermärchen 2006</span><span class="chip">4x Weltmeister</span><span class="chip">Mario Götze WM-Tor 2014</span><span class="chip">Die Mannschaft</span><span class="chip">Gastgeber 2006</span></p>
+    </div>
+    <img src="bilder/deutschland_fussball.jpg" alt="Fußball Deutschland">
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule und Einschulung</span>In Deutschland gehen die Kinder mit etwa sechs Jahren in die Schule. Am ersten Schultag feiern sie ihre Einschulung. Dabei bekommt jedes Kind eine bunte Schultüte mit kleinen Geschenken. In der Grundschule lernen die Kinder lesen, schreiben und rechnen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">sechs Jahren</span><span class="chip">Einschulung</span><span class="chip">Schultüte</span><span class="chip">Grundschule</span><span class="chip">rechnen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Weihnachtsmarkt</span>In der Adventszeit gibt es in vielen Städten einen Weihnachtsmarkt. Dort stehen viele bunte Buden mit Lichtern. Es riecht nach gebrannten Mandeln und Plätzchen. Die Kinder fahren gern Karussell auf dem Markt.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">In der Adventszeit</span><span class="chip">Weihnachtsmarkt</span><span class="chip">Buden</span><span class="chip">gebrannten Mandeln</span><span class="chip">Karussell</span></p>
+      </div>
+    </div>
+    <img src="bilder/deutschland_kinderalltag.jpg" alt="Kinderalltag Deutschland">
+  </div>
+
+  <div class="fuss">Deutschland – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

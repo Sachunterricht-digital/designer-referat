@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexiko – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Mexiko</h1>
+    <span class="flagge">🇲🇽</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/mexiko_header.jpg" alt="Mexiko: Maya-Pyramide, Kakteen und bunte Häuser">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Mexiko-Stadt</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Nordamerika</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Spanisch, dazu viele indigene Sprachen</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Mexikanischer Peso</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 130 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">fast 2 Millionen km², also ungefähr fünfmal so groß wie Deutschland</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Pico de Orizaba (Citlaltépetl), 5.636 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">USA, Guatemala und Belize</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Mexiko gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/mexiko_chichen_itza.jpg" alt="Chichén Itzá">
+    <div class="txt">
+      <p><span class="name">Chichén Itzá</span>Chichén Itzá ist eine alte Stadt der Maya in Mexiko. Mitten darin steht eine große Pyramide aus Stein. Sie hat 365 Stufen, so viele wie ein Jahr Tage hat. Heute besuchen viele Menschen diesen berühmten Ort.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">der Maya</span><span class="chip">große Pyramide</span><span class="chip">aus Stein</span><span class="chip">365 Stufen</span><span class="chip">berühmten Ort</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Pyramiden von Teotihuacán</span>Teotihuacán ist eine sehr alte Stadt in der Nähe von Mexiko-Stadt. Dort stehen zwei riesige Pyramiden, die Sonnenpyramide und die Mondpyramide. Sie wurden vor vielen hundert Jahren gebaut. Man kann die Stufen hinaufsteigen und weit über das Land schauen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">sehr alte</span><span class="chip">zwei riesige</span><span class="chip">die Sonnenpyramide</span><span class="chip">hinaufsteigen</span><span class="chip">über das Land</span></p>
+    </div>
+    <img src="bilder/mexiko_teotihuacan.jpg" alt="Pyramiden von Teotihuacán">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/mexiko_cancun.jpg" alt="Strände von Cancún">
+    <div class="txt">
+      <p><span class="name">Strände von Cancún</span>Cancún liegt am warmen Meer im Osten von Mexiko. Dort gibt es lange Strände mit feinem weißen Sand. Das Wasser ist klar und türkisblau. Viele Urlauber baden hier und liegen in der Sonne.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">am warmen</span><span class="chip">lange Strände</span><span class="chip">weißen Sand</span><span class="chip">türkisblau</span><span class="chip">Viele Urlauber</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Guanajuato</span>Guanajuato ist eine bunte Stadt in den Bergen von Mexiko. Die Häuser sind in vielen leuchtenden Farben gestrichen. Enge Gassen führen den Berg hinauf und hinunter. Früher wurde hier in Minen nach Silber gegraben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bunte Stadt</span><span class="chip">den Bergen</span><span class="chip">leuchtenden Farben</span><span class="chip">Enge Gassen</span><span class="chip">nach Silber</span></p>
+    </div>
+    <img src="bilder/mexiko_guanajuato.jpg" alt="Guanajuato">
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Mexiko und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/mexiko_jaguar.jpg" alt="Jaguar">
+    <div class="txt">
+      <p><span class="name">Jaguar</span>Der Jaguar ist die größte Raubkatze in ganz Amerika. Er lebt im dichten Regenwald von Mexiko. Sein Fell hat ein schönes Muster aus dunklen Flecken. Der Jaguar ist ein guter Schwimmer und jagt am liebsten allein.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">größte Raubkatze</span><span class="chip">im dichten</span><span class="chip">dunklen Flecken</span><span class="chip">guter Schwimmer</span><span class="chip">jagt am liebsten</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Axolotl</span>Der Axolotl ist ein kleiner Salamander, der im Wasser lebt. Er kommt nur in Mexiko vor und sieht aus, als ob er lächelt. Wenn er ein Bein verliert, kann ihm ein neues nachwachsen. In freier Natur ist der Axolotl leider stark bedroht.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleiner Salamander</span><span class="chip">im Wasser</span><span class="chip">nur in Mexiko</span><span class="chip">nachwachsen</span><span class="chip">stark bedroht</span></p>
+    </div>
+    <img src="bilder/mexiko_axolotl.jpg" alt="Axolotl">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/mexiko_monarchfalter.jpg" alt="Monarchfalter">
+    <div class="txt">
+      <p><span class="name">Monarchfalter</span>Der Monarchfalter ist ein orange-schwarzer Schmetterling. Jeden Herbst fliegt er Tausende Kilometer bis nach Mexiko. Dort überwintert er in den Bergen auf großen Bäumen. Millionen Falter sitzen dann dicht zusammen an den Ästen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">orange-schwarzer Schmetterling</span><span class="chip">Tausende Kilometer</span><span class="chip">überwintert er</span><span class="chip">großen Bäumen</span><span class="chip">Millionen Falter</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Tacos</span>Tacos sind ein beliebtes Essen in Mexiko. Man nimmt dafür einen kleinen Fladen aus Maismehl. Er wird mit Fleisch, Bohnen oder Gemüse gefüllt. Dann klappt man den Fladen zusammen und isst ihn mit der Hand.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">beliebtes Essen</span><span class="chip">kleinen Fladen</span><span class="chip">aus Maismehl</span><span class="chip">oder Gemüse</span><span class="chip">mit der Hand</span></p>
+    </div>
+    <img src="bilder/mexiko_essen_tacos.jpg" alt="Tacos">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Guacamole</span>Guacamole ist ein grüner Brei aus reifen Avocados. Dazu kommen etwas Salz, Limette und manchmal Zwiebeln. Die Mexikaner essen die Guacamole sehr gern. Man tunkt knusprige Chips hinein oder streicht sie auf einen Fladen.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">grüner Brei</span><span class="chip">reifen Avocados</span><span class="chip">Limette</span><span class="chip">sehr gern</span><span class="chip">knusprige Chips</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Quesadilla</span>Eine Quesadilla ist ein Fladen mit Käse darin. Der Käse wird in der Pfanne warm und schmilzt. Dann wird der Fladen zusammengeklappt und in Stücke geschnitten. Quesadillas schmecken warm am besten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">mit Käse</span><span class="chip">in der Pfanne</span><span class="chip">schmilzt</span><span class="chip">zusammengeklappt</span><span class="chip">warm am besten</span></p>
+    </div>
+    <img src="bilder/mexiko_essen_quesadilla.jpg" alt="Quesadilla">
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußballmannschaft von Mexiko hat den Spitznamen El Tri. Das kommt von den drei Farben Grün, Weiß und Rot auf der Flagge. Die Spieler tragen meistens ein grünes Trikot. Mexiko ist sehr oft bei der Weltmeisterschaft dabei. Im Jahr 2026 ist das Land sogar Gastgeber, zusammen mit den USA und Kanada.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">El Tri</span><span class="chip">drei Farben</span><span class="chip">grünes Trikot</span><span class="chip">der Weltmeisterschaft</span><span class="chip">Gastgeber</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Mexiko ist einer der Co-Gastgeber der WM 2026. Der bekannteste Torwart Mexikos heißt Guillermo Ochoa. Er ist berühmt für sehr viele gehaltene Schüsse. Ein bekannter Stürmer ist Chicharito. Die Nationalmannschaft heißt El Tri.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Guillermo Ochoa</span><span class="chip">Torwart-Legende</span><span class="chip">Chicharito</span><span class="chip">Co-Gastgeber 2026</span><span class="chip">El Tri</span></p>
+    </div>
+    <img src="bilder/mexiko_fussball.jpg" alt="Fußball Mexiko">
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Mexiko</span>In Mexiko gehen die Kinder meistens am Morgen zur Schule. Viele tragen eine Schuluniform mit gleichen Farben. Am Anfang der Woche stellen sich alle zusammen auf dem Schulhof auf. Sie lernen Lesen, Schreiben und Rechnen wie bei uns.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">am Morgen</span><span class="chip">eine Schuluniform</span><span class="chip">der Woche</span><span class="chip">dem Schulhof</span><span class="chip">und Rechnen</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Tag der Toten</span>Der Tag der Toten ist ein fröhliches Fest in Mexiko. Die Familien denken dabei an Menschen, die gestorben sind. Sie schmücken alles mit orangen Ringelblumen und bunten Zuckertotenköpfen. Überall wird gesungen, gegessen und gelacht.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">fröhliches Fest</span><span class="chip">Die Familien</span><span class="chip">orangen Ringelblumen</span><span class="chip">bunten Zuckertotenköpfen</span><span class="chip">gesungen</span></p>
+      </div>
+    </div>
+    <img src="bilder/mexiko_kinderalltag.jpg" alt="Kinderalltag Mexiko">
+  </div>
+
+  <div class="fuss">Mexiko – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

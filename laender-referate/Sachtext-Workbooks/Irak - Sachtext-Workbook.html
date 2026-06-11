@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irak – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Irak</h1>
+    <span class="flagge">🇮🇶</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/irak_header.jpg" alt="Irak: Eindrücke aus dem Land bei der WM 2026">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Bagdad</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Asien</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Arabisch und Kurdisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Irakischer Dinar</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 45 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">rund 438.000 km²</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Cheekha Dar, rund 3.600 m</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Türkei, Iran, Kuwait, Saudi-Arabien, Jordanien und Syrien</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Irak gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/irak_sehens1.jpg" alt="Das Zweistromland">
+    <div class="txt">
+      <p><span class="name">Das Zweistromland</span>Durch den Irak fließen zwei große Flüsse. Sie heißen Euphrat und Tigris. Zwischen den Flüssen liegt das Zweistromland. Hier lebten schon vor sehr langer Zeit Menschen. Man nennt diese Gegend auch Mesopotamien.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">zwei große Flüsse</span><span class="chip">Euphrat und Tigris</span><span class="chip">Zweistromland</span><span class="chip">vor sehr langer Zeit</span><span class="chip">Mesopotamien</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Hauptstadt Bagdad</span>Bagdad ist die Hauptstadt vom Irak. Die Stadt liegt am Fluss Tigris. Hier leben sehr viele Menschen. Vor langer Zeit war Bagdad eine berühmte Stadt der Gelehrten. Heute ist sie groß und voller Leben.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Bagdad</span><span class="chip">Hauptstadt</span><span class="chip">am Fluss Tigris</span><span class="chip">Gelehrten</span><span class="chip">voller Leben</span></p>
+    </div>
+    <img src="bilder/irak_sehens2.jpg" alt="Die Hauptstadt Bagdad">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/irak_sehens3.jpg" alt="Die alte Stadt Babylon">
+    <div class="txt">
+      <p><span class="name">Die alte Stadt Babylon</span>Vor sehr langer Zeit stand hier die Stadt Babylon. Sie war eine der größten Städte der Welt. Von den alten Mauern sieht man heute noch Reste. Forscher graben dort nach Schätzen aus der Vergangenheit. Babylon ist weltberühmt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Babylon</span><span class="chip">größten Städte der Welt</span><span class="chip">alten Mauern</span><span class="chip">Forscher graben</span><span class="chip">weltberühmt</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Die Berge im Norden</span>Im Norden vom Irak liegen hohe Berge. Dort leben viele Kurden. Im Winter fällt auf den Bergen Schnee. Zwischen den Bergen liegen grüne Täler. Es ist dort kühler als im heißen Süden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">hohe Berge</span><span class="chip">Kurden</span><span class="chip">Schnee</span><span class="chip">grüne Täler</span><span class="chip">heißen Süden</span></p>
+    </div>
+    <img src="bilder/irak_sehens4.jpg" alt="Die Berge im Norden">
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Irak und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/irak_tier1.jpg" alt="Das Dromedar">
+    <div class="txt">
+      <p><span class="name">Das Dromedar</span>Im Irak leben Dromedare. Das sind Kamele mit nur einem Höcker. Im Höcker speichern sie Fett als Vorrat. So kommen sie lange ohne Wasser aus. In der Wüste tragen sie schwere Lasten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Dromedare</span><span class="chip">einem Höcker</span><span class="chip">Fett</span><span class="chip">ohne Wasser</span><span class="chip">schwere Lasten</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Der Wasserbüffel</span>In den Sümpfen im Süden leben Wasserbüffel. Sie stehen gern bis zum Bauch im Wasser. So kühlen sie sich an heißen Tagen ab. Die Menschen halten sie für Milch und Fleisch. Wasserbüffel sind kräftige Tiere.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Wasserbüffel</span><span class="chip">Sümpfen im Süden</span><span class="chip">im Wasser</span><span class="chip">kühlen sie sich</span><span class="chip">kräftige Tiere</span></p>
+    </div>
+    <img src="bilder/irak_tier2.jpg" alt="Der Wasserbüffel">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/irak_tier3.jpg" alt="Der Falke">
+    <div class="txt">
+      <p><span class="name">Der Falke</span>Über dem Irak fliegen Falken. Ein Falke ist ein schneller Greifvogel. Mit scharfen Augen sieht er seine Beute von weit oben. Dann stürzt er blitzschnell hinab. Falken sind in der Region sehr beliebt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Falken</span><span class="chip">Greifvogel</span><span class="chip">scharfen Augen</span><span class="chip">stürzt</span><span class="chip">blitzschnell</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Masgouf</span>Masgouf ist das bekannteste Gericht im Irak. Es ist ein großer Fisch aus dem Fluss. Der Fisch wird über einem offenen Feuer gegart. Dazu gibt es Brot und Gemüse. Masgouf isst man oft mit der ganzen Familie.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Masgouf</span><span class="chip">Fisch</span><span class="chip">offenen Feuer</span><span class="chip">Brot und Gemüse</span><span class="chip">ganzen Familie</span></p>
+    </div>
+    <img src="bilder/irak_essen1.jpg" alt="Masgouf">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Dolma</span>Dolma sind gefüllte Blätter und Gemüse. Weinblätter werden mit Reis gefüllt und gerollt. Auch Paprika und Tomaten füllt man oft. Dann kocht man alles langsam weich. Dolma schmeckt warm am besten.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Dolma</span><span class="chip">Weinblätter</span><span class="chip">mit Reis gefüllt</span><span class="chip">Paprika und Tomaten</span><span class="chip">warm</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Datteln</span>Im Irak wachsen viele Dattelpalmen. An den Palmen reifen süße Datteln. Sie schmecken klebrig und sehr süß. Man isst sie frisch oder getrocknet. Datteln sind ein wichtiges Essen im Land.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Dattelpalmen</span><span class="chip">süße Datteln</span><span class="chip">klebrig</span><span class="chip">frisch oder getrocknet</span><span class="chip">wichtiges Essen</span></p>
+    </div>
+    <img src="bilder/irak_essen3.jpg" alt="Datteln">
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p>Die Nationalmannschaft vom Irak heißt die Löwen von Mesopotamien. Als letztes Team hat sich der Irak für die WM 2026 qualifiziert. Im entscheidenden Spiel gewann das Team gegen Bolivien. Ein wichtiger Spieler ist der Stürmer Aymen Hussein. Er erzielte in der Qualifikation viele Tore.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Löwen von Mesopotamien</span><span class="chip">WM 2026</span><span class="chip">gegen Bolivien</span><span class="chip">Aymen Hussein</span><span class="chip">viele Tore</span></p>
+    </div>
+    <img src="bilder/irak_fussball.jpg" alt="Fußball Irak">
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">In der Schule</span>Die Kinder im Irak gehen meist zur Schule. Dort lernen sie auf Arabisch lesen und schreiben. Manche Kinder lernen auch Kurdisch. Nach der Schule machen sie Hausaufgaben. Danach spielen sie mit ihren Freunden.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schule</span><span class="chip">Arabisch</span><span class="chip">Kurdisch</span><span class="chip">Hausaufgaben</span><span class="chip">Freunden</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Spiel und Familie</span>Familie ist im Irak sehr wichtig. Oft treffen sich viele Verwandte zum Essen. Die Kinder spielen am liebsten Fußball. Auf staubigen Plätzen kicken sie zusammen. An heißen Tagen suchen sie ein schattiges Plätzchen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Familie</span><span class="chip">Verwandte</span><span class="chip">Fußball</span><span class="chip">staubigen Plätzen</span><span class="chip">schattiges Plätzchen</span></p>
+      </div>
+    </div>
+    <img src="bilder/irak_alltag1.jpg" alt="Kinderalltag Irak">
+  </div>
+
+  <div class="fuss">Irak – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

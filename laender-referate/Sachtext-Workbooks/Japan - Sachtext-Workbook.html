@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Japan</h1>
+    <span class="flagge">🇯🇵</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/japan_header.jpg" alt="Japan: Berg Fuji, Tempel und Kirschblüten">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Tokio</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Asien</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Japanisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Yen</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 123 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 380.000 km², etwas größer als Deutschland, aus über 6.800 Inseln</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">der Fuji, mit 3.776 m der höchste Berg Japans, ein schlafender Vulkan</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Inselstaat ohne Landgrenzen; am nächsten über das Meer China, Südkorea und Russland</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Japan – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Japan gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/japan_fuji.jpg" alt="Berg Fuji">
+    <div class="txt">
+      <p><span class="name">Berg Fuji</span>Der Fuji ist der höchste und berühmteste Berg in Japan. Er ist ein Vulkan und hat eine fast runde Spitze, die im Winter mit Schnee bedeckt ist. Für viele Menschen in Japan ist er ein heiliger Berg. Bei klarem Wetter sieht man ihn sogar von der Hauptstadt Tokio aus.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Vulkan</span><span class="chip">höchster Berg</span><span class="chip">heiliger Berg</span><span class="chip">Schnee</span><span class="chip">Spitze</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Tempel in Kyoto</span>Die Stadt Kyoto war früher die Stadt des Kaisers. Dort gibt es Hunderte alte Tempel und Schreine. Viele liegen mitten in ruhigen Gärten oder in einem Bambuswald. Im Frühling blühen rundherum die rosa Kirschblüten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">alte Tempel</span><span class="chip">Schreine</span><span class="chip">Kyoto</span><span class="chip">Bambuswald</span><span class="chip">Kirschblüten</span></p>
+    </div>
+    <img src="bilder/japan_kyoto.jpg" alt="Tempel in Kyoto">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/japan_tokio.jpg" alt="Tokio">
+    <div class="txt">
+      <p><span class="name">Tokio</span>Tokio ist die Hauptstadt und eine der größten Städte der Welt. Hier stehen hohe Wolkenkratzer neben stillen Tempeln. Es gibt riesige Einkaufszentren und bunte Stadtviertel mit vielen Lichtern. Tag und Nacht sind hier sehr viele Menschen unterwegs.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Hauptstadt</span><span class="chip">Wolkenkratzer</span><span class="chip">riesige Stadt</span><span class="chip">Lichter</span><span class="chip">viele Menschen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Shinkansen</span>Der Shinkansen ist ein superschneller Zug. Er fährt bis zu 320 Kilometer pro Stunde und verbindet die großen Städte. Vorne hat er eine lange, spitze Nase wie ein Vogelschnabel. Berühmt ist er dafür, dass er fast immer ganz pünktlich ist.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">schneller Zug</span><span class="chip">320 km/h</span><span class="chip">spitze Nase</span><span class="chip">pünktlich</span><span class="chip">verbindet Städte</span></p>
+    </div>
+    <img src="bilder/japan_shinkansen.jpg" alt="Shinkansen">
+  </div>
+
+  <div class="fuss">Japan – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Japan leben Tiere, die du bei uns nicht in der Natur findest.</p>
+
+  <div class="eintrag">
+    <img src="bilder/japan_schneeaffe.jpg" alt="Schneeaffe">
+    <div class="txt">
+      <p><span class="name">Schneeaffe</span>Der Schneeaffe heißt auch Japan-Makak. Er hat ein rotes Gesicht und ein dichtes, warmes Fell. Im Winter setzt er sich gern in heiße Quellen, um sich aufzuwärmen. Dann sitzt er bis zum Hals im dampfenden Wasser.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">rotes Gesicht</span><span class="chip">dichtes Fell</span><span class="chip">heiße Quelle</span><span class="chip">Winter</span><span class="chip">Affe</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Kranich</span>Der Kranich ist ein großer, weißer Vogel mit langen Beinen und einem roten Fleck auf dem Kopf. In Japan gilt er als Glücksbringer. Man faltet ihn auch oft aus Papier, das nennt man Origami.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">großer Vogel</span><span class="chip">weiß</span><span class="chip">lange Beine</span><span class="chip">Glücksbringer</span><span class="chip">Origami</span></p>
+    </div>
+    <img src="bilder/japan_kranich.jpg" alt="Kranich">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/japan_koi.jpg" alt="Koi">
+    <div class="txt">
+      <p><span class="name">Koi</span>Der Koi ist ein bunter Fisch. Es gibt ihn in Orange, Weiß, Rot und Schwarz. In Japan werden Kois seit vielen Hundert Jahren gezüchtet. Sie schwimmen ruhig in Teichen bei Tempeln und in schönen Gärten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bunter Fisch</span><span class="chip">Teich</span><span class="chip">gezüchtet</span><span class="chip">im Garten</span><span class="chip">ruhig</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Japan – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Sushi</span>Sushi ist ein bekanntes Essen aus Japan. Es besteht aus kaltem Reis mit frischem Fisch oder Meeresfrüchten. Oft wird das Ganze mit einem Streifen Nori-Alge zusammengerollt. Man isst Sushi gern mit Stäbchen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Reis</span><span class="chip">roher Fisch</span><span class="chip">Nori-Alge</span><span class="chip">gerollt</span><span class="chip">Stäbchen</span></p>
+    </div>
+    <img src="bilder/japan_essen_sushi.jpg" alt="Sushi">
+  </div>
+
+  <div class="block" style="margin-top:6mm;">
+    <p><span class="name">Ramen</span>Ramen ist eine heiße Nudelsuppe. In der Brühe schwimmen lange Nudeln, dazu kommen Gemüse, ein Ei und oft auch Fleisch. Es gibt die Suppe in vielen Geschmacksrichtungen. Sie macht warm und satt.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Nudelsuppe</span><span class="chip">heiße Brühe</span><span class="chip">Ei</span><span class="chip">Gemüse</span><span class="chip">macht satt</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:6mm;">
+    <div class="block">
+      <p><span class="name">Onigiri</span>Onigiri ist ein Reisball, der meistens dreieckig geformt ist. In der Mitte steckt oft eine kleine Füllung. Außen ist er mit einem Streifen Nori-Alge umwickelt. Viele Kinder nehmen ihn als Snack mit in die Schule.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Reisball</span><span class="chip">dreieckig</span><span class="chip">Füllung</span><span class="chip">Nori-Alge</span><span class="chip">Snack</span></p>
+    </div>
+    <img src="bilder/japan_essen_onigiri.jpg" alt="Onigiri">
+  </div>
+
+  <div class="fuss">Japan – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball + Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Japan hat den Spitznamen Samurai Blue und spielt in blau-weißen Trikots. Japan ist eine starke Mannschaft aus Asien und war schon viele Male bei der WM dabei. Für die WM 2026 hat sich Japan sogar als allererstes Land der Welt qualifiziert. Bekannt ist das Team für sein schnelles, faires Spiel und seine begeisterten Fans.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Samurai Blue</span><span class="chip">blaues Trikot</span><span class="chip">stark in Asien</span><span class="chip">bei der WM 2026</span><span class="chip">Takefusa Kubo</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Japan hat bei der WM 2022 für große Überraschungen gesorgt. Das Team besiegte Spanien und Deutschland, beide Weltmeister. Takefusa Kubo ist Japans bekanntester junger Spieler. Er spielt in Spanien beim FC Real Sociedad.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Takefusa Kubo</span><span class="chip">Real Sociedad</span><span class="chip">WM 2022 Überraschung</span><span class="chip">Spanien und Deutschland besiegt</span><span class="chip">Fußball-Japan</span></p>
+    </div>
+    <img src="bilder/japan_fussball.jpg" alt="Blau-weißes Trikot und Fußball">
+  </div>
+
+  <div class="kat" style="margin-top:7mm;">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Japan</span>In Japan ziehen die Kinder in der Schule ihre Straßenschuhe aus und wechseln in Hausschuhe. Es gibt keine Putzfrau. Stattdessen putzen die Kinder ihr Klassenzimmer am Ende des Tages selbst, das nennt man Putzdienst. Auf dem Rücken tragen viele einen festen Schulranzen, der Randoseru heißt.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Hausschuhe</span><span class="chip">Schuhe wechseln</span><span class="chip">Putzdienst</span><span class="chip">selbst putzen</span><span class="chip">Randoseru</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Essen mit Stäbchen</span>Viele Kinder in Japan essen mit zwei dünnen Stäbchen statt mit Messer und Gabel. Ihr Essen bringen sie oft in einer Bento-Box mit. Darin liegen Reis, Gemüse und kleine Snacks ordentlich nebeneinander. In ihrer Freizeit lesen viele Kinder gern Comics, die Manga heißen.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Stäbchen</span><span class="chip">Bento-Box</span><span class="chip">Reis</span><span class="chip">ordentlich</span><span class="chip">Manga</span></p>
+      </div>
+    </div>
+    <img src="bilder/japan_kinderalltag.jpg" alt="Kinderalltag in Japan: Schulranzen, Bento-Box und Hausschuhe">
+  </div>
+
+  <div class="fuss">Japan – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+</body>
+</html>

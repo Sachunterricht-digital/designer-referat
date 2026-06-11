@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niederlande – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .headerbild{width:100%;height:50mm;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:5mm;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Niederlande</h1>
+    <span class="flagge">🇳🇱</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img class="headerbild" src="bilder/niederlande_header.jpg" alt="Niederlande: Windmühle, Tulpen und Grachten">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Amsterdam</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Niederländisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Euro</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">rund 18 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 42.000 km², also viel kleiner als Deutschland</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">Der höchste Punkt heißt Vaalserberg und ist nur 322 Meter hoch</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Deutschland und Belgien</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏛️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Niederlande gibt es viele berühmte Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/niederlande_windmuehlen.jpg" alt="Windmühlen">
+    <div class="txt">
+      <p><span class="name">Windmühlen</span>In den Niederlanden stehen viele alte Windmühlen. Früher haben sie mit dem Wind Korn gemahlen. Andere haben Wasser vom Land ins Meer gepumpt. Heute sind die Windmühlen ein beliebtes Fotomotiv.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">alte Windmühlen</span><span class="chip">mit dem Wind</span><span class="chip">Korn gemahlen</span><span class="chip">Wasser</span><span class="chip">Fotomotiv</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Grachten von Amsterdam</span>In Amsterdam gibt es viele kleine Wasserstraßen. Diese nennt man Grachten. An den Grachten stehen schmale, hohe Häuser. Mit dem Boot kann man durch die Stadt fahren.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">In Amsterdam</span><span class="chip">kleine Wasserstraßen</span><span class="chip">Grachten</span><span class="chip">schmale, hohe Häuser</span><span class="chip">Mit dem Boot</span></p>
+    </div>
+    <img src="bilder/niederlande_grachten.jpg" alt="Grachten von Amsterdam">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/niederlande_tulpenfelder.jpg" alt="Tulpenfelder">
+    <div class="txt">
+      <p><span class="name">Tulpenfelder</span>Im Frühling blühen in den Niederlanden riesige Tulpenfelder. Sie leuchten in rot, gelb und vielen anderen Farben. Die Blumen stehen in langen Reihen nebeneinander. Aus aller Welt kommen Menschen, um die Tulpen zu sehen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Im Frühling</span><span class="chip">Tulpenfelder</span><span class="chip">gelb</span><span class="chip">langen Reihen</span><span class="chip">die Tulpen</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Käsemarkt</span>In manchen Städten gibt es einen großen Käsemarkt. Dort liegen viele runde Käselaibe auf dem Platz. Männer tragen den Käse auf hölzernen Tragen. Der Gouda ist ein bekannter Käse aus den Niederlanden.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">einen großen Käsemarkt</span><span class="chip">runde Käselaibe</span><span class="chip">auf dem Platz</span><span class="chip">hölzernen Tragen</span><span class="chip">Gouda</span></p>
+    </div>
+    <img src="bilder/niederlande_kaesemarkt.jpg" alt="Käsemarkt">
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">Diese Tiere leben in Niederlande und sind ganz besonders.</p>
+
+  <div class="eintrag">
+    <img src="bilder/niederlande_kuh.jpg" alt="Friesische Kuh">
+    <div class="txt">
+      <p><span class="name">Friesische Kuh</span>Auf den grünen Wiesen stehen viele schwarz-weiße Kühe. Diese Kühe geben besonders viel Milch. Aus der Milch macht man Käse und Butter. Die schwarz-weiße Kuh ist typisch für die Niederlande.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">grünen Wiesen</span><span class="chip">schwarz-weiße Kühe</span><span class="chip">viel Milch</span><span class="chip">Käse und Butter</span><span class="chip">typisch</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Seehund</span>Im Wattenmeer an der Küste leben viele Seehunde. Bei Ebbe liegen sie gern auf den Sandbänken. Sie sind sehr gute Schwimmer und tauchen nach Fisch. Vom Boot aus kann man die Seehunde beobachten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Im Wattenmeer</span><span class="chip">an der Küste</span><span class="chip">auf den Sandbänken</span><span class="chip">nach Fisch</span><span class="chip">beobachten</span></p>
+    </div>
+    <img src="bilder/niederlande_seehund.jpg" alt="Seehund">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/niederlande_austernfischer.jpg" alt="Austernfischer">
+    <div class="txt">
+      <p><span class="name">Austernfischer</span>Der Austernfischer ist ein schwarz-weißer Vogel. Er hat einen langen roten Schnabel und rote Beine. Mit dem Schnabel sucht er im Watt nach Muscheln und Würmern. Man hört ihn oft laut rufen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">schwarz-weißer Vogel</span><span class="chip">roten Schnabel</span><span class="chip">rote Beine</span><span class="chip">nach Muscheln</span><span class="chip">laut rufen</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Gouda-Käse</span>Gouda ist ein bekannter Käse aus den Niederlanden. Er wird in großen runden Laiben gemacht. Junger Gouda schmeckt mild, alter Gouda kräftig. Viele Kinder essen ihn gern auf dem Brot.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bekannter Käse</span><span class="chip">runden Laiben</span><span class="chip">schmeckt mild</span><span class="chip">alter Gouda</span><span class="chip">auf dem Brot</span></p>
+    </div>
+    <img src="bilder/niederlande_essen_gouda.jpg" alt="Gouda-Käse">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Stroopwafel</span>Eine Stroopwafel ist eine dünne, runde Waffel. In der Mitte steckt klebriger Sirup. Man legt sie gern auf eine warme Tasse Tee. Dann wird der Sirup weich und schmeckt noch besser.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">dünne, runde Waffel</span><span class="chip">klebriger Sirup</span><span class="chip">eine warme Tasse</span><span class="chip">der Sirup weich</span><span class="chip">schmeckt</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Poffertjes</span>Poffertjes sind viele kleine dicke Pfannkuchen. Sie werden in einer Pfanne mit Mulden gebacken. Oben kommt Puderzucker und ein Stück Butter darauf. Man isst sie warm vom Jahrmarkt oder zu Hause.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">kleine dicke Pfannkuchen</span><span class="chip">einer Pfanne</span><span class="chip">Puderzucker</span><span class="chip">Stück Butter</span><span class="chip">vom Jahrmarkt</span></p>
+    </div>
+    <img src="bilder/niederlande_essen_poffertjes.jpg" alt="Poffertjes">
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Nationalmannschaft der Niederlande nennt man Oranje. Das bedeutet orange, die Farbe vom Königshaus. Die Spieler tragen darum ein oranges Trikot. Berühmt war früher der Spieler Johan Cruyff. Die Niederlande waren schon oft im großen Finale.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Oranje</span><span class="chip">bedeutet orange</span><span class="chip">oranges Trikot</span><span class="chip">Johan Cruyff</span><span class="chip">im großen Finale</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Virgil van Dijk ist Hollands bekanntester Spieler heute. Er ist Innenverteidiger beim FC Liverpool und gilt als einer der besten Verteidiger der Welt. Früher war Johan Cruyff die größte Legende der Niederlande. Er erfand den Fußball-Stil mit vielen kurzen Pässen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Virgil van Dijk</span><span class="chip">FC Liverpool</span><span class="chip">Johan Cruyff Legende</span><span class="chip">Oranje</span><span class="chip">van Basten Legende</span></p>
+    </div>
+    <img src="bilder/niederlande_fussball.jpg" alt="Fußball Niederlande">
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Mit dem Fahrrad zur Schule</span>In den Niederlanden fahren fast alle mit dem Fahrrad. Es gibt überall breite und sichere Radwege. Die Kinder fahren jeden Morgen mit dem Rad zur Schule. Weil das Land flach ist, geht das ganz leicht.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">mit dem Fahrrad</span><span class="chip">sichere Radwege</span><span class="chip">jeden Morgen</span><span class="chip">zur Schule</span><span class="chip">flach</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Koningsdag</span>Am Koningsdag feiern die Niederländer den Geburtstag des Königs. An diesem Tag ziehen sich alle orange an. In den Straßen gibt es Musik, Spiele und kleine Flohmärkte. Die Kinder verkaufen dort ihr altes Spielzeug.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">den Geburtstag</span><span class="chip">des Königs</span><span class="chip">orange an</span><span class="chip">kleine Flohmärkte</span><span class="chip">altes Spielzeug</span></p>
+      </div>
+    </div>
+    <img src="bilder/niederlande_kinderalltag.jpg" alt="Kinderalltag Niederlande">
+  </div>
+
+  <div class="fuss">Niederlande – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

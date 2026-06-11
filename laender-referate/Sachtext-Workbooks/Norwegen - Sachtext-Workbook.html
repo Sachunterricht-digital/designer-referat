@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norwegen – Sachtext-Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petrol:#2a9d8f;
+    --petrol-dark:#1f7568;
+    --gold:#e2a13a;
+    --green-line:#6a9a2f;
+    --sand:#faf6ee;
+    --ink:#264653;
+    --ink-soft:#4a6170;
+    --line:#e4dcc9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:#d9d9d9;
+    font-size:12pt;
+    line-height:1.5;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    margin:10mm auto;
+    padding:14mm 15mm 16mm;
+    position:relative;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+
+  /* AB-Header schwarz/weiß */
+  .ab-header{
+    display:flex;align-items:stretch;border:1.5px solid #000;border-radius:6px;
+    overflow:hidden;margin-bottom:7mm;font-family:'Nunito',sans-serif;
+  }
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;color:#000;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+
+  /* Titelblock */
+  .titel{display:flex;align-items:baseline;gap:12px;margin-bottom:4mm;}
+  .titel h1{font-size:34pt;color:var(--ink);font-weight:700;}
+  .titel .flagge{font-size:30pt;}
+  .titel .sub{font-size:13pt;color:var(--ink-soft);font-weight:600;font-family:'Nunito',sans-serif;}
+
+  .hinweis{border:1.5px dashed var(--petrol);border-radius:10px;padding:9px 14px;margin-bottom:6mm;font-size:11.5pt;color:var(--ink);}
+  .hinweis b{color:var(--petrol-dark);}
+
+  /* Steckbrief */
+  .steckbrief{border:1.5px solid var(--gold);border-radius:10px;padding:6px 0;}
+  .steckbrief table{width:100%;border-collapse:collapse;}
+  .steckbrief td{padding:6px 16px;border-bottom:1px solid var(--line);font-size:12pt;}
+  .steckbrief tr:last-child td{border-bottom:none;}
+  .steckbrief td.k{font-weight:700;color:var(--ink);width:42%;}
+  .steckbrief td.v{color:var(--ink-soft);}
+
+  /* Kategorie-Überschrift */
+  .kat{margin:0 0 4mm;}
+  .kat h2{font-size:21pt;color:var(--petrol-dark);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .kat .strich{height:3px;background:var(--gold);border-radius:2px;margin-top:3px;width:100%;}
+  .kat .icon{font-size:20pt;}
+
+  /* Eintrag: Bild + Text */
+  .eintrag{display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:start;margin-bottom:5mm;break-inside:avoid;}
+  .eintrag.rechts{grid-template-columns:1fr 44mm;}
+  .eintrag img{width:44mm;height:33mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+  .eintrag .txt p{margin:0;}
+
+  .block{margin-bottom:5mm;break-inside:avoid;}
+  .block:last-child{margin-bottom:0;}
+
+  .name{font-weight:800;color:var(--ink);font-size:13pt;display:block;margin-bottom:1px;}
+
+  /* Folien-Wörter: grüne Wort-Chips unter dem Absatz */
+  .fw{
+    margin-top:5px;font-size:10pt;line-height:1.9;
+    border-top:1px dotted var(--line);padding-top:5px;
+  }
+  .fw .fw-label{
+    display:block;color:var(--green-line);font-weight:800;font-size:9.5pt;
+    text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;
+  }
+  .fw .chip{
+    display:inline-block;background:#eef6e1;border:1.5px solid var(--green-line);
+    color:#3f5e1c;font-weight:700;border-radius:999px;
+    padding:1px 9px;margin:2px 4px 2px 0;white-space:nowrap;font-size:9.5pt;
+  }
+
+  .essen-grid,.fussball-grid,.alltag-grid{display:grid;grid-template-columns:1fr 50mm;gap:6mm;align-items:start;}
+  .essen-grid img,.fussball-grid img,.alltag-grid img{width:50mm;height:38mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);}
+
+  .fuss-wahl{font-size:10.5pt;color:var(--petrol-dark);font-weight:700;border:1.5px solid var(--petrol);border-radius:8px;padding:3px 10px;display:inline-block;margin-bottom:4mm;}
+
+  .sub-head{font-size:10pt;font-weight:800;color:#264653;margin:4mm 0 1.5mm;border-left:3px solid #2a9d8f;padding-left:3mm;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;page-break-after:always;}
+    .page:last-child{page-break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<style>.nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}.nav-back:hover{background:#1e40af}@media print{.nav-back{display:none!important}}</style>
+<a class="nav-back" href="Übersicht.html">← Länderübersicht</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+<style>.nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,-apple-system,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}.nav-print:hover{background:#15803d}@media print{.nav-print{display:none!important}}</style>
+
+<!-- ===================== SEITE 1 ===================== -->
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel">
+    <h1>Norwegen</h1>
+    <span class="flagge">🇳🇴</span>
+    <span class="sub">Mein Land bei der WM 2026</span>
+  </div>
+
+  <img style="width:100%;height:50mm;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:5mm;" src="bilder/norwegen_header.jpg" alt="Norwegischer Fjord mit Bergen und klarem Wasser">
+
+  <div class="hinweis">
+    <b>So arbeitest du mit diesem Heft:</b> Lies die Texte zu deinem Land. Unter jedem Absatz steht eine kleine Zeile mit <b>Folien-Wörtern</b>. Genau diese Wörter findest du später in der App wieder und tippst sie an, wenn du deine Folien baust.
+  </div>
+
+  <div class="kat">
+    <h2><span class="icon">📋</span> Steckbrief</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 4mm;color:var(--ink-soft);">Hier stehen die wichtigsten Daten zu deinem Land. In der App baust du daraus deinen eigenen Steckbrief.</p>
+
+  <div class="steckbrief">
+    <table>
+      <tr><td class="k">Hauptstadt</td><td class="v">Oslo</td></tr>
+      <tr><td class="k">Kontinent</td><td class="v">Europa (Nordeuropa)</td></tr>
+      <tr><td class="k">Sprache</td><td class="v">Norwegisch</td></tr>
+      <tr><td class="k">Währung</td><td class="v">Norwegische Krone</td></tr>
+      <tr><td class="k">Einwohner</td><td class="v">etwa 5,6 Millionen Menschen</td></tr>
+      <tr><td class="k">Fläche</td><td class="v">etwa 385.000 km², ein langes, schmales Land, etwas größer als Deutschland</td></tr>
+      <tr><td class="k">Großer Berg</td><td class="v">der Galdhøpiggen, mit etwa 2.469 Metern der höchste Berg des Landes</td></tr>
+      <tr><td class="k">Nachbarländer</td><td class="v">Schweden, Finnland und Russland</td></tr>
+    </table>
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 1</div>
+</div>
+
+<!-- ===================== SEITE 2: Sehenswürdigkeiten ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🏔️</span> Sehenswürdigkeiten</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In Norwegen gibt es viele besondere Orte. Diese vier solltest du kennen.</p>
+
+  <div class="eintrag">
+    <img src="bilder/norwegen_fjord.jpg" alt="Norwegischer Fjord mit steilen Felswänden">
+    <div class="txt">
+      <p><span class="name">Fjorde</span>Fjorde sind tiefe, schmale Meeresbuchten. Sie ziehen sich weit ins Land hinein, mitten zwischen die Berge. Die Felswände an den Seiten sind steil und sehr hoch. Viele Menschen finden die Fjorde wunderschön.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Meeresbucht</span><span class="chip">schmal und tief</span><span class="chip">steile Felswände</span><span class="chip">zwischen Bergen</span><span class="chip">wunderschön</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Nordlichter</span>Im Winter leuchtet der Himmel über Norwegen manchmal in bunten Farben. Man sieht dann Grün, Lila und Rot. Diese Lichter nennt man Nordlichter. Sie entstehen durch winzige Teilchen aus der Sonne.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">leuchtender Himmel</span><span class="chip">im Winter</span><span class="chip">grün und lila</span><span class="chip">Teilchen aus der Sonne</span><span class="chip">nachts</span></p>
+    </div>
+    <img src="bilder/norwegen_nordlichter.jpg" alt="Nordlichter in grün und lila über schneebedeckter Landschaft">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/norwegen_trolltunga.jpg" alt="Trolltunga Felsen ragt waagerecht aus dem Berg heraus">
+    <div class="txt">
+      <p><span class="name">Trolltunga</span>Die Trolltunga ist ein flaches Felsstück. Es ragt wie eine Zunge waagerecht aus einem steilen Berg heraus. Tief unten liegt ein See. Viele Wanderer klettern hinauf und machen dort ein Foto.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Felsstück</span><span class="chip">wie eine Zunge</span><span class="chip">hoch über dem See</span><span class="chip">steiler Berg</span><span class="chip">Wanderer</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Bryggen in Bergen</span>In der Stadt Bergen stehen bunte alte Holzhäuser direkt am Hafen. Dieser Ort heißt Bryggen. Die Häuser sind schon viele hundert Jahre alt. Heute gehören sie zum Weltkulturerbe.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">bunte Holzhäuser</span><span class="chip">am Hafen</span><span class="chip">in Bergen</span><span class="chip">sehr alt</span><span class="chip">Weltkulturerbe</span></p>
+    </div>
+    <img src="bilder/norwegen_bryggen.jpg" alt="Bunte alte Holzhäuser am Hafen von Bergen">
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 2</div>
+</div>
+
+<!-- ===================== SEITE 3: Tiere ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🐾</span> Tiere</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In den Wäldern und Meeren Norwegens leben Tiere, die du bei uns selten oder gar nicht findest.</p>
+
+  <div class="eintrag">
+    <img src="bilder/norwegen_elch.jpg" alt="Elch mit breitem Geweih im Wald">
+    <div class="txt">
+      <p><span class="name">Elch</span>Der Elch ist das größte Tier Norwegens. Er lebt in den großen Wäldern. Ein Elch kann bis zu 800 Kilogramm schwer werden. An seinem Kopf trägt er ein breites Geweih.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">größtes Tier</span><span class="chip">lebt im Wald</span><span class="chip">sehr schwer</span><span class="chip">breites Geweih</span><span class="chip">800 Kilogramm</span></p>
+    </div>
+  </div>
+
+  <div class="eintrag rechts">
+    <div class="txt">
+      <p><span class="name">Rentier</span>Rentiere leben im Norden von Norwegen. Sie haben ein dickes Fell und kommen gut mit Kälte zurecht. Schon seit langer Zeit werden sie von den Samen gehütet. Auch die Weibchen tragen ein Geweih.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">lebt im Norden</span><span class="chip">dickes Fell</span><span class="chip">mag Kälte</span><span class="chip">Samen hüten sie</span><span class="chip">Geweih</span></p>
+    </div>
+    <img src="bilder/norwegen_rentier.jpg" alt="Rentiere in verschneiter arktischer Landschaft">
+  </div>
+
+  <div class="eintrag">
+    <img src="bilder/norwegen_orca.jpg" alt="Orca Schwertwal schwarz-weiß im norwegischen Fjord">
+    <div class="txt">
+      <p><span class="name">Orca</span>Der Orca ist ein großer Schwertwal. Er ist schwarz-weiß und schwimmt in den Fjorden vor der Küste. Besonders im Herbst und Winter kann man Orcas dort sehen. Sie jagen oft in Gruppen.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Schwertwal</span><span class="chip">schwarz-weiß</span><span class="chip">in den Fjorden</span><span class="chip">jagt in Gruppen</span><span class="chip">im Winter</span></p>
+    </div>
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 3</div>
+</div>
+
+<!-- ===================== SEITE 4: Essen ===================== -->
+<div class="page">
+  <div class="kat">
+    <h2><span class="icon">🍽️</span> Essen</h2>
+    <div class="strich"></div>
+  </div>
+  <p style="margin:0 0 5mm;color:var(--ink-soft);">In der App kannst du beim Essen das Foto nehmen oder dein Gericht selbst malen.</p>
+
+  <div class="essen-grid">
+    <div class="block">
+      <p><span class="name">Lachs</span>Norwegen ist eines der größten Lachsländer der Welt. Lachs ist ein rosafarbener Fisch aus dem Meer. Man isst ihn geräuchert, gekocht oder roh. Sehr beliebt ist Lachs auf Brot mit Butter.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">rosa Fisch</span><span class="chip">aus dem Meer</span><span class="chip">geräuchert</span><span class="chip">auf Brot</span><span class="chip">sehr beliebt</span></p>
+    </div>
+    <img src="bilder/norwegen_lachs.jpg" alt="Geräucherter Lachs auf Brot mit Butter">
+  </div>
+
+  <div class="block" style="margin-top:4mm;">
+    <p><span class="name">Brunost</span>Brunost ist ein brauner Käse mit süßem Geschmack. Er sieht aus wie eine Scheibe Schokolade, schmeckt aber ganz anders. In Norwegen essen ihn viele Kinder zum Frühstück auf dem Brot.</p>
+    <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">brauner Käse</span><span class="chip">süßer Geschmack</span><span class="chip">wie Schokolade</span><span class="chip">zum Frühstück</span><span class="chip">aufs Brot</span></p>
+  </div>
+
+  <div class="essen-grid" style="margin-top:4mm;">
+    <div class="block">
+      <p><span class="name">Kjøttkaker</span>Kjøttkaker sind Fleischklößchen in brauner Soße. Sie sind ein klassisches Hausmannsessen. Dazu isst man oft Kartoffeln und Erbsen. Das Gericht macht satt und schmeckt warm am besten.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Fleischklößchen</span><span class="chip">braune Soße</span><span class="chip">mit Kartoffeln</span><span class="chip">und Erbsen</span><span class="chip">macht satt</span></p>
+    </div>
+    <img src="bilder/norwegen_kjoettkaker.jpg" alt="Kjøttkaker, norwegische Fleischklößchen in brauner Soße mit Kartoffeln">
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 4</div>
+</div>
+
+<!-- ===================== SEITE 5: Fußball ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">⚽</span> Fußball</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="fussball-grid">
+    <div class="block">
+      <p class="sub-head">⚽ Gut zu wissen</p>
+      <p>Die Fußball-Nationalmannschaft von Norwegen spielt im rot-weißen Trikot. Im Ausland nennt man sie oft einfach Norway. Lange Zeit war Norwegen nicht bei einer WM dabei, die letzte Teilnahme war 1998. Jetzt ist das Team wieder stark und spielt 2026 bei der Weltmeisterschaft mit.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">rot-weißes Trikot</span><span class="chip">lange nicht dabei</span><span class="chip">jetzt wieder stark</span><span class="chip">bei der WM 2026</span><span class="chip">Erling Haaland</span></p>
+      <p class="sub-head" style="margin-top:5mm;">🌟 Profi-Wissen</p>
+      <p>Erling Haaland ist Norwegens größter Fußballstar. Er spielt beim englischen Club Manchester City und schießt extrem viele Tore. In seiner ersten Saison in England traf er über 50 Mal. Sein Vater Alfie Haaland hat früher auch in England gespielt.</p>
+      <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Erling Haaland</span><span class="chip">Manchester City</span><span class="chip">Tormaschine</span><span class="chip">über 50 Tore in einer Saison</span><span class="chip">Vater auch Profi</span></p>
+    </div>
+    <img src="bilder/norwegen_fussball.jpg" alt="Rot-weißes norwegisches Fußballtrikot mit Fußball">
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 5</div>
+</div>
+
+<!-- ===================== SEITE 6: Kinderalltag ===================== -->
+<div class="page">
+  <span class="fuss-wahl">★ Wahl-Thema: Fußball oder Kinderalltag (mindestens eins)</span>
+
+  <div class="kat">
+    <h2><span class="icon">🎒</span> Kinderalltag</h2>
+    <div class="strich"></div>
+  </div>
+
+  <div class="alltag-grid">
+    <div>
+      <div class="block">
+        <p><span class="name">Schule in Norwegen</span>In Norwegen gehen die Kinder von Montag bis Freitag zur Schule, so wie bei uns. Sie starten meist ohne Noten in den ersten Jahren. Oft sind die Kinder viel draußen, auch bei Regen oder Schnee. Es gibt sogar Schulen mitten im Wald, das nennt man Naturschule.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Montag bis Freitag</span><span class="chip">erst keine Noten</span><span class="chip">viel draußen</span><span class="chip">bei Regen und Schnee</span><span class="chip">Naturschule</span></p>
+      </div>
+      <div class="block">
+        <p><span class="name">Leben in der Natur</span>Viele Familien in Norwegen lieben es, draußen zu sein. Das nennt man Friluftsliv, also Leben an der frischen Luft. Im Winter fahren schon kleine Kinder Ski und rodeln. An freien Tagen gehen Familien zusammen wandern oder zelten in der Natur.</p>
+        <p class="fw"><span class="fw-label">Grüne Wörter für die App</span><span class="chip">Friluftsliv</span><span class="chip">frische Luft</span><span class="chip">Ski fahren</span><span class="chip">im Winter</span><span class="chip">wandern und zelten</span></p>
+      </div>
+    </div>
+    <img src="bilder/norwegen_kinderalltag.jpg" alt="Kinder fahren Ski im norwegischen Winterwald">
+  </div>
+
+  <div class="fuss">Norwegen – Sachtext-Workbook · WM 2026 · Seite 6</div>
+</div>
+
+</body>
+</html>

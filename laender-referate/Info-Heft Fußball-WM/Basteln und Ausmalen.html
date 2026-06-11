@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trikot gestalten – Fußball-WM 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--petrol:#2a9d8f;--petrol-dark:#1f7568;--gold:#e2a13a;--green-line:#6a9a2f;--sand:#faf6ee;--ink:#264653;--ink-soft:#4a6170;--line:#e4dcc9;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:#d9d9d9;font-size:12pt;line-height:1.5;}
+  .page{width:210mm;min-height:297mm;background:#fff;margin:10mm auto;padding:14mm 15mm 16mm;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.18);}
+  h1{font-family:'Fredoka',sans-serif;margin:0;}
+  .ab-header{display:flex;border:1.5px solid #000;border-radius:6px;overflow:hidden;margin-bottom:8mm;}
+  .ab-header .cell{flex:1;padding:5px 10px;border-right:1.5px solid #000;font-size:11pt;}
+  .ab-header .cell:last-child{border-right:none;flex:0 0 70px;text-align:center;font-weight:800;}
+  .ab-header .lbl{font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em;color:#444;display:block;}
+  .titel h1{font-size:32pt;color:var(--ink);margin-bottom:3mm;}
+  .satz{font-size:14pt;color:var(--ink-soft);margin:0 0 10mm;}
+  .trikot-gross{display:flex;justify-content:center;}
+  .trikot-gross svg{width:130mm;height:auto;}
+  .fuss{font-size:8.5pt;color:#9a9a9a;position:absolute;bottom:8mm;left:15mm;}
+  .flaglink{margin-top:12mm;}
+  .link-card{display:flex;align-items:center;gap:14px;border:2px solid var(--green-line);border-radius:14px;padding:13px 18px;background:#eef6e1;text-decoration:none;color:var(--ink);}
+  .link-card .em{font-size:26pt;line-height:1;}
+  .link-card h3{font-size:14pt;color:var(--petrol-dark);margin:0 0 2px;font-family:'Fredoka',sans-serif;}
+  .link-card p{margin:0;font-size:10.5pt;color:var(--ink-soft);}
+  .link-card .go{margin-left:auto;font-weight:800;color:var(--petrol);white-space:nowrap;}
+  .nav-back{position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;gap:6px;background:#1d4ed8;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .nav-print{position:fixed;top:14px;right:14px;z-index:99999;display:inline-flex;gap:6px;background:#16a34a;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;padding:9px 15px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}
+  @media print{body{background:#fff;}.page{margin:0;box-shadow:none;}.nav-back,.nav-print,.flaglink{display:none!important}@page{size:A4;margin:0;}}
+</style>
+</head>
+<body>
+<a class="nav-back" href="../Landing - Startseite.html">← Startseite</a>
+<a class="nav-print" href="javascript:void(0)" onclick="window.print()">⬇ Drucken / als PDF</a>
+
+<div class="page">
+  <div class="ab-header">
+    <div class="cell"><span class="lbl">Name</span>&nbsp;</div>
+    <div class="cell"><span class="lbl">Datum</span>&nbsp;</div>
+    <div class="cell">HSU</div>
+  </div>
+
+  <div class="titel"><h1>Gestalte dein eigenes Trikot</h1></div>
+  <p class="satz">Male das Trikot in den Farben deines Landes an.</p>
+
+  <div class="trikot-gross">
+    <svg viewBox="0 0 200 220" role="img" aria-label="Trikot zum Ausmalen">
+      <path d="M78,24 Q100,52 122,24 L150,24 L192,60 L162,92 L150,80 L150,206 L50,206 L50,80 L38,92 L8,60 L50,24 Z"
+        fill="#fff" stroke="#222" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M78,24 Q100,52 122,24" fill="none" stroke="#222" stroke-width="3.5"/>
+    </svg>
+  </div>
+
+  <div class="flaglink">
+    <a class="link-card" href="Flaggen-Ausmalbilder.html">
+      <span class="em">🚩</span>
+      <span><h3>Auch Flaggen zum Ausmalen</h3><p>Die Flaggen der wichtigsten Länder mit Farb-Anleitung.</p></span>
+      <span class="go">öffnen →</span>
+    </a>
+  </div>
+
+  <div class="fuss">Trikot gestalten · Fußball-WM 2026 · HSU</div>
+</div>
+</body>
+</html>
